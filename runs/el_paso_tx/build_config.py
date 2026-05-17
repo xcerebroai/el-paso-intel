@@ -636,7 +636,11 @@ config = {
     "deployment": {
         "github_org": "xcerebro",
         "github_repo": "xcerebroai/el-paso-intel",
-        "live_url": "",
+        "live_url": "https://xcerebroai.github.io/el-paso-intel/",
+        "github_pages_enabled": True,
+        "build_type": "workflow",
+        "public_status": "PUBLIC_GITHUB_PAGES",
+        "deployed_at": "2026-05-17T22:50:00Z",
         "scheduled_task_name": "",
         "watchdog_task_name": "",
         "scheduler_runtime_class": "SCHEDULER_NOT_CONFIGURED",
