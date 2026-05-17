@@ -89,9 +89,17 @@ ESTATE_HIGH = re.compile(
     r"|\bDECEASED\b|\bDEC'D\b|\b\w[\w\s]*\s+ESTATE\b|\b\w[\w\s]*\s+HEIRS\b", re.I)
 TRUST_PAT = re.compile(
     r"\b[\w\s]+\s+(FAMILY\s+|LIVING\s+|REVOCABLE\s+|IRREVOCABLE\s+)?TRUST\b", re.I)
+# Fix 3 (v2): broadened entity / government detection. The prior pattern only
+# caught LLC/INC/CORP-style suffixes and missed government bodies and many
+# entity name forms (see runs/el_paso_tx/build/data_quality_audit.md).
 ENTITY_PAT = re.compile(
-    r"\b(LLC|L\.?L\.?C|INC|CORP|CORPORATION|L\.?P\.?|LTD|COMPANY|CO|"
-    r"PARTNERSHIP|HOLDINGS|PROPERTIES|INVESTMENTS|BANK|ASS'?N|ASSOCIATION)\b", re.I)
+    r"\b(LLC|L\.?L\.?C|INC|CORP|CORPORATION|L\.?P\.?|LLP|LTD|COMPANY|CO|"
+    r"PARTNERSHIP|PARTNERS|HOLDINGS|PROPERTIES|INVESTMENTS|BANK|ASS'?N|"
+    r"ASSOCIATION|ASSOCIATES|ASSOC|ENTERPRISES|GROUP|OWNER|CENTER|SERVICES|"
+    r"COMMISSION|AUTHORITY|DISTRICT|FUND|MANAGEMENT|REALTY|MORTGAGE|"
+    r"NATIONAL)\b"
+    r"|\bCITY\s+OF\b|\bCOUNTY\s+OF\b|\bSTATE\s+OF\b|\bUNITED\s+STATES\b"
+    r"|\bCREDIT\s+UNION\b", re.I)
 
 
 def classify_owner_type(name: str) -> str:
