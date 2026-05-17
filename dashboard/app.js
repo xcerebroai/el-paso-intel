@@ -45,7 +45,7 @@
 
     buildSignalFilter();
     buildOwnerFilter();
-    ["change", "keyup"].forEach(function (ev) {
+    ["input", "change"].forEach(function (ev) {
       els.search.addEventListener(ev, render);
     });
     [els.absentee, els.oos, els.stack, els.sort].forEach(function (e) {
