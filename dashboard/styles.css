@@ -1,0 +1,105 @@
+/* El Paso County Distress Intelligence — dashboard styles.
+   Visual contract (§13.7.7): distress signals render as FILLED colored
+   chips; enrichment attributes render as OUTLINE-ONLY badges. The two
+   must never look equivalent. */
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #0F172A; background: #F1F5F9; font-size: 14px;
+}
+h1 { margin: 0; font-size: 20px; }
+.subtitle { margin: 2px 0 0; color: #64748B; font-size: 12px; }
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px; background: #0F172A; color: #fff;
+}
+.topbar h1 { color: #fff; }
+.build-meta { font-size: 12px; color: #94A3B8; text-align: right; }
+
+.banner {
+  padding: 8px 20px; background: #FEF3C7; color: #92400E; font-size: 12px;
+  border-bottom: 1px solid #FCD34D;
+}
+.banner:empty { display: none; }
+
+main { display: flex; gap: 16px; padding: 16px 20px; align-items: flex-start; }
+
+.filters {
+  width: 240px; flex: none; background: #fff; border: 1px solid #E2E8F0;
+  border-radius: 8px; padding: 14px;
+}
+.filter-block { margin-bottom: 14px; }
+.filter-label {
+  display: block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; color: #475569; margin-bottom: 6px;
+}
+.filters input[type=text], .filters select {
+  width: 100%; padding: 6px 8px; border: 1px solid #CBD5E1; border-radius: 6px;
+  font-size: 13px;
+}
+.checkgroup { display: flex; flex-direction: column; gap: 3px; max-height: 220px; overflow: auto; }
+.checkgroup label, .toggle {
+  display: flex; align-items: center; gap: 6px; font-size: 12px; cursor: pointer;
+}
+.toggle { margin-bottom: 4px; }
+.csv-btn, .reset-btn {
+  width: 100%; padding: 8px; border-radius: 6px; font-size: 13px; cursor: pointer;
+  border: 1px solid #CBD5E1;
+}
+.csv-btn { background: #3B82F6; color: #fff; border-color: #3B82F6; font-weight: 600; margin-bottom: 6px; }
+.reset-btn { background: #fff; color: #475569; }
+
+.results { flex: 1; background: #fff; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; }
+.results-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid #E2E8F0;
+}
+.rowcount { font-weight: 700; }
+.legend { display: flex; gap: 8px; align-items: center; }
+.legend-ex { cursor: default; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #F1F5F9; vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #475569; background: #F8FAFC; }
+th.num, td.num { text-align: right; }
+tbody tr:hover { background: #F8FAFC; }
+.owner-name { font-weight: 600; }
+.muted { color: #94A3B8; }
+.unresolved { color: #B45309; font-style: italic; }
+
+/* DISTRESS SIGNAL — filled colored chip */
+.chip {
+  display: inline-block; padding: 2px 8px; margin: 1px 2px 1px 0;
+  border-radius: 999px; font-size: 11px; font-weight: 600; color: #fff;
+  background: #DC2626; white-space: nowrap;
+}
+.chip-distress { background: #DC2626; }
+.chip[data-sig=lis_pendens] { background: #B91C1C; }
+.chip[data-sig=judgment_lien] { background: #C2410C; }
+.chip[data-sig=federal_tax_lien] { background: #7C2D12; }
+.chip[data-sig=state_tax_lien] { background: #9A3412; }
+.chip[data-sig=mechanics_lien] { background: #A16207; }
+.chip[data-sig=hospital_lien] { background: #BE185D; }
+.chip[data-sig=code_lien] { background: #4D7C0F; }
+.chip[data-sig=affidavit_of_heirship] { background: #6D28D9; }
+.chip[data-sig=executor_deed] { background: #5B21B6; }
+.chip[data-sig=administrator_deed] { background: #4C1D95; }
+.chip[data-sig=estate_titled_property] { background: #1E3A8A; }
+.chip[data-sig=trust_titled_property] { background: #1D4ED8; }
+
+/* ENRICHMENT ATTRIBUTE — outline-only badge, deliberately NOT a filled chip */
+.badge {
+  display: inline-block; padding: 1px 6px; margin: 1px 2px 1px 0;
+  border-radius: 4px; font-size: 10px; font-weight: 600;
+  background: transparent; color: #475569; border: 1px solid #94A3B8;
+  white-space: nowrap;
+}
+.badge.owner-type { border-color: #0F172A; color: #0F172A; }
+.badge.warn { border-color: #B45309; color: #B45309; }
+
+.sigcount { font-weight: 700; }
+.proof-link { color: #3B82F6; text-decoration: none; font-size: 12px; }
+.proof-link:hover { text-decoration: underline; }
+.empty { padding: 30px; text-align: center; color: #94A3B8; }

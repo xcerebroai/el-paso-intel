@@ -1,0 +1,1022 @@
+{
+  "select_name": "Style",
+  "option_count": 254,
+  "options": [
+    {
+      "value": "",
+      "text": "All"
+    },
+    {
+      "value": "18",
+      "text": "ABS - ABSTRACT"
+    },
+    {
+      "value": "223",
+      "text": "ACC- ACCEPTANCE"
+    },
+    {
+      "value": "199",
+      "text": "ACK - ACKNOWLEDGMENT"
+    },
+    {
+      "value": "4",
+      "text": "ACX - EXPENSE ACCOUNT"
+    },
+    {
+      "value": "6",
+      "text": "ADD - ADMINISTRATORS DEED"
+    },
+    {
+      "value": "7",
+      "text": "ADE - ADDENDUM"
+    },
+    {
+      "value": "234",
+      "text": "ADO-ADOPTION"
+    },
+    {
+      "value": "200",
+      "text": "AFC - AFFIDAVIT OF CORRECTION"
+    },
+    {
+      "value": "8",
+      "text": "AFF - AFFIDAVIT"
+    },
+    {
+      "value": "194",
+      "text": "AFH - AFFIDAVIT OF HEIRSHIP"
+    },
+    {
+      "value": "9",
+      "text": "AGR - AGREEMENT"
+    },
+    {
+      "value": "10",
+      "text": "AMD - AMENDMENT/AMENDED"
+    },
+    {
+      "value": "195",
+      "text": "ANN - ANNULMENT"
+    },
+    {
+      "value": "212",
+      "text": "ANS-ANSWER"
+    },
+    {
+      "value": "201",
+      "text": "AOC - AFFIDAVIT OF COMMENCEMENT"
+    },
+    {
+      "value": "13",
+      "text": "AOD - AFFIDAVIT OF DEATH"
+    },
+    {
+      "value": "14",
+      "text": "AOH - AFFIDAVIT OF HOMESTEAD"
+    },
+    {
+      "value": "15",
+      "text": "AOI - ARTICLES OF INCORPORATION"
+    },
+    {
+      "value": "16",
+      "text": "AOJ - ABSTRACT OF JUDGMENT"
+    },
+    {
+      "value": "17",
+      "text": "AOL - AFFIDAVIT OF LIEN"
+    },
+    {
+      "value": "2",
+      "text": "AOR - APPOINTMENT OF RECEIVORSHIP"
+    },
+    {
+      "value": "19",
+      "text": "AOT - APPOINTMENT OF TRUSTEE"
+    },
+    {
+      "value": "245",
+      "text": "APE - AFFIDAVIT OF PRESCRIPTIVE EASEMENT"
+    },
+    {
+      "value": "20",
+      "text": "APL - APPLICATION"
+    },
+    {
+      "value": "27",
+      "text": "APO - APOSTILLE"
+    },
+    {
+      "value": "262",
+      "text": "APP - APPOINTMENT"
+    },
+    {
+      "value": "49",
+      "text": "APR - APPROVAL"
+    },
+    {
+      "value": "21",
+      "text": "ARE - AGREEMENT WITH RESTRICTIONS"
+    },
+    {
+      "value": "22",
+      "text": "ARG - DESIGNATION OF DEPOSITORY"
+    },
+    {
+      "value": "241",
+      "text": "ASL - ASSIGNMENT OF LEASE"
+    },
+    {
+      "value": "24",
+      "text": "ASM - ABSTRACT OF ASSESSMENT"
+    },
+    {
+      "value": "242",
+      "text": "ASR - ASSIGNMENT OF RENTS"
+    },
+    {
+      "value": "26",
+      "text": "AST - APPOINTMENT OF SUB TRUSTEE"
+    },
+    {
+      "value": "28",
+      "text": "ATL - NOTICE OF ADMINSTRATIVE LIEN"
+    },
+    {
+      "value": "231",
+      "text": "ATT- ABSTRACT OF TRUST"
+    },
+    {
+      "value": "29",
+      "text": "AUT - AUTHORIZATION"
+    },
+    {
+      "value": "30",
+      "text": "BAN - BANKRUPTCY"
+    },
+    {
+      "value": "257",
+      "text": "BIL - BILL"
+    },
+    {
+      "value": "32",
+      "text": "BON - BOND"
+    },
+    {
+      "value": "33",
+      "text": "BOS - BILL OF SALE"
+    },
+    {
+      "value": "204",
+      "text": "BOU - BOUNDARY"
+    },
+    {
+      "value": "11",
+      "text": "BYL - BYLAWS"
+    },
+    {
+      "value": "34",
+      "text": "CAC - CANCELLATION"
+    },
+    {
+      "value": "35",
+      "text": "CCA - CERTIFIED COPY ADOPTION"
+    },
+    {
+      "value": "36",
+      "text": "CCB - C/C BIRTH CERTIFICATE"
+    },
+    {
+      "value": "37",
+      "text": "CCC - CHARTERS"
+    },
+    {
+      "value": "38",
+      "text": "CCD - C/C DEATH CERTIFICATE"
+    },
+    {
+      "value": "71",
+      "text": "CCD- CERTIFIED COPY DIVORCED"
+    },
+    {
+      "value": "101",
+      "text": "CCJ- CERTIFIED COPY OF JUDGMENT"
+    },
+    {
+      "value": "40",
+      "text": "CCM - C/C CERTIFICATE OF MARRIAGE"
+    },
+    {
+      "value": "43",
+      "text": "CCP - CERTIFIED COPY OF PROBATE"
+    },
+    {
+      "value": "46",
+      "text": "CCV - C/C VACATING"
+    },
+    {
+      "value": "255",
+      "text": "CDF - CERT OF DISCHARGE PROPERTY FTL"
+    },
+    {
+      "value": "226",
+      "text": "CDL - CODICIL"
+    },
+    {
+      "value": "47",
+      "text": "CDT - CORRECTION/REFILED DOT"
+    },
+    {
+      "value": "48",
+      "text": "CED - CEMETARY DEED"
+    },
+    {
+      "value": "50",
+      "text": "CER - CERTIFICATE/CERTIFICATION"
+    },
+    {
+      "value": "229",
+      "text": "CER-CERTIFICATE/CERTIFICATION"
+    },
+    {
+      "value": "51",
+      "text": "CES - CERTIFICATE OF SALE"
+    },
+    {
+      "value": "202",
+      "text": "CIQ - CONFLICT INT. QUESTIONNAIRE"
+    },
+    {
+      "value": "203",
+      "text": "CIS - CONFLICTS DISCLOSURE STATEMENT"
+    },
+    {
+      "value": "52",
+      "text": "CIT - CITATION"
+    },
+    {
+      "value": "222",
+      "text": "CLA- CLARIFICATION"
+    },
+    {
+      "value": "217",
+      "text": "CLL- COMMON LAW LIEN"
+    },
+    {
+      "value": "53",
+      "text": "CLM - CLAIM"
+    },
+    {
+      "value": "218",
+      "text": "CML- COMMON LAW"
+    },
+    {
+      "value": "41",
+      "text": "CNG - CHANGE"
+    },
+    {
+      "value": "54",
+      "text": "COD - CORRECTION/REFILED WAD"
+    },
+    {
+      "value": "55",
+      "text": "COF - CONFIRMATION"
+    },
+    {
+      "value": "260",
+      "text": "COL - CANCELLATION OF LEASE"
+    },
+    {
+      "value": "57",
+      "text": "CON - CONTINUATION"
+    },
+    {
+      "value": "58",
+      "text": "COR - CLOSING OF ROADS"
+    },
+    {
+      "value": "59",
+      "text": "COS - CONTRACT OF SALE"
+    },
+    {
+      "value": "44",
+      "text": "COT - CONSENT"
+    },
+    {
+      "value": "198",
+      "text": "COV - COVENANTS"
+    },
+    {
+      "value": "216",
+      "text": "CRD- CORRECTION OF DOCUMENTS"
+    },
+    {
+      "value": "215",
+      "text": "CRF - CERTIFICATE OF RELEASE FTL"
+    },
+    {
+      "value": "61",
+      "text": "CRT - CONTRACT"
+    },
+    {
+      "value": "84",
+      "text": "CVY - CONVEYANCE"
+    },
+    {
+      "value": "67",
+      "text": "DCH - DISCHARGE"
+    },
+    {
+      "value": "64",
+      "text": "DCL - DISCLAIMER"
+    },
+    {
+      "value": "3",
+      "text": "DDD - DEED"
+    },
+    {
+      "value": "62",
+      "text": "DEC - DECREE"
+    },
+    {
+      "value": "63",
+      "text": "DED - DEDICATION DEED/ PERSONAL DEED"
+    },
+    {
+      "value": "69",
+      "text": "DEF - DEFAULT"
+    },
+    {
+      "value": "160",
+      "text": "DEL - DELEGATION/DELEGATE"
+    },
+    {
+      "value": "205",
+      "text": "DEN - DESIGN"
+    },
+    {
+      "value": "65",
+      "text": "DES - DESIGNATION"
+    },
+    {
+      "value": "66",
+      "text": "DET - DECLARATION"
+    },
+    {
+      "value": "68",
+      "text": "DIL - DEED IN LIEU"
+    },
+    {
+      "value": "258",
+      "text": "DIS - DISMISSAL"
+    },
+    {
+      "value": "70",
+      "text": "DIT - DEED IN TRUST"
+    },
+    {
+      "value": "56",
+      "text": "DIV- DIVORCE"
+    },
+    {
+      "value": "110",
+      "text": "DOA - DEFENDANTS ORIGINAL ANSWER"
+    },
+    {
+      "value": "74",
+      "text": "DOS - DISSOLUTION"
+    },
+    {
+      "value": "75",
+      "text": "DOT - DEED OF TRUST"
+    },
+    {
+      "value": "73",
+      "text": "DSC - DISCLOSURE"
+    },
+    {
+      "value": "76",
+      "text": "DSD - DISTRIBUTION DEED"
+    },
+    {
+      "value": "77",
+      "text": "DTN - DONATION"
+    },
+    {
+      "value": "78",
+      "text": "DWW - DEED WITHOUT WARRANTY"
+    },
+    {
+      "value": "79",
+      "text": "EAS - EASEMENT"
+    },
+    {
+      "value": "196",
+      "text": "EDT - HOME EQUITY SECURITY INSTRUMENT"
+    },
+    {
+      "value": "80",
+      "text": "EFT - ERRONEOUSLY FILED FTL"
+    },
+    {
+      "value": "233",
+      "text": "EL PASO CATTLE LOAN COMPANY"
+    },
+    {
+      "value": "244",
+      "text": "EMD - EMINENT DOMAIN"
+    },
+    {
+      "value": "82",
+      "text": "EMR - EARNEST MONEY RECEIPTS"
+    },
+    {
+      "value": "247",
+      "text": "ENC - ENCROACHMENT"
+    },
+    {
+      "value": "83",
+      "text": "EPL - ESTOPPEL"
+    },
+    {
+      "value": "85",
+      "text": "ESL - RELEASE OF STL FILED IN ERROR"
+    },
+    {
+      "value": "86",
+      "text": "EST - LIFE ESTATE"
+    },
+    {
+      "value": "87",
+      "text": "EXA- EXTENSION MODIFICATION AGREEMENT"
+    },
+    {
+      "value": "88",
+      "text": "EXD - EXCHANGE DEED"
+    },
+    {
+      "value": "89",
+      "text": "EXR - EXECUTORS DEED / EXECUTRIX DEED"
+    },
+    {
+      "value": "90",
+      "text": "FIN - FINANCING STATEMENT"
+    },
+    {
+      "value": "211",
+      "text": "FJT- FINAL JUDGMENT"
+    },
+    {
+      "value": "236",
+      "text": "FOF - FINDING OF FACT"
+    },
+    {
+      "value": "91",
+      "text": "FSR - FINANCING STATEMENT REAL EST"
+    },
+    {
+      "value": "92",
+      "text": "FTL - FEDERAL TAX LIEN"
+    },
+    {
+      "value": "246",
+      "text": "GDL - GUIDELINES"
+    },
+    {
+      "value": "263",
+      "text": "GFT - GIFT DEED"
+    },
+    {
+      "value": "81",
+      "text": "GRT - GRANT"
+    },
+    {
+      "value": "93",
+      "text": "GUD - GUARDIANS DEED"
+    },
+    {
+      "value": "94",
+      "text": "HOS - HOSPITAL LIEN"
+    },
+    {
+      "value": "95",
+      "text": "INB - INDEMNITY BOND"
+    },
+    {
+      "value": "96",
+      "text": "IND - INDENTURE"
+    },
+    {
+      "value": "97",
+      "text": "INF - INFORMATION"
+    },
+    {
+      "value": "99",
+      "text": "INH - INHERITANCE"
+    },
+    {
+      "value": "98",
+      "text": "INS - INSURANCE"
+    },
+    {
+      "value": "100",
+      "text": "INV - INVENTORY"
+    },
+    {
+      "value": "60",
+      "text": "JQT - JUDGEMENT QUIETING TITLE"
+    },
+    {
+      "value": "39",
+      "text": "JUD- JUDGEMENT"
+    },
+    {
+      "value": "102",
+      "text": "LAW - LAND AWARD AND RECEIPT"
+    },
+    {
+      "value": "264",
+      "text": "LBD - LADY BIRD DEED"
+    },
+    {
+      "value": "103",
+      "text": "LBL - LABORERS LIEN"
+    },
+    {
+      "value": "104",
+      "text": "LDL - LANDLORDS LIEN"
+    },
+    {
+      "value": "105",
+      "text": "LEA - LEASE"
+    },
+    {
+      "value": "72",
+      "text": "LED- LIFE ESTATE DEED"
+    },
+    {
+      "value": "106",
+      "text": "LET - LETTER"
+    },
+    {
+      "value": "42",
+      "text": "LIC - LICENSE"
+    },
+    {
+      "value": "107",
+      "text": "LIE - LIEN"
+    },
+    {
+      "value": "108",
+      "text": "LIP - LIS PENDENS"
+    },
+    {
+      "value": "111",
+      "text": "LVT - LIVING TRUST"
+    },
+    {
+      "value": "112",
+      "text": "LVW - LIVING WILL"
+    },
+    {
+      "value": "23",
+      "text": "MAB - METES AND BOUNDS"
+    },
+    {
+      "value": "113",
+      "text": "MAC - MAP CORRECTION"
+    },
+    {
+      "value": "114",
+      "text": "MAN - MANUAL"
+    },
+    {
+      "value": "115",
+      "text": "MAP - MAP"
+    },
+    {
+      "value": "116",
+      "text": "MDT - MASTER DEED OF TRUST"
+    },
+    {
+      "value": "117",
+      "text": "MEL - MECHANICS LIEN"
+    },
+    {
+      "value": "118",
+      "text": "MEM - MEMORANDUM"
+    },
+    {
+      "value": "119",
+      "text": "MER - MERGER"
+    },
+    {
+      "value": "120",
+      "text": "MGO - MINERAL / GAS / OIL LEASE"
+    },
+    {
+      "value": "121",
+      "text": "MIN - MINUTES"
+    },
+    {
+      "value": "122",
+      "text": "MLD - MINERAL DEED"
+    },
+    {
+      "value": "123",
+      "text": "MOR - MORTGAGE"
+    },
+    {
+      "value": "124",
+      "text": "MOT - MOTION"
+    },
+    {
+      "value": "213",
+      "text": "NAF-NON ATTACHMENT OF FEDERAL TAX LIEN"
+    },
+    {
+      "value": "125",
+      "text": "NFL - NOTICE OF INADVERTENTLY/ FTL"
+    },
+    {
+      "value": "162",
+      "text": "NHD - NON HOMESTEAD DESIGNATION"
+    },
+    {
+      "value": "126",
+      "text": "NOE - NOTICE"
+    },
+    {
+      "value": "127",
+      "text": "NOT - NOTE"
+    },
+    {
+      "value": "1",
+      "text": "Not Available/Applicable"
+    },
+    {
+      "value": "12",
+      "text": "NTS - NOTICE OF TRUSTEES SALE"
+    },
+    {
+      "value": "206",
+      "text": "OAG - OWELTY AGREEMENT"
+    },
+    {
+      "value": "235",
+      "text": "OBJ - OBJECTION"
+    },
+    {
+      "value": "256",
+      "text": "OCC- ORDER OF COMMISSIONERS COURT"
+    },
+    {
+      "value": "128",
+      "text": "ODN - ORDINANCE"
+    },
+    {
+      "value": "140",
+      "text": "ODT - OWELTY DEED OF TRUST"
+    },
+    {
+      "value": "129",
+      "text": "OFF - OFFER"
+    },
+    {
+      "value": "130",
+      "text": "OPT - OPTION"
+    },
+    {
+      "value": "133",
+      "text": "ORD - ORDER"
+    },
+    {
+      "value": "131",
+      "text": "OTH - OATH"
+    },
+    {
+      "value": "132",
+      "text": "OWD - OWELTY DEED"
+    },
+    {
+      "value": "134",
+      "text": "PAR - PARTIAL"
+    },
+    {
+      "value": "135",
+      "text": "PAT - PATENT"
+    },
+    {
+      "value": "136",
+      "text": "PER - PERMIT"
+    },
+    {
+      "value": "137",
+      "text": "PET - PETITION"
+    },
+    {
+      "value": "259",
+      "text": "PLP - PLOT PLAN"
+    },
+    {
+      "value": "239",
+      "text": "PMC - PROPERTY OWNERS ASSOC MGMT CERT"
+    },
+    {
+      "value": "139",
+      "text": "POA - POWER OF ATTORNEY"
+    },
+    {
+      "value": "225",
+      "text": "POL-POLICY"
+    },
+    {
+      "value": "141",
+      "text": "PTD - PARTITION"
+    },
+    {
+      "value": "142",
+      "text": "PUR - PUBLIC UTILITIY RECORDS"
+    },
+    {
+      "value": "143",
+      "text": "QCD - QUITCLAIM DEED"
+    },
+    {
+      "value": "154",
+      "text": "RAT - RATIFICATION"
+    },
+    {
+      "value": "45",
+      "text": "RCV - RECEIVER"
+    },
+    {
+      "value": "243",
+      "text": "REA - REASSIGNMENT"
+    },
+    {
+      "value": "144",
+      "text": "REA - REDEMPTION AFFIDAVIT"
+    },
+    {
+      "value": "219",
+      "text": "REC- RECONVEYANCE"
+    },
+    {
+      "value": "221",
+      "text": "REF- REFILED"
+    },
+    {
+      "value": "147",
+      "text": "REL - RELEASE/SATISFACTION"
+    },
+    {
+      "value": "158",
+      "text": "REM - RELINQUISHMENT"
+    },
+    {
+      "value": "148",
+      "text": "REP - REPORT"
+    },
+    {
+      "value": "149",
+      "text": "REQ - REQUEST"
+    },
+    {
+      "value": "150",
+      "text": "RES - RESTRICTIONS"
+    },
+    {
+      "value": "145",
+      "text": "RET - RECEIPT"
+    },
+    {
+      "value": "151",
+      "text": "REV - REVOCATION"
+    },
+    {
+      "value": "152",
+      "text": "RGN - RESIGNATION"
+    },
+    {
+      "value": "197",
+      "text": "RID - RIDER"
+    },
+    {
+      "value": "180",
+      "text": "RLT- REVOCABLE LIVING TRUST"
+    },
+    {
+      "value": "109",
+      "text": "ROA - RIGHT OF ACCESS"
+    },
+    {
+      "value": "153",
+      "text": "ROD - REMOVAL"
+    },
+    {
+      "value": "208",
+      "text": "ROE - RIGHT OF ENTRY"
+    },
+    {
+      "value": "227",
+      "text": "ROR- RIGHT OF REFUSAL"
+    },
+    {
+      "value": "155",
+      "text": "ROT - REMOVAL OF TRUSTEE"
+    },
+    {
+      "value": "156",
+      "text": "ROW - RIGHT OF WAY"
+    },
+    {
+      "value": "157",
+      "text": "RPA - REVOCATION POWER OF ATTY"
+    },
+    {
+      "value": "159",
+      "text": "RSL - RESOLUTION"
+    },
+    {
+      "value": "240",
+      "text": "RSN - RESCISSION"
+    },
+    {
+      "value": "146",
+      "text": "RSP - RESPONSE"
+    },
+    {
+      "value": "232",
+      "text": "RUL - RULES"
+    },
+    {
+      "value": "25",
+      "text": "RVE- RECONVEYANCE"
+    },
+    {
+      "value": "161",
+      "text": "SCP - SURVIVORSHIP OF SPOUSES"
+    },
+    {
+      "value": "209",
+      "text": "SEW - SEWER SERVICES"
+    },
+    {
+      "value": "163",
+      "text": "SHD - SHERIFFS DEED"
+    },
+    {
+      "value": "214",
+      "text": "SHR-SHERIFF'S RETURN"
+    },
+    {
+      "value": "164",
+      "text": "SOC - STATEMENT OF CORRECTION"
+    },
+    {
+      "value": "265",
+      "text": "SOO - STATEMENT OF OWNERSHIP"
+    },
+    {
+      "value": "207",
+      "text": "SPT- SUPPLEMENT"
+    },
+    {
+      "value": "193",
+      "text": "SSS - SHERIFF SALE"
+    },
+    {
+      "value": "165",
+      "text": "STA - STATEMENT"
+    },
+    {
+      "value": "166",
+      "text": "STL - STATE TAX LIEN"
+    },
+    {
+      "value": "167",
+      "text": "SUA - SUBORDINATION/SUBORDINATE"
+    },
+    {
+      "value": "169",
+      "text": "SUB-SUBPOENA"
+    },
+    {
+      "value": "168",
+      "text": "SUI - SUPPLEMENT INDENTURE"
+    },
+    {
+      "value": "31",
+      "text": "SUM - SUMMARY"
+    },
+    {
+      "value": "210",
+      "text": "SUP-SUPPLEMENT"
+    },
+    {
+      "value": "170",
+      "text": "SUR - SURVEY"
+    },
+    {
+      "value": "261",
+      "text": "TDD-TRANSFER ON DEATH DEED"
+    },
+    {
+      "value": "176",
+      "text": "TER - TERMINATION"
+    },
+    {
+      "value": "171",
+      "text": "THE - TEXAS HOME EQUITY LOAN"
+    },
+    {
+      "value": "172",
+      "text": "TLA - TEXAS LAND AWARD"
+    },
+    {
+      "value": "173",
+      "text": "TRA - TRANSFER / ASSIGNMENT"
+    },
+    {
+      "value": "174",
+      "text": "TRC - TRANSCRIPT"
+    },
+    {
+      "value": "175",
+      "text": "TRD - TRUSTEES DEED"
+    },
+    {
+      "value": "220",
+      "text": "TRN - TRANSLATION"
+    },
+    {
+      "value": "5",
+      "text": "TRU - TRUST / CERTIFICATE OF TRUST"
+    },
+    {
+      "value": "177",
+      "text": "TWR - TEXAS WATER RESOURCES"
+    },
+    {
+      "value": "178",
+      "text": "TXD - TAX DEED"
+    },
+    {
+      "value": "179",
+      "text": "UFL - PERSONAL PROPERTY"
+    },
+    {
+      "value": "181",
+      "text": "VAC - VACATING"
+    },
+    {
+      "value": "182",
+      "text": "WAD - WARRANTY DEED"
+    },
+    {
+      "value": "183",
+      "text": "WAI - WAIVER"
+    },
+    {
+      "value": "184",
+      "text": "WAR - WARRANT"
+    },
+    {
+      "value": "138",
+      "text": "WDF- WARRANTY DEED LIEU/FORECLOSURE"
+    },
+    {
+      "value": "185",
+      "text": "WDL - WARRANTY DEED WITH VENDOR LIEN"
+    },
+    {
+      "value": "186",
+      "text": "WID - WITHDRAWAL"
+    },
+    {
+      "value": "187",
+      "text": "WIL - WILL"
+    },
+    {
+      "value": "188",
+      "text": "WLE - WARRANTY DEED WITH LIFE ESTATE"
+    },
+    {
+      "value": "189",
+      "text": "WLP - WITHDRAWAL OF LIS PENDENS"
+    },
+    {
+      "value": "190",
+      "text": "WRC - WATER RIGHTS CONTRACT"
+    },
+    {
+      "value": "191",
+      "text": "WRT - WRIT OF"
+    },
+    {
+      "value": "192",
+      "text": "WST - SOLID WASTE DISPOSAL NOTICE"
+    }
+  ]
+}
