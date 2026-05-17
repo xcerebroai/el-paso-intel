@@ -1,0 +1,6 @@
+[2026-05-17T19:00:18Z] start url=https://apps.epcountytx.gov/publicrecords/Foreclosures window=05/01/2026..12/31/2026
+[2026-05-17T19:00:25Z] submitted; results url=https://apps.epcountytx.gov/publicrecords/Foreclosures/ForeclosureSearchResults
+[2026-05-17T19:00:25Z] table tr count=21
+[2026-05-17T19:00:25Z] parsed=20 wrote data/el_paso_tx/raw/foreclosure_notices.jsonl
+[2026-05-17T19:00:25Z] parser_confidence(date-parse rate)=1.000
+[2026-05-17T19:00:25Z] done
