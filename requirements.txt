@@ -1,0 +1,9 @@
+# El Paso County lead intelligence harness — runtime dependencies.
+# Filtered to packages actually imported by the active scrapers,
+# translator/enrichment pipeline, and refresh orchestration.
+#   scrapers/clerk_recordings.py        -> playwright
+#   runs/el_paso_tx/build/build_clerk_pipeline.py -> httpx
+#   runs/el_paso_tx/build/_verify_dashboard.py    -> playwright
+#   scripts/daily_refresh.py            -> (stdlib only; subprocesses the above)
+playwright==1.59.0
+httpx==0.28.1
