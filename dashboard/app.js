@@ -158,10 +158,19 @@
   }
 
   function chipsHtml(r) {
+    // Fix 2: one chip per distinct signal_type; if N records back the signal
+    // the chip carries a "x N" suffix and the underlying instrument numbers
+    // in its tooltip (minimal rendering — full per-record drill-down is the
+    // deferred UI rebuild).
     return (r.signals || []).map(function (s) {
+      var n = s.count || 1;
+      var label = esc(s.signal_label) + (n > 1 ? " &times; " + n : "");
+      var instr = (s.instrument_numbers || []).slice(0, 30).join(", ");
+      var tip = n > 1
+        ? (s.signal_label + " — " + n + " records: " + instr)
+        : ((s.doc_type_raw || s.signal_label) + " " + (s.recorded_date || ""));
       return '<span class="chip chip-distress" data-sig="' + esc(s.signal_type) +
-        '" title="' + esc(s.doc_type_raw || s.signal_label) + " " +
-        esc(s.recorded_date || "") + '">' + esc(s.signal_label) + "</span>";
+        '" title="' + esc(tip) + '">' + label + "</span>";
     }).join("");
   }
 

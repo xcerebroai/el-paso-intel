@@ -350,12 +350,44 @@ def main() -> int:
                 "source_url": "", "instrument_number": "",
                 "recorded_date": "", "doc_type_raw": "",
                 "evidence_id": f"ev_trust_{lead['lead_id']}"})
-        types = []
+        # Fix 2 (v2): de-duplicate signals by signal_type. Multiple recordings
+        # of the same distress type on one parcel collapse into ONE signal
+        # entry carrying count + the full source_urls / evidence_ids /
+        # instrument_numbers arrays. The dashboard then renders one chip
+        # ("Hospital Lien x N"), not N identical chips. signal_count becomes
+        # the number of DISTINCT distress types on the parcel, so the stacking
+        # controls no longer conflate "many records of one type" with "many
+        # types".
+        deduped: dict[str, dict] = {}
         for sg in lead["signals"]:
-            if sg["signal_type"] not in types:
-                types.append(sg["signal_type"])
-        lead["signal_types"] = types
-        lead["signal_count"] = len(lead["signals"])
+            st = sg["signal_type"]
+            m = deduped.get(st)
+            if m is None:
+                m = {
+                    "signal_type": st,
+                    "signal_label": sg["signal_label"],
+                    "signal_confidence": sg["signal_confidence"],
+                    "source_id": sg["source_id"],
+                    "count": 0,
+                    "source_urls": [],
+                    "evidence_ids": [],
+                    "instrument_numbers": [],
+                    "doc_type_raw": sg.get("doc_type_raw", ""),
+                    "recorded_date": sg.get("recorded_date") or "",
+                }
+                deduped[st] = m
+            m["count"] += 1
+            if sg.get("source_url"):
+                m["source_urls"].append(sg["source_url"])
+            if sg.get("evidence_id"):
+                m["evidence_ids"].append(sg["evidence_id"])
+            if sg.get("instrument_number"):
+                m["instrument_numbers"].append(sg["instrument_number"])
+            if (sg.get("recorded_date") or "") > m["recorded_date"]:
+                m["recorded_date"] = sg.get("recorded_date") or ""
+        lead["signals"] = list(deduped.values())
+        lead["signal_types"] = list(deduped.keys())
+        lead["signal_count"] = len(deduped)
         # primary signal = highest-priority PRIMARY signal (§13.5.1: every row
         # must carry a primary clerk signal — the estate/trust ones never count)
         primaries = [sg for sg in lead["signals"]
