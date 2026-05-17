@@ -50,6 +50,40 @@ SIGNAL_PRIORITY = {
     "executor_deed": 50, "estate_titled_property": 40, "trust_titled_property": 30,
 }
 
+# Fix 1 (v2): doc-type-aware debtor-party selection. The debtor / distressed
+# party sits on a DIFFERENT name_type per document type — there is no single
+# universal rule (see runs/el_paso_tx/build/data_quality_audit.md). Each value
+# is an ordered preference list of name_type words; the first party whose
+# name_type contains one of them (case-insensitive) is the debtor.
+DEBTOR_PARTY_RULES = {
+    "lis_pendens":           ["DEFENDANT"],
+    "judgment_lien":         ["DEFENDANT"],
+    "federal_tax_lien":      ["TAX PAYER", "GRANTEE"],
+    "state_tax_lien":        ["TAX PAYER", "GRANTEE"],
+    "hospital_lien":         ["GRANTEE"],   # patient debtor, NOT the hospital filer
+    "code_lien":             ["GRANTEE"],   # property/business debtor, NOT the govt filer
+    "mechanics_lien":        ["GRANTOR"],   # property owner, NOT the contractor filer
+    "construction_lien":     ["GRANTOR"],
+    "affidavit_of_heirship": ["GRANTOR"],
+    "executor_deed":         ["GRANTOR"],
+    "administrator_deed":    ["GRANTOR"],
+    "probate_recording":     ["GRANTOR"],
+}
+
+# EPCAD match-quality guard (Fix 1 / Finding 4): the EPCAD ownerName search is
+# a partial match, so it can return a parcel owned by an unrelated party that
+# merely shares a common word (e.g. "EL PASO LTACH PARTNERS LP" -> a "CITY OF
+# EL PASO" parcel). Tokens below are dropped before scoring name overlap.
+_MATCH_STOPWORDS = {"LP", "LLC", "INC", "CORP", "CORPORATION", "LTD", "LLP",
+    "CO", "THE", "OF", "AND", "COMPANY", "TR", "ET", "AL", "L.L.C", "L.P"}
+
+
+def _tokens(name: str) -> set:
+    """Significant uppercase tokens of a name, stopwords removed."""
+    return {t for t in re.split(r"[\s,./&]+", (name or "").upper())
+            if len(t) > 1 and t not in _MATCH_STOPWORDS}
+
+
 ESTATE_HIGH = re.compile(
     r"\bESTATE\s+OF\b|\bEST\s+OF\b|\bHEIRS\s+OF\b|\bSUCCESSORS\s+OF\b"
     r"|\bDECEASED\b|\bDEC'D\b|\b\w[\w\s]*\s+ESTATE\b|\b\w[\w\s]*\s+HEIRS\b", re.I)
@@ -103,13 +137,32 @@ def epcad_lookup(owner_name: str, client: httpx.Client) -> dict | None:
     if key in _epcad_cache:
         return _epcad_cache[key]
     result = None
+    qtok = _tokens(key)
     try:
         r = client.get(EPCAD, params={"ownerName": key, "page": 1, "pageSize": 10},
                         timeout=40)
         if r.status_code == 200:
             props = (r.json() or {}).get("Properties") or []
-            if props:
-                p = props[0]                       # top match
+            # Match-quality guard: score every candidate by token overlap of
+            # the queried name vs the candidate parcel's owner name. Accept
+            # the best candidate only if it clears the threshold — Jaccard
+            # >= 0.6, OR >= 2 shared significant tokens covering >= 50% of the
+            # queried name. Otherwise return None (UNRESOLVED) rather than
+            # blindly trusting Properties[0].
+            best, best_score = None, 0.0
+            for cand in props:
+                cowners = cand.get("Owners") or [{}]
+                ctok = _tokens((cowners[0] or {}).get("Name") or "")
+                if not qtok or not ctok:
+                    continue
+                inter = qtok & ctok
+                jacc = len(inter) / len(qtok | ctok)
+                accept = jacc >= 0.6 or (
+                    len(inter) >= 2 and len(inter) / len(qtok) >= 0.5)
+                if accept and jacc > best_score:
+                    best, best_score = cand, jacc
+            if best is not None:
+                p = best
                 loc = p.get("Location") or {}
                 owners = p.get("Owners") or [{}]
                 vals = sorted(p.get("Values") or [{}],
@@ -129,6 +182,7 @@ def epcad_lookup(owner_name: str, client: httpx.Client) -> dict | None:
                     "no_homestead": p.get("No_Homestead"),
                     "exemptions": ow.get("Excemptions"),
                     "epcad_match_count": len(props),
+                    "epcad_match_score": round(best_score, 3),
                 }
     except Exception as exc:
         print(f"  epcad lookup error for {key!r}: {exc!r}", file=sys.stderr)
@@ -136,20 +190,32 @@ def epcad_lookup(owner_name: str, client: httpx.Client) -> dict | None:
     return result
 
 
-def pick_distressed_party(parties: list[dict]) -> str:
-    """Pick the property-owner / distressed party from a recording's parties.
-    Prefer Defendant, then Grantor, then any."""
-    def rank(p):
-        nt = (p.get("name_type") or "").upper()
-        if "DEFEND" in nt:
-            return 0
-        if "GRANTOR" in nt or nt.startswith("GR"):
-            return 1
-        if "PLAINT" in nt:
-            return 3
-        return 2
+def pick_distressed_party(parties: list[dict], signal_type: str) -> str:
+    """Pick the debtor / distressed party using the doc-type-aware rule table
+    (Fix 1, v2). The debtor's name_type varies by document type: e.g. for a
+    hospital_lien the debtor is the GRANTEE (patient) while the GRANTOR is the
+    hospital filer; for a mechanics_lien the debtor is the GRANTOR (owner)."""
     if not parties:
         return ""
+    rule = DEBTOR_PARTY_RULES.get(signal_type)
+    if rule:
+        for want in rule:
+            for party in parties:
+                if want in (party.get("name_type") or "").upper():
+                    return party.get("name", "")
+        # rule produced no party match — fall through to the default ranking
+    else:
+        print(f"[warn] no debtor-party rule for signal_type={signal_type!r}; "
+              f"using default ranking", file=sys.stderr)
+    def rank(party):
+        nt = (party.get("name_type") or "").upper()
+        if "DEFENDANT" in nt:
+            return 0
+        if "GRANTOR" in nt:
+            return 1
+        if "PLAINTIFF" in nt:
+            return 3
+        return 2
     return sorted(parties, key=rank)[0].get("name", "")
 
 
@@ -174,7 +240,7 @@ def main() -> int:
             inum = p.get("instrument_number", "")
             signal_type = p.get("signal_type", "lien")
             parties = p.get("parties", []) or []
-            distressed = pick_distressed_party(parties)
+            distressed = pick_distressed_party(parties, signal_type)
 
             enrich = epcad_lookup(distressed, client) if distressed else None
 
