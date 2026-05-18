@@ -78,9 +78,13 @@ def main() -> int:
           f"{len(fcl_addr)}/{len(fcl)}")
 
     hosp = [r for r in recs if "hospital_lien" in r.get("signal_types", [])]
-    bad_hosp = [r for r in hosp if re.search(
-        r"PROVIDENCE|MEDICAL CENTER|HOSPITAL|LAS PALMAS|DEL SOL",
-        (r.get("owner_name") or "").upper())]
+    # a real defect = an actual hospital entity as owner; the
+    # "...unidentified party" placeholder on a REVIEW row is not a defect.
+    bad_hosp = [r for r in hosp
+                if "unidentified party" not in (r.get("owner_name") or "").lower()
+                and re.search(r"PROVIDENCE|MEDICAL CENTER|UNIVERSITY MEDICAL"
+                              r"|LAS PALMAS|DEL SOL|\bHOSPITAL\b",
+                              (r.get("owner_name") or "").upper())]
     check("no hospital_lien row owned by a hospital entity", not bad_hosp,
           f"({len(bad_hosp)} bad)" if bad_hosp else f"({len(hosp)} hospital rows)")
 

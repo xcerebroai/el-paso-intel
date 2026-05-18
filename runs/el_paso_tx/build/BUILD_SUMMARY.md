@@ -379,3 +379,122 @@ Dashboard: 1,640 matched_leads, deployed (GitHub Pages) at
 https://xcerebroai.github.io/el-paso-intel/ — live-verified
 (lead_total 1,640). Self-verification PASS 9/9.
 
+---
+
+## v5 FIXES — DATA QUALITY + UI REBUILD — 2026-05-18
+
+End-to-end fix pass: five data-quality defects from an operator audit,
+plus a full rebuild of the dashboard into an operator-grade lead board.
+Translator pipeline re-run from raw data; redeployed; live-verified.
+
+### Part A — data quality
+
+**Fix 1 — filer-vs-debtor regression.** `pick_distressed_party()` fell
+back to the document filer when the doc-type debtor name_type was absent,
+so `CITY OF EL PASO`, `TEXAS WORKFORCE COMMISSION`, hospitals and a
+mortgage company were emitted as owner_name. v5 adds a filer-entity
+suppression list (government bodies, hospital systems, mortgage/lender
+entities) and changes the contract: a record with no non-filer debtor
+party is routed to `parcel_resolution_status = REVIEW_REQUIRED`,
+`owner_name = "<doc type> against unidentified party"`, and the original
+filer captured in a new `filer_entity` field. A filer never silently
+becomes an owner. A second guard rejects EPCAD candidates whose parcel
+owner is a suppressed filer (token-collision mis-match) — this dropped a
+clerk lead wrongly owned by `CITY OF EL PASO`. Result: **0** filer
+entities as owner_name; 13 REVIEW_REQUIRED rows, 9 with a captured filer
+(the other 4 are source records with zero parties).
+
+**Fix 2 — ESTATE/TRUST classifier substring bug.** `"MARIO AYALA REAL
+ESTATE GROUP LLC"` classified ESTATE because "ESTATE" is a substring of
+"REAL ESTATE". v5 classifies by word-boundary + position: company-estate
+phrases ("REAL ESTATE", "ESTATE GROUP/PLANNING/AGENCY") are blanked
+before the decedent test, and ENTITY (company suffix / government body)
+wins outright. Result: that name → ENTITY; **0** real-estate companies
+misclassified as ESTATE (51 genuine estate-titled leads remain).
+
+**Fix 3 — signal aggregation.** Audited: the "× N" counts are legitimate
+(e.g. Executor's Deed × 10 = 10 distinct instrument numbers, one estate
+filing ten deeds; Mechanics Lien × 8 = 8 distinct instruments). The
+aggregator's `dedup_signals` now also unions `instrument_numbers` across
+the cross-source merge. No row carries a duplicated instrument number;
+max distinct signal *types* on a row is 2.
+
+**Fix 4 — EPCAD enrichment rate.** The match guard was loosened from
+Jaccard ≥0.6 / 50% to ≥0.5 / 40%. This barely moved the rate (158→159
+clerk matches), confirming the guard was not the bottleneck: clerk
+records are a **name-only** join — they carry no address in the record
+body, so the EPCAD address-search fallback (Fix 4D) is not applicable —
+and EPCAD's `ownerName` search is inherently lossy for individuals
+(name-order variance, common names). Clerk EPCAD resolution is ~12%;
+overall 514/1,646 leads are EPCAD-resolved (foreclosure notices resolve
+via address). This is a documented data-source limitation, not a bug —
+the 1,113 UNRESOLVED clerk leads still carry owner + signal + source URL
+and are skip-traceable (Fix 4F).
+
+**Fix 5 — foreclosure address coverage.** Verified the v4 data flow:
+foreclosure situs is populated from the PDF-extracted address when EPCAD
+does not enrich; legal_description (subdivision/lot/block/unit) is the
+fallback. 348/357 foreclosure leads (97%) are property-identifiable
+(250 street address, 98 legal description); 9 carry neither but retain
+sale date + instrument number.
+
+### Part B — UI rebuild
+
+`index.html` / `styles.css` / `app.js` rebuilt as an operator lead board
+(vanilla JS, no framework, client-side only): urgency-first default sort
+(foreclosure ≤21d → 22–60d → estate-titled → multi-signal → tax+OOS →
+rest); six preset quick-views; foreclosure sale-window / assessed-value /
+signal-type / owner-type filters; color-coded urgency bars; inline lead
+detail panels with source links, plat data, and operator triage
+(mark-for-review persisted in localStorage, skip, single-lead CSV
+export); REVIEW_REQUIRED rows visually distinct; incremental windowed
+render for 1,646 rows; debounced search. Orphaned `dashboard.css/.js`
+removed. (Note: the "Estate-titled properties" preset surfaces all 51
+estate leads rather than flooring by assessed value — EPCAD resolves ~0
+estate-named owners, so a value floor would empty it.)
+
+### Aggregator idempotency
+
+Root cause of a double-merge (`lead_total` briefly 1,962):
+`aggregate_leads.py` read its own merged output back as the clerk base.
+Fixed structurally — `build_clerk_pipeline.py` now writes a stable
+`clerk_leads_base.json` that the aggregator always reads; re-running the
+aggregator is now idempotent. A `--from-translated` fast path rebuilds
+leads from cached enriched signals without re-running EPCAD.
+
+### Result
+
+  lead_total            1,646   (1,289 clerk_recordings + 357 foreclosure)
+  EPCAD-resolved          514
+  REVIEW_REQUIRED          13   (filer-vs-debtor — operator follow-up)
+  ACTIONABLE leads      1,633   (99% — every lead but the REVIEW bucket)
+  filer-as-owner            0   (was 9)
+  ESTATE misclassified      0   (was 1)
+
+Live-verified against https://xcerebroai.github.io/el-paso-intel/ —
+**19/19** semantic + mechanics checks pass
+(runs/el_paso_tx/build/v5_semantic_verification.md).
+
+### Open items / known limitations
+
+  - Clerk EPCAD resolution ~12% — a name-only-join ceiling, not a bug.
+    Most clerk leads are owner+signal+source (skip-traceable), not
+    parcel-resolved.
+  - 9 foreclosure leads have no street address or legal description
+    (OCR extraction misses) — they retain sale date + instrument number.
+  - 4 REVIEW_REQUIRED rows have an empty filer_entity — the source clerk
+    record contained zero parties.
+  - tax_collector, court_probate, court_civil remain DEFERRED.
+
+### Sources status (v5)
+
+  clerk_recordings    COMPLETE (v5) — 1,289 matched_leads
+  foreclosure_notices COMPLETE (v5) —   357 matched_leads
+  tax_collector       DEFERRED
+  court_probate       DEFERRED
+  court_civil         DEFERRED
+
+Dashboard: 1,646 matched_leads, deployed (GitHub Pages) at
+https://xcerebroai.github.io/el-paso-intel/ — live-verified
+(lead_total 1,646). v5 verification 19/19.
+
