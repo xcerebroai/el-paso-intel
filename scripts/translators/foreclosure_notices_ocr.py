@@ -69,28 +69,46 @@ def _clean_names(blob: str) -> list[str]:
     return names
 
 
-def extract_fields(text: str) -> dict:
-    """Per-layout regex extraction over a notice's OCR text."""
+CITY_RE = (r"EL\s+PASO|SOCORRO|HORIZON\s+CITY|SAN\s+ELIZARIO|ANTHONY|VINTON"
+           r"|CLINT|CANUTILLO|FABENS|TORNILLO|WESTWAY")
+
+
+def extract_fields(text: str, listing_sale_date: str = "") -> dict:
+    """Layout-tolerant extraction over a notice's OCR text. Shape-based
+    where a field has a recognisable shape (address, document number) —
+    robust across all notice layouts (A/B/C/D); label-anchored otherwise."""
     t = re.sub(r"[ \t]+", " ", text)
     rec = {f: ("" if f != "debtor_names" else []) for f in FIELDS}
 
-    # --- sale_date: "Date: June 02, 2026" / "Date: 6/2/2026". Skip any
-    # "Date:" preceded by "trust"/"recorded" — those are the Deed-of-Trust
-    # date or recording date (layout D: "Deed of Trust Date: ..."), NOT the
-    # foreclosure sale date. ---
-    for m in re.finditer(r"\bDate:\s*([A-Z][a-z]+\s+\d{1,2},?\s+20\d\d"
+    # --- sale_date: "Date: ..." not preceded by "trust"/"record" (those
+    # are the Deed-of-Trust / recording date). Layout C/D bury the sale
+    # date in a label/value-split block, so fall back to the listing
+    # row's sale_date — always present and authoritative. ---
+    for m in re.finditer(r"\b(?:Date of Sale|Sale Date|Date):\s*"
+                         r"([A-Z][a-z]+\s+\d{1,2},?\s+20\d\d"
                          r"|\d{1,2}/\d{1,2}/20\d\d)", t):
-        pre = t[max(0, m.start() - 14):m.start()].lower()
+        pre = t[max(0, m.start() - 16):m.start()].lower()
         if "trust" in pre or "record" in pre:
             continue
         rec["sale_date"] = m.group(1).strip()
         break
+    if not rec["sale_date"] and listing_sale_date:
+        rec["sale_date"] = listing_sale_date.strip()
 
-    # --- dot_document_number: Clerk's File No / File No <9-13 digits> ---
-    m = re.search(r"(?:CLERK[’'`]?S?\s+FILE\s+NO|File\s+No)\.?\s*(\d{9,13})",
-                  t, re.I)
-    if m:
-        rec["dot_document_number"] = m.group(1)
+    # --- dot_document_number: a year-prefixed 11-digit recording number
+    # ("CLERK'S FILE NO. 20150036831", "Instrument 20240049385",
+    # "Instrument No: 20050050228"). Prefer one near a recording keyword. ---
+    best = None
+    for m in re.finditer(r"\b((?:19|20)\d{9})\b", t):
+        pre = t[max(0, m.start() - 45):m.start()].lower()
+        if any(k in pre for k in ("file no", "instrument", "recorded",
+                                  "recording", "clerk")):
+            best = m.group(1)
+            break
+    if not best:
+        anynum = re.search(r"\b((?:19|20)\d{9})\b", t)
+        best = anynum.group(1) if anynum else ""
+    rec["dot_document_number"] = best
 
     # --- debtor_names: layout B "Grantor(s):", layout A "executed by" ---
     m = re.search(r"Grantor\(s\):\s*(.+?)(?:\n\s*\n|Original Trustee|"
@@ -102,17 +120,18 @@ def extract_fields(text: str) -> dict:
     if m:
         rec["debtor_names"] = _clean_names(m.group(1))
 
-    # --- common_street_address ---
-    m = re.search(r"Commonly known as:\s*(.+?)(?:\n|$)", t, re.I)
-    if m:
-        rec["common_street_address"] = re.sub(r"\s+", " ", m.group(1)).strip(" ,.")
-    else:
-        # layout A: street + city/ST/ZIP on the first lines of the page
-        m = re.search(r"^\s*(\d{2,6}\s+[A-Z][A-Z0-9 .]+?)(?:\s+\d{8,})?\s*\n"
-                      r"\s*([A-Z][A-Z .]+,?\s*TX\s*\d{5})", text, re.M)
-        if m:
-            rec["common_street_address"] = re.sub(
-                r"\s+", " ", f"{m.group(1)}, {m.group(2)}").strip(" ,.")
+    # --- common_street_address: shape-based — a "<NUM> <STREET>, <CITY>
+    # TX <ZIP>" string, with CITY restricted to El Paso County
+    # municipalities so trustee/servicer addresses elsewhere (Dallas,
+    # Southlake, ...) do not match. Works across all notice layouts. ---
+    flat = re.sub(r"\s+", " ", text)
+    am = re.search(rf"\b(\d{{2,6}}\s+[A-Z0-9][A-Z0-9 .'#/-]{{2,45}}?),?\s+"
+                   rf"((?:{CITY_RE}))\b,?\s*(?:TX|TEXAS)\b,?\s*(\d{{5}})",
+                   flat, re.I)
+    if am:
+        rec["common_street_address"] = re.sub(
+            r"\s+", " ", f"{am.group(1)}, {am.group(2)} TX {am.group(3)}"
+        ).upper().strip(" ,.")
 
     # --- lender_beneficiary ---
     m = re.search(r"([A-Z][A-Za-z0-9 ,./&'-]{3,70}?)\s+is the current mortgagee",
@@ -155,13 +174,20 @@ def main() -> int:
     out = []
     full = partial = poor = 0
     for i, fp in enumerate(pdfs, 1):
-        try:
-            text = ocr_pdf(fp)
-        except Exception as exc:
-            print(f"  OCR error {fp.name}: {exc!r}", file=sys.stderr)
-            text = ""
-        (OCR_DIR / f"{fp.stem}.txt").write_text(text, encoding="utf-8")
-        rec = extract_fields(text)
+        # Reuse cached OCR text when present — re-extraction (regex tuning)
+        # is then fast and does not re-run Tesseract on every PDF.
+        cache = OCR_DIR / f"{fp.stem}.txt"
+        if cache.exists() and cache.stat().st_size > 0:
+            text = cache.read_text(encoding="utf-8")
+        else:
+            try:
+                text = ocr_pdf(fp)
+            except Exception as exc:
+                print(f"  OCR error {fp.name}: {exc!r}", file=sys.stderr)
+                text = ""
+            cache.write_text(text, encoding="utf-8")
+        lr0 = listing.get(fp.name, {})
+        rec = extract_fields(text, lr0.get("sale_date", ""))
         rec["pdf_path"] = f"data/el_paso_tx/raw/foreclosure_notices/pdfs/{fp.name}"
         rec["pdf_filename"] = fp.name
         lr = listing.get(fp.name, {})
