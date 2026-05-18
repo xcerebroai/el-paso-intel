@@ -29,6 +29,9 @@ REPO = Path(__file__).resolve().parents[3]
 RAW = REPO / "data" / "el_paso_tx" / "raw" / "clerk_recordings.jsonl"
 TRANSLATED = REPO / "data" / "el_paso_tx" / "translated" / "clerk_recordings_translated.jsonl"
 LEADS = REPO / "data" / "el_paso_tx" / "leads.json"
+# Stable clerk-only base — the multi-source aggregator reads THIS, never
+# leads.json (which it overwrites). Keeps aggregate_leads.py idempotent.
+CLERK_BASE = REPO / "data" / "el_paso_tx" / "clerk_leads_base.json"
 EPCAD = "https://epcadpropertysearch.azurewebsites.net/Api/Properties/GetProperties"
 
 # operator-readable label per signal_type
@@ -207,7 +210,13 @@ def epcad_lookup(owner_name: str, client: httpx.Client) -> dict | None:
             best, best_score = None, 0.0
             for cand in props:
                 cowners = cand.get("Owners") or [{}]
-                ctok = _tokens((cowners[0] or {}).get("Name") or "")
+                cname = (cowners[0] or {}).get("Name") or ""
+                # bad-match guard (Fix 1, v5): a distressed debtor is never
+                # a government / hospital / lender parcel owner — such a
+                # candidate is a token-collision mis-match, skip it.
+                if is_suppressed_filer(cname):
+                    continue
+                ctok = _tokens(cname)
                 if not qtok or not ctok:
                     continue
                 inter = qtok & ctok
@@ -307,10 +316,14 @@ def main() -> int:
     signals: list[dict] = []          # translator output
     translated_out: list[dict] = []
     t0 = time.time()
+    # --from-translated: rebuild leads from the already-enriched translated
+    # signals (no network) — used after a code change to regenerate the
+    # clerk base without re-running ~36 min of EPCAD enrichment.
+    from_cache = "--from-translated" in sys.argv and TRANSLATED.exists()
 
     with httpx.Client(headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"},
                       follow_redirects=True) as client:
-        for i, raw in enumerate(raw_records):
+        for i, raw in enumerate([] if from_cache else raw_records):
             p = raw.get("raw_payload", {})
             inum = p.get("instrument_number", "")
             signal_type = p.get("signal_type", "lien")
@@ -348,15 +361,26 @@ def main() -> int:
                 print(f"  translated {i+1}/{len(raw_records)} "
                       f"({time.time()-t0:.0f}s)", file=sys.stderr)
 
-    with open(TRANSLATED, "w", encoding="utf-8") as fh:
-        for s in translated_out:
-            fh.write(json.dumps(s, ensure_ascii=False) + "\n")
+    if from_cache:
+        signals = [json.loads(l) for l in TRANSLATED.read_text().splitlines()
+                   if l.strip()]
+        print(f"--from-translated: loaded {len(signals)} cached signals",
+              file=sys.stderr)
+    else:
+        with open(TRANSLATED, "w", encoding="utf-8") as fh:
+            for s in translated_out:
+                fh.write(json.dumps(s, ensure_ascii=False) + "\n")
 
     # ---- Step 5: aggregate signals into matched_lead rows (one per parcel) ----
     leads: dict[str, dict] = {}
     unresolved_seq = 0
     for s in signals:
         e = s.get("enrichment")
+        # Fix 1 (v5): drop any cached enrichment whose parcel owner is a
+        # suppressed filer entity — a bad token-collision match. The lead
+        # then falls to UNRESOLVED with the real debtor as owner_name.
+        if e and is_suppressed_filer((e or {}).get("owner_name") or ""):
+            e = None
         if e and e.get("epcad_geo_id"):
             key = f"PARCEL::{e['epcad_geo_id']}"
             resolution = "RESOLVED"
@@ -516,6 +540,9 @@ def main() -> int:
         "records": rows,
     }
     with open(LEADS, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=2, ensure_ascii=False)
+    # stable clerk-only base for the idempotent multi-source aggregator
+    with open(CLERK_BASE, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=2, ensure_ascii=False)
 
     # report

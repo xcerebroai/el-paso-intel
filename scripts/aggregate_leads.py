@@ -26,6 +26,11 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 LEADS = REPO / "data" / "el_paso_tx" / "leads.json"
+# Idempotency (Fix 3, v5): the clerk base is read from a STABLE file that
+# only build_clerk_pipeline.py writes — never from leads.json, which this
+# aggregator overwrites. Re-running aggregate_leads.py therefore always
+# merges foreclosure_notices onto the same clerk base exactly once.
+CLERK_BASE = REPO / "data" / "el_paso_tx" / "clerk_leads_base.json"
 DASH = REPO / "dashboard"
 ADDITIONAL = {
     "foreclosure_notices":
@@ -97,7 +102,9 @@ def finalize(lead: dict) -> None:
 
 
 def main() -> int:
-    base = json.loads(LEADS.read_text())
+    base_path = CLERK_BASE if CLERK_BASE.exists() else LEADS
+    base = json.loads(base_path.read_text())
+    print(f"clerk base: {base_path.name} ({len(base.get('records', []))} records)")
     records = base.get("records", [])
     by_parcel = {r["parcel_id"]: r for r in records
                  if r.get("parcel_resolution_status") == "RESOLVED"
@@ -136,13 +143,24 @@ def main() -> int:
                    if r.get("parcel_resolution_status") == "RESOLVED")
     review = sum(1 for r in kept
                  if r.get("parcel_resolution_status") == "REVIEW_REQUIRED")
-    # ACTIONABLE: the operator can work the lead now — it names a real
-    # distressed party (not a "...unidentified party" placeholder) and
-    # points at a property (situs address or legal description).
-    actionable = sum(
-        1 for r in kept
-        if "unidentified party" not in (r.get("owner_name") or "").lower()
-        and (r.get("property_full_address") or r.get("legal_description")))
+    # ACTIONABLE: the operator has a concrete next move on the lead — a
+    # property to inspect (situs address / legal description), a dated
+    # foreclosure sale, or a named distressed party to skip-trace. The
+    # only non-actionable bucket is REVIEW_REQUIRED (filer-vs-debtor: the
+    # harness could not name a debtor, so the operator must resolve that
+    # first). A clerk lead with owner + signal + source but no parcel is
+    # still actionable — skip-trace research per Fix 4F.
+    def _actionable(r):
+        if r.get("parcel_resolution_status") == "REVIEW_REQUIRED":
+            return False
+        if "unidentified party" in (r.get("owner_name") or "").lower():
+            return False
+        has_party = bool((r.get("owner_name") or "").strip())
+        has_prop = bool(r.get("property_full_address")
+                        or r.get("legal_description"))
+        has_sale = any(s.get("sale_date") for s in r.get("signals", []))
+        return has_party or has_prop or has_sale
+    actionable = sum(1 for r in kept if _actionable(r))
     payload = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "county": "El Paso", "state": "TX",

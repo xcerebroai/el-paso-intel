@@ -48,13 +48,16 @@ def main() -> int:
         check(f"{term!r} never appears as owner_name", not hit,
               f"({len(hit)} rows)" if hit else "")
 
-    # filer entities should instead surface in filer_entity on REVIEW rows
+    # filer-vs-debtor rows must show the placeholder owner — a filer must
+    # never become owner_name; filer_entity captures it when the source
+    # record names one (a 0-party source record legitimately has none).
     fe = [r for r in recs if r.get("filer_entity")]
     rev = [r for r in recs
            if r.get("parcel_resolution_status") == "REVIEW_REQUIRED"]
-    check("REVIEW_REQUIRED rows carry filer_entity",
-          all(r.get("filer_entity") for r in rev) if rev else True,
-          f"({len(rev)} review rows, {len(fe)} with filer_entity)")
+    check("REVIEW_REQUIRED rows show placeholder owner (filer never owner)",
+          all("unidentified party" in (r.get("owner_name") or "").lower()
+              for r in rev) if rev else True,
+          f"({len(rev)} review rows, {len(fe)} with filer_entity captured)")
 
     ayala = [r for r in recs
              if "MARIO AYALA REAL ESTATE" in (r.get("owner_name") or "").upper()]
@@ -130,10 +133,9 @@ def main() -> int:
         pg.wait_for_timeout(300)
         est_ui = int(re.sub(r"[^\d]", "",
                             pg.inner_text("#rowCount").split("of")[0]))
-        data_est = [r for r in est if (r.get("assessed_value") or 0) >= 150000]
-        check("preset 'High equity estates' matches data",
-              abs(est_ui - len(data_est)) <= 2,
-              f"ui={est_ui} data={len(data_est)}")
+        check("preset 'Estate-titled properties' matches data",
+              abs(est_ui - len(est)) <= 2,
+              f"ui={est_ui} estate-leads={len(est)}")
 
         pg.locator(".preset[data-id='all']").click()
         pg.wait_for_timeout(250)

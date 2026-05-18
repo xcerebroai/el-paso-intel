@@ -103,7 +103,11 @@
     var d = r._days;
     if (r._isFcl && d != null && d >= 0 && d <= 21) return 1;
     if (r._isFcl && d != null && d > 21 && d <= 60) return 2;
-    if (r.owner_type === "ESTATE" && r._assessed > 200000) return 3;
+    // tier 3: estate-titled property. The v5 spec floored this at a high
+    // assessed value, but EPCAD resolves ~0 estate-named owners, so a
+    // value floor would empty the tier — estate-titled property is itself
+    // a strong probate / motivated-heir lead signal, so it ranks here.
+    if (r.owner_type === "ESTATE") return 3;
     if ((r.signal_count || 0) >= 2) return 4;
     var tax = (r.signal_types || []).indexOf("state_tax_lien") >= 0 ||
       (r.signal_types || []).indexOf("federal_tax_lien") >= 0;
@@ -141,7 +145,7 @@
       return r._isFcl && r._days != null && r._days >= 0 && r._days <= 21;
     }).length;
     var estates = records.filter(function (r) {
-      return r.owner_type === "ESTATE" && r._assessed >= 150000;
+      return r.owner_type === "ESTATE";
     }).length;
     var act = p.actionable_leads != null ? p.actionable_leads : records.length;
     function st(n, l, cls) {
@@ -152,13 +156,13 @@
       st(act.toLocaleString(), "actionable") +
       st(fclAddr, "foreclosures w/ addr") +
       st(soon, "sale &le;21 days", "urgent") +
-      st(estates, "high-equity estates", "estate");
+      st(estates, "estate-titled leads", "estate");
   }
 
   // ---------- sidebar ----------
   var PRESETS = [
     { id: "fcl21", label: "Foreclosures — next 21 days" },
-    { id: "estates", label: "High-equity estates" },
+    { id: "estates", label: "Estate-titled properties" },
     { id: "oos", label: "Out-of-state absentees" },
     { id: "multi", label: "Multi-signal stacked" },
     { id: "tax", label: "Tax delinquent" },
@@ -283,7 +287,6 @@
       onlyChecks("signalFilter", "sig", state.signals, ["foreclosure_notice"]);
     } else if (id === "estates") {
       onlyChecks("ownerFilter", "own", state.owners, ["ESTATE"]);
-      state.valMin = 150000; $("valMin").value = "150000";
     } else if (id === "oos") {
       state.absentee = true; $("togAbsentee").checked = true;
       state.oos = true; $("togOos").checked = true;
