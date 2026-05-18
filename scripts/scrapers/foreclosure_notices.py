@@ -32,7 +32,7 @@ import json
 import re
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -48,13 +48,14 @@ GETDOCURL = ROOT + "/GetDocumentURL/"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 
-# Full currently-relevant set — recent (~6 weeks back) + all upcoming
-# foreclosure sales. Portal counts quantize to 102 (today-forward) /
-# 359 (Apr-onward) / 455 / 500 (hard cap); a "234" count is not
-# reproducible (live portal has grown). 04/01 start captures the recent
-# + upcoming set without padding with months of completed-sale history.
-DATE_FROM = "04/01/2026"
-DATE_TO = "12/31/2030"
+# Rolling window, recomputed every run (the scraper runs daily): 30 days
+# back through ~2 years forward. 30 days back keeps recent + still-listed
+# notices without padding with old completed sales; the forward end is
+# effectively unbounded (Texas foreclosure sale dates can be many months
+# out — every upcoming first-Tuesday batch is captured). This width never
+# approaches the portal's 500-record cap.
+DATE_FROM = (date.today() - timedelta(days=30)).strftime("%m/%d/%Y")
+DATE_TO = (date.today() + timedelta(days=730)).strftime("%m/%d/%Y")
 PAGE_CAP = 25
 RECYCLE_EVERY = 8        # fetch this many docs per session, then recycle
 FETCH_DELAY = 1.5
