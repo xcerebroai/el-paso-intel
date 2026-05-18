@@ -219,3 +219,85 @@ use DEFENDANT; tax liens use TAX PAYER. No global rank can be correct.
     separate session; a design brief is required before starting. v2
     changed data + minimal chip rendering only.
 
+---
+
+## foreclosure_notices source (v3) — 2026-05-18
+
+Second primary source built. Approach: PDF + OCR + EPCAD address-join.
+
+### Build approach
+
+  - Scraper (scripts/scrapers/foreclosure_notices.py): searches the County
+    Clerk Foreclosures portal by sale-date window; per document, POSTs
+    GetDocumentURL and loads the InCaptureWeb viewer, capturing the notice
+    PDF via route interception. GetDocumentURL is gated by a per-session
+    reCAPTCHA-v3 score ceiling (~9 docs) — both the popup and direct-POST
+    approaches stalled there; the fix is recycling the browser session
+    every 8 documents. Result: 102 / 102 notice PDFs.
+  - OCR (scripts/translators/foreclosure_notices_ocr.py): the notices are
+    scanned images — rendered (pymupdf) + Tesseract OCR + shape-based
+    field extraction across 4+ notice layouts.
+  - Translator (foreclosure_notices_translate.py): EPCAD parcel join by
+    street address; matched_lead build.
+  - Aggregator (scripts/aggregate_leads.py): merges into the dashboard.
+
+### Numbers
+
+  - Scraped / OCR'd: 102 / 102 notice PDFs.
+  - Extraction: street address 74/102, sale_date 102/102 (listing
+    fallback), DoT document number ~100/102, debtor names ~38/102,
+    lender ~52/102. 5/5 complete: ~29.
+  - EPCAD-resolved: 8 / 102. UNRESOLVED: 94 — valid output per §13: each
+    carries the foreclosure_notice primary signal + street address +
+    sale date; EPCAD owner/value enrichment is decoration.
+  - matched_leads contributed: 102.
+  - New aggregated total: 1,385 (1,283 clerk_recordings + 102
+    foreclosure_notice). Stacking 1,329 single / 56 two-signal.
+  - Cross-source stacked rows (clerk + foreclosure on one parcel): 0 —
+    the two sources' low EPCAD resolution lands them on different parcels.
+  - Sale-date urgency: the scrape window is 05/18-09/30/2026 upcoming
+    Texas first-Tuesday sales.
+
+### reCAPTCHA backoff behavior
+
+  Per-session reCAPTCHA-v3 ceiling at ~9 GetDocumentURL calls is a hard
+  wall — backoff/retry did not recover it. Session recycling every 8
+  docs (fresh context + fresh search = fresh score) cleared it: 102/102.
+
+### Known limitations
+
+  - EPCAD address-join yield is low (8/102). EPCAD's streetName API is
+    suffix-sensitive and page-capped; even with suffix variants +
+    pagination most addresses do not resolve. The foreclosure leads are
+    still valid and actionable (address + sale date); EPCAD enrichment is
+    the gap — flagged for follow-up (a better EPCAD address endpoint, or
+    a bulk EPCAD index keyed on address/legal description).
+  - debtor_names / lender extraction is partial (~38 / ~52 of 102):
+    layout C ("Notice of Acceleration") splits labels from values in the
+    OCR stream. Those rows carry address + sale date and route to the
+    partial path.
+  - Aggregator idempotency: scripts/aggregate_leads.py must run against a
+    clerk-only leads.json base (build_clerk_pipeline.py writes that first
+    in daily_refresh). Re-running aggregate on an already-merged file
+    double-counts — daily_refresh sequences it correctly.
+
+### Framework gap surfaced (for a future framework patch)
+
+  Phase 0 recon classified foreclosure_notices DEFERRED on listing-page
+  fingerprinting alone — it missed that the actual lead data lives inside
+  scanned notice PDFs. Recon §01 should require sample-PDF inspection
+  (download + open a few source documents) before classifying a source,
+  not just listing-page structure.
+
+### Sources status
+
+  clerk_recordings    COMPLETE (v2) — 1,283 matched_leads
+  foreclosure_notices COMPLETE (v3) — 102 matched_leads
+  tax_collector       DEFERRED
+  court_probate       DEFERRED
+  court_civil         DEFERRED
+
+Dashboard: 1,385 matched_leads, deployed (GitHub Pages, public per
+operator decision) at https://xcerebroai.github.io/el-paso-intel/ —
+live-verified. Self-verification PASS 9/9.
+
