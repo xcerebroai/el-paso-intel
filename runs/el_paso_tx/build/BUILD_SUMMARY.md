@@ -140,3 +140,82 @@ signal model and SOURCES registry are open-ended.
     authenticated host) — v1 is local per Option 3.
   - Framework regression test (scaffold) flags 63 pre-existing
     county-term leaks in framework files — pre-existing, not El Paso.
+
+---
+
+## v2 Fixes (2026-05-17/18) — operator-review data-quality corrections
+
+Operator review of the live v1 dashboard surfaced four data bugs. Audit:
+`runs/el_paso_tx/build/data_quality_audit.md`. Verification:
+`runs/el_paso_tx/build/post_fix_verification.md`.
+
+### Bugs found
+
+  - Bug 1 — owner_type classifier missed entities/government (CITY OF…,
+    UNITED STATES, …OWNER suffix, GROUP, ENTERPRISES, PARTNERS, …).
+  - Bug 2 — no signal de-duplication: N recordings of one signal type on
+    one parcel rendered as N identical chips (UMC row had 148).
+  - Bug 3 — wrong party attached: the translator picked the lien FILER
+    instead of the DEBTOR for hospital_lien and code_lien, collapsing 148
+    distinct patient debtors onto one "University Medical Center" row.
+  - Finding 4 — the EPCAD enrichment join accepted Properties[0]
+    unconditionally; a fuzzy ownerName match attached unrelated parcels.
+
+### Root cause
+
+A single doc-type-blind party-selection rule (`pick_distressed_party`
+ranked GRANTOR above GRANTEE globally). The debtor's `name_type` actually
+varies by document type — hospital/code liens put the filer on GRANTOR
+and the debtor on GRANTEE; mechanics liens are the reverse; court docs
+use DEFENDANT; tax liens use TAX PAYER. No global rank can be correct.
+
+### Fix approach
+
+  - Fix 1 (`2660602`) — `DEBTOR_PARTY_RULES`, a per-doc-type debtor
+    name_type map; unknown doc types fall back to the old rank + a
+    warning. Plus an EPCAD match-quality guard (token-overlap / Jaccard
+    threshold) replacing unconditional `Properties[0]`.
+  - Fix 2 (`cf4229d`) — translator collapses identical
+    `(parcel_id, signal_type)` into one signal with `count` +
+    `source_urls[]` + `evidence_ids[]` + `instrument_numbers[]`; dashboard
+    renders one `Label × N` chip.
+  - Fix 3 (`b1a5d78`) — broadened `ENTITY_PAT` (government + more entity
+    forms).
+  - Result: 1,110 → 1,283 matched_leads; hospital_lien leads now show
+    patient-debtor names; 0 leads owned by University Medical Center;
+    ENTITY 287 → 323. Self-verification PASS 9/9 + semantic checks;
+    live dashboard re-verified PASS.
+
+### Residual / known limitations
+
+  - The EPCAD match guard does not catch matches that share only the
+    common tokens "EL PASO" (1 borderline lead). County-local stopword
+    tuning would fix it — left for operator decision, not hardcoded.
+  - ~8 / 1,283 leads still carry a filer-ish owner name (atypical
+    code_lien party polarity; some legitimate). Not systemic.
+
+### Framework gaps surfaced (recommended future framework patches)
+
+  - **Self-verification is mechanics-only.** §4.21 / the verification
+    driver checks that rows render, filters change counts, CSV exports —
+    but NOT semantic data correctness. All four bugs passed v1's 9/9
+    verification because the dashboard *rendered* fine; the *data* was
+    wrong. Recommend a framework patch adding semantic-correctness
+    sampling to §4.21: per signal type, sample N leads and assert the
+    attached owner matches the expected debtor party for that doc type.
+  - **Signal aggregation/dedup contract was implicit.** Nothing in §13 or
+    `09_output_schemas.md` specified that identical `(parcel_id,
+    signal_type)` signals must collapse. Recommend formalizing a
+    signal-dedup contract (one entry per type, with an occurrence count)
+    in the architecture docs.
+  - **Party-role semantics are not modeled.** The framework has no notion
+    that "which recorded party is the lead" depends on document type.
+    Recommend a canonical debtor-party mapping alongside
+    `canonical_doc_types.json`.
+
+### Deferred
+
+  - UI rebuild (chip drill-down to per-record source URLs, layout) — a
+    separate session; a design brief is required before starting. v2
+    changed data + minimal chip rendering only.
+
