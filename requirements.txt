@@ -1,9 +1,20 @@
 # El Paso County lead intelligence harness — runtime dependencies.
 # Filtered to packages actually imported by the active scrapers,
 # translator/enrichment pipeline, and refresh orchestration.
-#   scrapers/clerk_recordings.py        -> playwright
+#   scrapers/clerk_recordings.py                  -> playwright
+#   scripts/scrapers/foreclosure_notices.py       -> playwright
 #   runs/el_paso_tx/build/build_clerk_pipeline.py -> httpx
+#   scripts/translators/foreclosure_notices_ocr.py-> pymupdf, pytesseract, pillow
 #   runs/el_paso_tx/build/_verify_dashboard.py    -> playwright
-#   scripts/daily_refresh.py            -> (stdlib only; subprocesses the above)
+#   scripts/daily_refresh.py                      -> (stdlib only; subprocesses the above)
+#
+# CI note (.github/workflows/daily-refresh.yml): the foreclosure_notices
+# OCR step needs the Tesseract system binary. The workflow must run
+#   sudo apt-get update && sudo apt-get install -y tesseract-ocr
+# before pip install. (PDF->image rendering uses pymupdf, which bundles
+# its own libraries — no poppler / poppler-utils needed.)
 playwright==1.59.0
 httpx==0.28.1
+pymupdf==1.27.2.3
+pytesseract==0.3.13
+pillow==12.2.0
