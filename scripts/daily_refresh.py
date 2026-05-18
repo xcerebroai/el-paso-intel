@@ -50,15 +50,33 @@ def run_clerk_recordings_pipeline() -> None:
     _run("runs/el_paso_tx/build/build_clerk_pipeline.py")
 
 
+def run_foreclosure_notices_scraper() -> None:
+    """Scrape the County Clerk Foreclosures portal -> notice PDFs."""
+    _run("scripts/scrapers/foreclosure_notices.py")
+
+
+def run_foreclosure_notices_ocr() -> None:
+    """OCR the notice PDFs + field extraction -> extracted.jsonl."""
+    _run("scripts/translators/foreclosure_notices_ocr.py")
+
+
+def run_foreclosure_notices_translate() -> None:
+    """EPCAD address-join + matched_lead build for foreclosure_notices."""
+    _run("scripts/translators/foreclosure_notices_translate.py")
+
+
 # Source registry. Each entry: source_id -> ordered list of callables.
-# Add deferred sources here as they are built.
+# clerk_recordings runs first (it writes the clerk-only leads.json that
+# the aggregator then merges every other source into).
 SOURCES = {
     "clerk_recordings": [run_clerk_recordings_scraper,
                          run_clerk_recordings_pipeline],
-    # "tax_collector":     [...],   # deferred
-    # "court_probate":     [...],   # deferred
-    # "court_civil":       [...],   # deferred
-    # "foreclosure_notices": [...], # deferred
+    "foreclosure_notices": [run_foreclosure_notices_scraper,
+                            run_foreclosure_notices_ocr,
+                            run_foreclosure_notices_translate],
+    # "tax_collector":   [...],   # deferred
+    # "court_probate":   [...],   # deferred
+    # "court_civil":     [...],   # deferred
 }
 
 
@@ -78,11 +96,15 @@ def regenerate_dashboard_data() -> None:
 
 def main() -> int:
     print(f"[daily_refresh] start — sources: {list(SOURCES)}", flush=True)
+    # clerk_recordings must run first — build_clerk_pipeline.py writes the
+    # clerk-only leads.json that scripts/aggregate_leads.py then merges
+    # every other source into.
     for source_id, steps in SOURCES.items():
         print(f"[daily_refresh] === {source_id} ===", flush=True)
         for step in steps:
             step()
-    regenerate_dashboard_data()
+    # multi-source merge -> leads.json + dashboard/data.json + data.js
+    _run("scripts/aggregate_leads.py")
     print("[daily_refresh] complete", flush=True)
     return 0
 

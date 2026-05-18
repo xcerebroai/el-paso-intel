@@ -195,7 +195,10 @@ sources["foreclosure_notices"] = source(
                          "exposes per-property pop-ups."),
     recommended_adapter="requests_form_scraper",
     translator="foreclosure_notices",
-    build_status="DEFERRED_PENDING_BULK_ENRICHMENT_INDEX",
+    build_status="COMPLETE",
+    last_built_at="2026-05-18T15:00:00Z",
+    record_count=102,
+    epcad_resolution_rate="8%",
 )
 
 sources["court_civil"] = source(
