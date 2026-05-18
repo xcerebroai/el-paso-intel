@@ -318,8 +318,8 @@
       "translator": "foreclosure_notices",
       "build_status": "COMPLETE",
       "last_built_at": "2026-05-18T15:00:00Z",
-      "record_count": 102,
-      "epcad_resolution_rate": "8%"
+      "record_count": 358,
+      "epcad_enrichment_rate": "9%"
     },
     "court_civil": {
       "category": "lead",

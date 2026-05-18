@@ -192,9 +192,12 @@
 
     rows.forEach(function (r) {
       var unresolved = r.parcel_resolution_status !== "RESOLVED";
+      // Address cell: full situs address when known; else fall back to the
+      // legal description (subdivision/lot/block) — for a RESOLVED lead the
+      // legal description still identifies the property.
       var addr = unresolved
         ? '<span class="unresolved">Address unresolved — EPCAD no match</span>'
-        : esc(r.property_full_address || "—");
+        : esc(r.property_full_address || r.legal_description || "—");
       var proof = (r.source_urls || [])[0];
       var tr = document.createElement("tr");
       tr.innerHTML =
