@@ -301,3 +301,81 @@ Dashboard: 1,385 matched_leads, deployed (GitHub Pages, public per
 operator decision) at https://xcerebroai.github.io/el-paso-intel/ —
 live-verified. Self-verification PASS 9/9.
 
+---
+
+## foreclosure_notices REWORK (v4) — 2026-05-18
+
+Operator review of the v3 build surfaced three defects. All three traced
+to one root cause: v3 framed `foreclosure_notice` as an *enrichment-gated*
+source — a notice only became a lead if EPCAD enrichment resolved a
+parcel. That inverts §13. `foreclosure_notice` is a P0 PRIMARY distress
+signal: the recorded notice ORIGINATES the lead. EPCAD enrichment
+DECORATES it and is strictly a bonus. v4 rebuilds all three stages on
+that contract.
+
+### Defects fixed
+
+  1. Coverage — v3 used a hard-coded narrow sale-date window and captured
+     only 102 records. v4 makes the window dynamic and rolling, recomputed
+     every run (the scraper runs daily): 30 days back through ~2 years
+     forward (DATE_FROM/DATE_TO in foreclosure_notices.py). 30 days back
+     keeps recent + still-listed notices; the forward end captures every
+     upcoming first-Tuesday auction batch (Texas sales are the first
+     Tuesday of each month, and listings post months ahead). Result: 359
+     listed records, 358 PDFs captured (1 portal-side document failure).
+
+  2. False UNRESOLVED — v3 marked 94/102 leads UNRESOLVED because EPCAD
+     did not enrich them. Wrong: the notice itself resolves the lead. v4
+     translator emits a matched_lead for EVERY notice with
+     parcel_resolution_status = RESOLVED ALWAYS. EPCAD success is tracked
+     in a NEW, separate field, epcad_enrichment_status (ENRICHED /
+     UNENRICHED), so enrichment yield stays visible without contaminating
+     lead validity. Result: 0 UNRESOLVED foreclosure leads.
+
+  3. Listing-page fields unused — v3 relied solely on PDF OCR. The portal
+     results table already carries structured, always-present join keys
+     (Instrument #, Subdivision, Lot, Block, Unit, Tract). v4 scraper
+     harvests all of them per row (collect_ids → listing.jsonl); the OCR
+     stage carries them through as listing_* fields; the translator builds
+     a legal_description from subdivision/lot/block/unit so a lead with no
+     PDF street address is still property-identifiable. The dashboard
+     address cell falls back to legal_description.
+
+### Result
+
+  foreclosure_notices: 358 matched_leads, 357 after parcel-dedup in the
+  aggregator. EPCAD enrichment: 31 ENRICHED / 327 UNENRICHED (~9%) —
+  EPCAD streetName search is suffix-sensitive and page-capped; low yield
+  is a documented EPCAD limitation, and under v4 it no longer costs a
+  single lead. owner_name prefers EPCAD ownerName, falls back to the PDF
+  debtor name, else is left blank (honest UNKNOWN — never a lender or a
+  form label; _clean_names rejects label fragments).
+
+  Semantic self-check on the merged dataset: 0 foreclosure leads
+  UNRESOLVED; 0 leads carry an "Original/Current Mortgagee" label as
+  owner; 9/357 carry neither street address nor legal description (thin
+  but valid — they still carry the foreclosure_notice signal + sale date
+  + instrument #). Dashboard self-verification PASS 9/9.
+
+### Framework note
+
+  A source that carries lead-actionable data in its own primary record
+  (here: a recorded foreclosure notice with debtor, sale date, and legal
+  description) ORIGINATES leads regardless of enrichment outcome. County
+  appraisal-district enrichment is decoration: it MUST be tracked in its
+  own status field and MUST NOT gate matched_lead validity or set
+  parcel_resolution_status. This is the §13 lead-origination contract
+  applied correctly; v3 violated it by conflating the two.
+
+### Sources status (v4)
+
+  clerk_recordings    COMPLETE (v2) — 1,283 matched_leads
+  foreclosure_notices COMPLETE (v4) —   357 matched_leads
+  tax_collector       DEFERRED
+  court_probate       DEFERRED
+  court_civil         DEFERRED
+
+Dashboard: 1,640 matched_leads, deployed (GitHub Pages) at
+https://xcerebroai.github.io/el-paso-intel/ — live-verified
+(lead_total 1,640). Self-verification PASS 9/9.
+
