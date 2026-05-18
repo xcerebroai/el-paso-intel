@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-18T15:46:22Z",
+  "generated_at": "2026-05-18T15:57:16Z",
   "county": "El Paso",
   "state": "TX",
   "build_label": "SOURCE_LIMITED",
@@ -65311,7 +65311,7 @@
       "lead_id": "UNRESOLVED_fcl_20240049385_3",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "4943 AIKEN LN, EL PASO TX 79924",
       "property_street": "AIKEN LN",
@@ -65338,9 +65338,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20240049385",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20240049385",
           "evidence_id": "ev_fcl_fcl_0004.pdf",
@@ -65421,7 +65419,7 @@
       "lead_id": "UNRESOLVED_fcl_20070049690_5",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "",
       "property_street": "",
@@ -65448,9 +65446,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20070049690",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20070049690",
           "evidence_id": "ev_fcl_fcl_0006.pdf",
@@ -65833,9 +65829,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20230052750",
           "lender": "MOUNTAIN MORTGAGE COMPANY",
-          "debtor_names": [
-            "JAIME ALAN JOSEPH AND SECURED: KARINA JOSEPH"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20230052750",
           "evidence_id": "ev_fcl_fcl_0013.pdf",
@@ -66141,7 +66135,7 @@
       "lead_id": "UNRESOLVED_fcl_20240021365_18",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "3200 VOSS DR, EL PASO TX 79936",
       "property_street": "VOSS DR",
@@ -66168,9 +66162,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20240021365",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20240021365",
           "evidence_id": "ev_fcl_fcl_0019.pdf",
@@ -66197,7 +66189,7 @@
       "lead_id": "UNRESOLVED_fcl_20190097509_19",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "3408 WAR ARROW PLACE, EL PASO TX 79936",
       "property_street": "WAR ARROW PLACE",
@@ -66224,9 +66216,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20190097509",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20190097509",
           "evidence_id": "ev_fcl_fcl_0020.pdf",
@@ -66253,7 +66243,7 @@
       "lead_id": "UNRESOLVED_fcl_20220062721_20",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "710 MEDINA STREET, EL PASO TX 79905",
       "property_street": "MEDINA STREET",
@@ -66280,9 +66270,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20220062721",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20220062721",
           "evidence_id": "ev_fcl_fcl_0021.pdf",
@@ -66309,7 +66297,7 @@
       "lead_id": "UNRESOLVED_fcl_20230072836_21",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "3236 BELL POINT DR, EL PASO TX 79938",
       "property_street": "BELL POINT DR",
@@ -66336,9 +66324,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20230072836",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20230072836",
           "evidence_id": "ev_fcl_fcl_0022.pdf",
@@ -67623,7 +67609,7 @@
       "lead_id": "UNRESOLVED_fcl_fcl_0046.pdf_45",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "RICARDO RANGEL AND SECURED: JUANITA RANGEL",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "12422 ROAD HOUSE DRIVE, EL PASO TX 79936",
       "property_street": "ROAD HOUSE DRIVE",
@@ -67650,9 +67636,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "",
           "lender": "MORTGAGE COMPANY",
-          "debtor_names": [
-            "RICARDO RANGEL AND SECURED: JUANITA RANGEL"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "",
           "evidence_id": "ev_fcl_fcl_0046.pdf",
@@ -68560,7 +68544,7 @@
       "lead_id": "UNRESOLVED_fcl_20140068941_62",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee: Original Principal:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "",
       "property_street": "",
@@ -68587,9 +68571,7 @@
           "sale_date": "July 7, 2026",
           "dot_document_number": "20140068941",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee: Original Principal:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20140068941",
           "evidence_id": "ev_fcl_fcl_0063.pdf",
@@ -69433,7 +69415,7 @@
       "lead_id": "UNRESOLVED_fcl_20230004749_78",
       "parcel_resolution_status": "UNRESOLVED",
       "parcel_id": "",
-      "owner_name": "Original Mortgagee:",
+      "owner_name": "(unknown debtor)",
       "owner_type": "INDIVIDUAL",
       "property_full_address": "4744 ROBERT ACOSTA DR, EL PASO TX 79934",
       "property_street": "ROBERT ACOSTA DR",
@@ -69460,9 +69442,7 @@
           "sale_date": "06/02/2026",
           "dot_document_number": "20230004749",
           "lender": "Mortgage Servicer:",
-          "debtor_names": [
-            "Original Mortgagee:"
-          ],
+          "debtor_names": [],
           "recorded_date": "06/02/2026",
           "instrument_number": "20230004749",
           "evidence_id": "ev_fcl_fcl_0079.pdf",

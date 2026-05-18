@@ -64,6 +64,14 @@ def _clean_names(blob: str) -> list[str]:
     names = []
     for n in blob.split("|"):
         n = re.sub(r"\s+", " ", n).strip(" ,.")
+        # reject OCR fragments that are actually a form LABEL, not a name
+        # (layout C stacks labels apart from values in the OCR stream)
+        if ":" in n:
+            continue
+        if re.search(r"\b(MORTGAGEE|MORTGAGOR|TRUSTEE|GRANTEE|GRANTOR|"
+                     r"BENEFICIARY|SERVICER|ORIGINAL|CURRENT|LENDER|"
+                     r"INFORMATION|PROPERTY|ADDRESS|RECORDING)\b", n, re.I):
+            continue
         if 3 <= len(n) <= 70 and re.search(r"[A-Za-z]", n):
             names.append(n)
     return names
@@ -120,18 +128,29 @@ def extract_fields(text: str, listing_sale_date: str = "") -> dict:
     if m:
         rec["debtor_names"] = _clean_names(m.group(1))
 
-    # --- common_street_address: shape-based — a "<NUM> <STREET>, <CITY>
-    # TX <ZIP>" string, with CITY restricted to El Paso County
-    # municipalities so trustee/servicer addresses elsewhere (Dallas,
-    # Southlake, ...) do not match. Works across all notice layouts. ---
+    # --- common_street_address: shape-based — "<NUM> <STREET>, <CITY> TX
+    # <ZIP>" with CITY restricted to El Paso County municipalities (so
+    # trustee/servicer addresses elsewhere never match). Take the first
+    # match that is NOT a sale venue (the Coliseum / Courthouse), and
+    # strip any trailing barcode digit-run that bled into the street name
+    # (layout A prints a barcode beside the address). ---
     flat = re.sub(r"\s+", " ", text)
-    am = re.search(rf"\b(\d{{2,6}}\s+[A-Z0-9][A-Z0-9 .'#/-]{{2,45}}?),?\s+"
-                   rf"((?:{CITY_RE}))\b,?\s*(?:TX|TEXAS)\b,?\s*(\d{{5}})",
-                   flat, re.I)
-    if am:
-        rec["common_street_address"] = re.sub(
-            r"\s+", " ", f"{am.group(1)}, {am.group(2)} TX {am.group(3)}"
-        ).upper().strip(" ,.")
+    venues = ("4100 E PAISANO", "4100 E. PAISANO", "500 E SAN ANTONIO",
+              "500 EAST SAN ANTONIO", "500 E. SAN ANTONIO")
+    for am in re.finditer(
+            rf"\b(\d{{2,6}})\s+([A-Z0-9][A-Z0-9 .'#/-]{{2,45}}?),?\s+"
+            rf"((?:{CITY_RE}))\b,?\s*(?:TX|TEXAS)\b,?\s*(\d{{5}})", flat, re.I):
+        num, street = am.group(1), am.group(2)
+        street = re.sub(r"\s*\b\d{5,}\b\s*", " ", street).strip(" ,.")
+        if not street:
+            continue
+        cand = re.sub(r"\s+", " ",
+                      f"{num} {street}, {am.group(3)} TX {am.group(4)}"
+                      ).upper().strip(" ,.")
+        if any(v in cand for v in venues):
+            continue
+        rec["common_street_address"] = cand
+        break
 
     # --- lender_beneficiary ---
     m = re.search(r"([A-Z][A-Za-z0-9 ,./&'-]{3,70}?)\s+is the current mortgagee",
