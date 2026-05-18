@@ -30,12 +30,19 @@ EXTRACTED = REPO / "data/el_paso_tx/raw/foreclosure_notices/extracted.jsonl"
 OUT = REPO / "data/el_paso_tx/translated/foreclosure_notices_translated.jsonl"
 EPCAD = "https://epcadpropertysearch.azurewebsites.net/Api/Properties/GetProperties"
 
-# ---- entity / estate / trust classification (mirrors Fix 1/3) ----
-ESTATE_HIGH = re.compile(
-    r"\bESTATE\s+OF\b|\bEST\s+OF\b|\bHEIRS\s+OF\b|\bSUCCESSORS\s+OF\b"
-    r"|\bDECEASED\b|\bDEC'D\b|\b\w[\w\s]*\s+ESTATE\b|\b\w[\w\s]*\s+HEIRS\b", re.I)
+# ---- entity / estate / trust classification (Fix 2, v5 — word-boundary
+# + position rules; ENTITY wins outright; "REAL ESTATE" never -> ESTATE.
+# Kept identical to runs/el_paso_tx/build/build_clerk_pipeline.py.) ----
+_COMPANY_ESTATE = re.compile(
+    r"\bREAL\s+ESTATE\b|\bESTATE\s+(PLANNING|AGENCY|BROKER|BROKERAGE|GROUP|"
+    r"SALES|SERVICES|REALTY|MANAGEMENT|INVESTMENTS?|HOLDINGS?|PARTNERS?|"
+    r"CO|COMPANY|LLC|INC)\b", re.I)
+ESTATE_DECEDENT = re.compile(
+    r"\bESTATE\s+OF\b|\bEST\s+OF\b|\bHEIRS?\s+OF\b|\bSUCCESSORS?\s+OF\b"
+    r"|\bDECEASED\b|\bDEC'?D\b|\bESTATE\b|\bHEIRS?\b", re.I)
 TRUST_PAT = re.compile(
-    r"\b[\w\s]+\s+(FAMILY\s+|LIVING\s+|REVOCABLE\s+|IRREVOCABLE\s+)?TRUST\b", re.I)
+    r"\b(FAMILY|LIVING|REVOCABLE|IRREVOCABLE|TESTAMENTARY|MARITAL|BYPASS|"
+    r"SURVIVOR'?S?)\s+TRUST\b|\bTRUST\s+OF\b|\b\w+\s+TRUST\b", re.I)
 ENTITY_PAT = re.compile(
     r"\b(LLC|L\.?L\.?C|INC|CORP|CORPORATION|L\.?P\.?|LLP|LTD|COMPANY|CO|"
     r"PARTNERSHIP|PARTNERS|HOLDINGS|PROPERTIES|INVESTMENTS|BANK|ASS'?N|"
@@ -44,6 +51,20 @@ ENTITY_PAT = re.compile(
     r"NATIONAL)\b"
     r"|\bCITY\s+OF\b|\bCOUNTY\s+OF\b|\bSTATE\s+OF\b|\bUNITED\s+STATES\b"
     r"|\bCREDIT\s+UNION\b", re.I)
+# Fix 1 (v5): mortgage / lender entities — never the OWNER on a
+# foreclosure_notice (they are the lienholder). A notice whose only
+# extracted debtor is one of these routes to REVIEW_REQUIRED.
+_FILER_PATTERNS = re.compile(
+    r"\bROCKY\s+MOUNTAIN\s+MORTGAGE\b|\bROCKET\s+MORTGAGE\b"
+    r"|\bMORTGAGE\s+(COMPANY|CORP|CORPORATION|LLC|INC)\b"
+    r"|\bFREDDIE\s+MAC\b|\bFANNIE\s+MAE\b|\bNATIONSTAR\b|\bMR\.?\s+COOPER\b"
+    r"|\bPHH\s+MORTGAGE\b|\bNEWREZ\b|\bSHELLPOINT\b|\bRUSHMORE\b"
+    r"|\bSERVBANK\b|\bPEBBLE\s+HILLS\s+PLAZA\b|\bLOANCARE\b|\bCARRINGTON\b"
+    r"|\bSELENE\s+FINANCE\b|\bSPECIALIZED\s+LOAN\b"
+    r"|\bBANK\b.{0,5}\bN\.?\s?A\b|\bNATIONAL\s+ASSOCIATION\b"
+    r"|\bU\.?S\.?\s+BANK\b|\bWELLS\s+FARGO\b|\bDEUTSCHE\s+BANK\b"
+    r"|\bUNITED\s+STATES\s+OF\s+AMERICA\b|\bSTATE\s+OF\s+TEXAS\b"
+    r"|\bCITY\s+OF\s+EL\s+PASO\b", re.I)
 # street-type tokens dropped before address token-overlap scoring
 _ADDR_STOP = {"ST", "AVE", "DR", "PL", "CT", "RD", "LN", "LANE", "BLVD",
               "CIR", "WAY", "TER", "TRL", "PKWY", "HWY", "N", "S", "E", "W",
@@ -53,13 +74,19 @@ _ADDR_STOP = {"ST", "AVE", "DR", "PL", "CT", "RD", "LN", "LANE", "BLVD",
 def classify_owner_type(name: str) -> str:
     if not name:
         return "UNKNOWN"
-    if ESTATE_HIGH.search(name):
-        return "ESTATE"
-    if TRUST_PAT.search(name):
-        return "TRUST"
     if ENTITY_PAT.search(name):
         return "ENTITY"
+    probe = _COMPANY_ESTATE.sub(" ", name)
+    if ESTATE_DECEDENT.search(probe):
+        return "ESTATE"
+    if TRUST_PAT.search(probe):
+        return "TRUST"
     return "INDIVIDUAL"
+
+
+def is_suppressed_filer(name: str) -> bool:
+    """True if the name is a lender / filer entity that must never own a row."""
+    return bool(name and _FILER_PATTERNS.search(name))
 
 
 def _atokens(s: str) -> set:
@@ -151,8 +178,9 @@ def epcad_by_address(situs: dict, debtor_names: list, client: httpx.Client) -> d
                     continue
                 inter = qtok & ctok
                 jacc = len(inter) / len(qtok | ctok)
-                accept = jacc >= 0.6 or (
-                    len(inter) >= 2 and len(inter) / len(qtok) >= 0.5)
+                # Fix 4 (v5): loosened from 0.6 / 50% to 0.5 / 40%.
+                accept = jacc >= 0.5 or (
+                    len(inter) >= 2 and len(inter) / len(qtok) >= 0.4)
                 if not accept:
                     continue
                 # tie-break: owner-name overlap with the notice debtor
@@ -292,6 +320,18 @@ def main() -> int:
                     "homestead": None, "absentee_owner_flag": False,
                     "out_of_state_owner_flag": False,
                 }
+            # Fix 1 (v5): a foreclosure "debtor" that is actually the
+            # lender / lienholder must never be owner_name. Route to
+            # REVIEW_REQUIRED and capture the filer — the notice still
+            # originates a valid lead.
+            filer_entity = ""
+            if is_suppressed_filer(lead["owner_name"]):
+                filer_entity = lead["owner_name"]
+                lead["owner_name"] = "Foreclosure Notice against unidentified party"
+                lead["parcel_resolution_status"] = "REVIEW_REQUIRED"
+                owner = ""
+            lead["filer_entity"] = filer_entity
+
             su = parse_situs(pdf_address)
             lead["owner_type"] = classify_owner_type(owner) if owner else "UNKNOWN"
             lead["property_street"] = su["street"]
@@ -352,8 +392,11 @@ def main() -> int:
             fh.write(json.dumps(l, ensure_ascii=False) + "\n")
 
     n = len(leads)
-    print(f"\n=== foreclosure_notices translator (v2) ===")
-    print(f"matched_leads:        {n}  (every notice emits a lead — no UNRESOLVED)")
+    review = sum(1 for l in leads
+                 if l["parcel_resolution_status"] == "REVIEW_REQUIRED")
+    print(f"\n=== foreclosure_notices translator (v3) ===")
+    print(f"matched_leads:        {n}  (every notice emits a lead)")
+    print(f"REVIEW_REQUIRED:      {review}  (debtor extracted as lender/filer)")
     print(f"EPCAD enrichment:     ENRICHED {enriched} / UNENRICHED {n-enriched} "
           f"({100*enriched//max(n,1)}% enriched — bonus context, not required)")
     print(f"PDF address extracted:{addr_n}/{n}")

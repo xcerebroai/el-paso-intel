@@ -50,25 +50,56 @@ SIGNAL_PRIORITY = {
     "executor_deed": 50, "estate_titled_property": 40, "trust_titled_property": 30,
 }
 
-# Fix 1 (v2): doc-type-aware debtor-party selection. The debtor / distressed
-# party sits on a DIFFERENT name_type per document type — there is no single
-# universal rule (see runs/el_paso_tx/build/data_quality_audit.md). Each value
-# is an ordered preference list of name_type words; the first party whose
-# name_type contains one of them (case-insensitive) is the debtor.
+# Fix 1 (v2 / v5): doc-type-aware debtor-party selection. The debtor /
+# distressed party sits on a DIFFERENT name_type per document type — there
+# is no single universal rule (see data_quality_audit.md). Each value is an
+# ordered preference list of name_type words; the FIRST party in that order
+# whose name is NOT a suppressed filer entity (see below) is the debtor.
+# v5 widens each list with GRANTEE/GRANTOR fallbacks so a debtor mis-typed
+# in the raw record is still reachable — the filer-suppression guard, not
+# the name_type alone, is what keeps a filer out of owner_name.
 DEBTOR_PARTY_RULES = {
     "lis_pendens":           ["DEFENDANT"],
     "judgment_lien":         ["DEFENDANT"],
-    "federal_tax_lien":      ["TAX PAYER", "GRANTEE"],
-    "state_tax_lien":        ["TAX PAYER", "GRANTEE"],
-    "hospital_lien":         ["GRANTEE"],   # patient debtor, NOT the hospital filer
-    "code_lien":             ["GRANTEE"],   # property/business debtor, NOT the govt filer
-    "mechanics_lien":        ["GRANTOR"],   # property owner, NOT the contractor filer
-    "construction_lien":     ["GRANTOR"],
-    "affidavit_of_heirship": ["GRANTOR"],
-    "executor_deed":         ["GRANTOR"],
-    "administrator_deed":    ["GRANTOR"],
-    "probate_recording":     ["GRANTOR"],
+    "federal_tax_lien":      ["TAX PAYER", "GRANTEE", "GRANTOR"],
+    "state_tax_lien":        ["TAX PAYER", "GRANTEE", "GRANTOR"],
+    "hospital_lien":         ["GRANTEE", "GRANTOR"],   # patient, NOT hospital filer
+    "code_lien":             ["GRANTEE", "GRANTOR"],   # business debtor, NOT govt filer
+    "mechanics_lien":        ["GRANTOR", "GRANTEE"],   # owner, NOT contractor filer
+    "construction_lien":     ["GRANTOR", "GRANTEE"],
+    "affidavit_of_heirship": ["GRANTOR", "GRANTEE"],
+    "executor_deed":         ["GRANTOR", "GRANTEE"],
+    "administrator_deed":    ["GRANTOR", "GRANTEE"],
+    "probate_recording":     ["GRANTOR", "GRANTEE"],
 }
+
+# Fix 1 (v5): filer-entity suppression. These entities FILE distress
+# instruments against debtors — a government body, a hospital, a mortgage
+# lender. They must NEVER be emitted as owner_name. A record whose only
+# candidate debtor party matches one of these is routed to
+# parcel_resolution_status = REVIEW_REQUIRED, with the filer captured in a
+# separate filer_entity field. The record is never dropped.
+_FILER_PATTERNS = re.compile(
+    r"\bCITY\s+OF\s+EL\s+PASO\b|\bCOUNTY\s+OF\s+EL\s+PASO\b"
+    r"|\bSTATE\s+OF\s+TEXAS\b|\bUNITED\s+STATES(\s+OF\s+AMERICA)?\b"
+    r"|\bINTERNAL\s+REVENUE\b|\bIRS\b"
+    r"|\bTEXAS\s+WORKFORCE\b|\bTEXAS\s+COMPTROLLER\b|\bCOMPTROLLER\s+OF\b"
+    r"|\bHOSPITALS?\s+OF\s+PROVIDENCE\b|\bPROVIDENCE\b"
+    r"|\bUNIVERSITY\s+MEDICAL\s+CENTER\b|\bUMC\b"
+    r"|\bLAS\s+PALMAS\b|\bDEL\s+SOL\b|\bSIERRA\s+(MEDICAL|PROVIDENCE|CAMPUS)\b"
+    r"|\bFOUNDATION\s+SURGICAL\b|\bLTACH\b"
+    r"|\bMEDICAL\s+CENTER\b|\bGENERAL\s+HOSPITAL\b|\bHOSPITAL\b"
+    r"|\bROCKY\s+MOUNTAIN\s+MORTGAGE\b|\bROCKET\s+MORTGAGE\b"
+    r"|\bMORTGAGE\s+(COMPANY|CORP|CORPORATION|LLC|INC)\b"
+    r"|\bFREDDIE\s+MAC\b|\bFANNIE\s+MAE\b|\bNATIONSTAR\b|\bMR\.?\s+COOPER\b"
+    r"|\bPHH\s+MORTGAGE\b|\bNEWREZ\b|\bSHELLPOINT\b|\bRUSHMORE\b"
+    r"|\bSERVBANK\b|\bPEBBLE\s+HILLS\s+PLAZA\b"
+    r"|\bBANK\b.{0,5}\bN\.?\s?A\b|\bNATIONAL\s+ASSOCIATION\b", re.I)
+
+
+def is_suppressed_filer(name: str) -> bool:
+    """True if the name is a known filer entity that must never be an owner."""
+    return bool(name and _FILER_PATTERNS.search(name))
 
 # EPCAD match-quality guard (Fix 1 / Finding 4): the EPCAD ownerName search is
 # a partial match, so it can return a parcel owned by an unrelated party that
@@ -84,11 +115,22 @@ def _tokens(name: str) -> set:
             if len(t) > 1 and t not in _MATCH_STOPWORDS}
 
 
-ESTATE_HIGH = re.compile(
-    r"\bESTATE\s+OF\b|\bEST\s+OF\b|\bHEIRS\s+OF\b|\bSUCCESSORS\s+OF\b"
-    r"|\bDECEASED\b|\bDEC'D\b|\b\w[\w\s]*\s+ESTATE\b|\b\w[\w\s]*\s+HEIRS\b", re.I)
+# Fix 2 (v5): ESTATE / TRUST classification by word-boundary + position,
+# not substring. "REAL ESTATE", "ESTATE GROUP / PLANNING / AGENCY" etc. are
+# company phrases — NOT decedent estates — so they are blanked before the
+# decedent test. ENTITY classification (company suffixes / government
+# bodies) takes precedence outright: "MARIO AYALA REAL ESTATE GROUP LLC" is
+# an ENTITY, never an ESTATE.
+_COMPANY_ESTATE = re.compile(
+    r"\bREAL\s+ESTATE\b|\bESTATE\s+(PLANNING|AGENCY|BROKER|BROKERAGE|GROUP|"
+    r"SALES|SERVICES|REALTY|MANAGEMENT|INVESTMENTS?|HOLDINGS?|PARTNERS?|"
+    r"CO|COMPANY|LLC|INC)\b", re.I)
+ESTATE_DECEDENT = re.compile(
+    r"\bESTATE\s+OF\b|\bEST\s+OF\b|\bHEIRS?\s+OF\b|\bSUCCESSORS?\s+OF\b"
+    r"|\bDECEASED\b|\bDEC'?D\b|\bESTATE\b|\bHEIRS?\b", re.I)
 TRUST_PAT = re.compile(
-    r"\b[\w\s]+\s+(FAMILY\s+|LIVING\s+|REVOCABLE\s+|IRREVOCABLE\s+)?TRUST\b", re.I)
+    r"\b(FAMILY|LIVING|REVOCABLE|IRREVOCABLE|TESTAMENTARY|MARITAL|BYPASS|"
+    r"SURVIVOR'?S?)\s+TRUST\b|\bTRUST\s+OF\b|\b\w+\s+TRUST\b", re.I)
 # Fix 3 (v2): broadened entity / government detection. The prior pattern only
 # caught LLC/INC/CORP-style suffixes and missed government bodies and many
 # entity name forms (see runs/el_paso_tx/build/data_quality_audit.md).
@@ -105,12 +147,15 @@ ENTITY_PAT = re.compile(
 def classify_owner_type(name: str) -> str:
     if not name:
         return "UNKNOWN"
-    if ESTATE_HIGH.search(name):
-        return "ESTATE"
-    if TRUST_PAT.search(name):
-        return "TRUST"
+    # ENTITY (company suffix / government body) wins outright — Fix 2.
     if ENTITY_PAT.search(name):
         return "ENTITY"
+    # blank company-estate phrases so they cannot trip the decedent test
+    probe = _COMPANY_ESTATE.sub(" ", name)
+    if ESTATE_DECEDENT.search(probe):
+        return "ESTATE"
+    if TRUST_PAT.search(probe):
+        return "TRUST"
     return "INDIVIDUAL"
 
 
@@ -153,10 +198,12 @@ def epcad_lookup(owner_name: str, client: httpx.Client) -> dict | None:
             props = (r.json() or {}).get("Properties") or []
             # Match-quality guard: score every candidate by token overlap of
             # the queried name vs the candidate parcel's owner name. Accept
-            # the best candidate only if it clears the threshold — Jaccard
-            # >= 0.6, OR >= 2 shared significant tokens covering >= 50% of the
-            # queried name. Otherwise return None (UNRESOLVED) rather than
-            # blindly trusting Properties[0].
+            # the best candidate only if it clears the threshold. Fix 4 (v5)
+            # loosens this from Jaccard >= 0.6 / 50% to Jaccard >= 0.5, OR
+            # >= 2 shared significant tokens covering >= 40% of the queried
+            # name — the v2 guard over-tightened and rejected valid matches
+            # (name-order variance, middle initials). Still returns None
+            # (UNRESOLVED) rather than blindly trusting Properties[0].
             best, best_score = None, 0.0
             for cand in props:
                 cowners = cand.get("Owners") or [{}]
@@ -165,8 +212,8 @@ def epcad_lookup(owner_name: str, client: httpx.Client) -> dict | None:
                     continue
                 inter = qtok & ctok
                 jacc = len(inter) / len(qtok | ctok)
-                accept = jacc >= 0.6 or (
-                    len(inter) >= 2 and len(inter) / len(qtok) >= 0.5)
+                accept = jacc >= 0.5 or (
+                    len(inter) >= 2 and len(inter) / len(qtok) >= 0.4)
                 if accept and jacc > best_score:
                     best, best_score = cand, jacc
             if best is not None:
@@ -198,33 +245,53 @@ def epcad_lookup(owner_name: str, client: httpx.Client) -> dict | None:
     return result
 
 
-def pick_distressed_party(parties: list[dict], signal_type: str) -> str:
+def pick_distressed_party(parties: list[dict], signal_type: str) -> dict:
     """Pick the debtor / distressed party using the doc-type-aware rule table
-    (Fix 1, v2). The debtor's name_type varies by document type: e.g. for a
-    hospital_lien the debtor is the GRANTEE (patient) while the GRANTOR is the
-    hospital filer; for a mechanics_lien the debtor is the GRANTOR (owner)."""
+    (Fix 1, v2 / v5). The debtor's name_type varies by document type: for a
+    hospital_lien the debtor is the patient (GRANTEE) while the hospital is
+    the filer; for a mechanics_lien the debtor is the owner (GRANTOR).
+
+    Returns {"debtor", "status", "filer"}:
+      - status "OK": debtor is a real distressed party, filer is "".
+      - status "REVIEW_REQUIRED": the doc-type debtor name_type was missing,
+        or the only candidate party is a suppressed filer entity. debtor is
+        "", and filer carries the original filer for operator follow-up.
+        Filer NEVER silently becomes owner_name (Fix 1B)."""
     if not parties:
-        return ""
+        return {"debtor": "", "status": "REVIEW_REQUIRED", "filer": ""}
     rule = DEBTOR_PARTY_RULES.get(signal_type)
+    # candidate debtor parties, in the rule's name_type preference order
+    candidates: list[str] = []
     if rule:
         for want in rule:
             for party in parties:
                 if want in (party.get("name_type") or "").upper():
-                    return party.get("name", "")
-        # rule produced no party match — fall through to the default ranking
+                    nm = (party.get("name") or "").strip()
+                    if nm and nm not in candidates:
+                        candidates.append(nm)
     else:
-        print(f"[warn] no debtor-party rule for signal_type={signal_type!r}; "
-              f"using default ranking", file=sys.stderr)
-    def rank(party):
-        nt = (party.get("name_type") or "").upper()
-        if "DEFENDANT" in nt:
-            return 0
-        if "GRANTOR" in nt:
-            return 1
-        if "PLAINTIFF" in nt:
-            return 3
-        return 2
-    return sorted(parties, key=rank)[0].get("name", "")
+        print(f"[warn] no debtor-party rule for signal_type={signal_type!r}",
+              file=sys.stderr)
+        candidates = [(p.get("name") or "").strip() for p in parties
+                      if (p.get("name") or "").strip()]
+    # first candidate that is NOT a suppressed filer entity is the debtor
+    for nm in candidates:
+        if not is_suppressed_filer(nm):
+            return {"debtor": nm, "status": "OK", "filer": ""}
+    # no usable debtor — REVIEW_REQUIRED. Capture the filer: a suppressed
+    # rule-match if we have one, else the GRANTOR / PLAINTIFF / first party.
+    filer = next((nm for nm in candidates if is_suppressed_filer(nm)), "")
+    if not filer:
+        for kind in ("GRANTOR", "PLAINTIFF", "SECURE PARTY"):
+            for p in parties:
+                if kind in (p.get("name_type") or "").upper():
+                    filer = (p.get("name") or "").strip()
+                    break
+            if filer:
+                break
+    if not filer:
+        filer = (parties[0].get("name") or "").strip()
+    return {"debtor": "", "status": "REVIEW_REQUIRED", "filer": filer}
 
 
 def main() -> int:
@@ -248,9 +315,13 @@ def main() -> int:
             inum = p.get("instrument_number", "")
             signal_type = p.get("signal_type", "lien")
             parties = p.get("parties", []) or []
-            distressed = pick_distressed_party(parties, signal_type)
+            party = pick_distressed_party(parties, signal_type)
+            distressed = party["debtor"]
+            review_required = party["status"] == "REVIEW_REQUIRED"
+            filer_entity = party["filer"]
 
-            enrich = epcad_lookup(distressed, client) if distressed else None
+            enrich = (epcad_lookup(distressed, client)
+                      if distressed and not review_required else None)
 
             sig = {
                 "signal_id": f"clk_{inum}",
@@ -265,6 +336,8 @@ def main() -> int:
                 "doc_type_raw": p.get("doc_type_raw"),
                 "book": p.get("book"), "page": p.get("page"),
                 "distressed_party": distressed,
+                "review_required": review_required,
+                "filer_entity": filer_entity,
                 "all_parties": parties,
                 "evidence_id": f"ev_clk_{inum}",
                 "enrichment": enrich,
@@ -287,6 +360,12 @@ def main() -> int:
         if e and e.get("epcad_geo_id"):
             key = f"PARCEL::{e['epcad_geo_id']}"
             resolution = "RESOLVED"
+        elif s.get("review_required"):
+            # Fix 1 (v5): filer-vs-debtor unresolved — the doc-type debtor
+            # was missing or only a filer entity was present. Keep the row,
+            # flag it for operator review, never let the filer be owner.
+            key = f"REVIEW::{s['signal_type']}::{s['instrument_number']}"
+            resolution = "REVIEW_REQUIRED"
         else:
             unresolved_seq += 1
             key = f"UNRESOLVED::{s['distressed_party']}::{s['instrument_number']}"
@@ -294,8 +373,12 @@ def main() -> int:
 
         lead = leads.get(key)
         if lead is None:
-            owner_name = (e or {}).get("owner_name") or s["distressed_party"]
-            owner_type = classify_owner_type(owner_name)
+            if resolution == "REVIEW_REQUIRED":
+                owner_name = f"{s['signal_label']} against unidentified party"
+                owner_type = "UNKNOWN"
+            else:
+                owner_name = (e or {}).get("owner_name") or s["distressed_party"]
+                owner_type = classify_owner_type(owner_name)
             situs = (e or {}).get("situs") or {}
             mailing = (e or {}).get("mailing") or {}
             absentee = bool(situs.get("full") and mailing.get("full")
@@ -304,6 +387,9 @@ def main() -> int:
             lead = {
                 "lead_id": key.replace("::", "_").replace(" ", "_")[:80],
                 "parcel_resolution_status": resolution,
+                "epcad_enrichment_status": "ENRICHED" if e else "UNENRICHED",
+                "filer_entity": (s.get("filer_entity", "")
+                                 if resolution == "REVIEW_REQUIRED" else ""),
                 "parcel_id": (e or {}).get("epcad_geo_id", ""),
                 "owner_name": owner_name,
                 "owner_type": owner_type,
@@ -444,11 +530,14 @@ def main() -> int:
     ot_dist: dict[str, int] = {}
     for l in rows:
         ot_dist[l["owner_type"]] = ot_dist.get(l["owner_type"], 0) + 1
+    review = sum(1 for l in rows
+                 if l["parcel_resolution_status"] == "REVIEW_REQUIRED")
     print(f"\n=== clerk_recordings pipeline summary ===")
     print(f"raw records:        {len(raw_records)}")
     print(f"matched_leads:      {len(rows)}")
     print(f"EPCAD resolved:     {resolved} / {len(rows)}  "
           f"({100*resolved//max(len(rows),1)}%)")
+    print(f"REVIEW_REQUIRED:    {review}  (filer-vs-debtor unresolved)")
     print(f"signal_type dist:   {st_dist}")
     print(f"stacking dist:      {stack}")
     print(f"owner_type dist:    {ot_dist}")

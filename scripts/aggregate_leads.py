@@ -42,7 +42,10 @@ SIGNAL_PRIORITY = {
 
 def dedup_signals(signals: list[dict]) -> list[dict]:
     """Collapse identical signal_type entries into one with a count
-    (Fix 2). Sums counts and unions source_urls / evidence_ids."""
+    (Fix 2 / Fix 3). Sums counts and unions source_urls / evidence_ids /
+    instrument_numbers — so one parcel with N recordings of one distress
+    type renders ONE chip carrying N distinct instrument numbers, and the
+    cross-source merge never re-counts a signal already deduped per-source."""
     by: dict[str, dict] = {}
     for s in signals:
         st = s["signal_type"]
@@ -54,6 +57,8 @@ def dedup_signals(signals: list[dict]) -> list[dict]:
                                     ([s["source_url"]] if s.get("source_url") else []))
             m["evidence_ids"] = list(s.get("evidence_ids") or
                                      ([s["evidence_id"]] if s.get("evidence_id") else []))
+            m["instrument_numbers"] = list(s.get("instrument_numbers") or
+                ([s["instrument_number"]] if s.get("instrument_number") else []))
             by[st] = m
         else:
             m["count"] = m.get("count", 1) + s.get("count", 1)
@@ -63,6 +68,10 @@ def dedup_signals(signals: list[dict]) -> list[dict]:
             for ev in (s.get("evidence_ids") or []):
                 if ev not in m["evidence_ids"]:
                     m["evidence_ids"].append(ev)
+            for ino in (s.get("instrument_numbers") or
+                        ([s["instrument_number"]] if s.get("instrument_number") else [])):
+                if ino not in m["instrument_numbers"]:
+                    m["instrument_numbers"].append(ino)
             if (s.get("recorded_date") or "") > (m.get("recorded_date") or ""):
                 m["recorded_date"] = s.get("recorded_date")
     return list(by.values())
@@ -125,6 +134,15 @@ def main() -> int:
 
     resolved = sum(1 for r in kept
                    if r.get("parcel_resolution_status") == "RESOLVED")
+    review = sum(1 for r in kept
+                 if r.get("parcel_resolution_status") == "REVIEW_REQUIRED")
+    # ACTIONABLE: the operator can work the lead now — it names a real
+    # distressed party (not a "...unidentified party" placeholder) and
+    # points at a property (situs address or legal description).
+    actionable = sum(
+        1 for r in kept
+        if "unidentified party" not in (r.get("owner_name") or "").lower()
+        and (r.get("property_full_address") or r.get("legal_description")))
     payload = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "county": "El Paso", "state": "TX",
@@ -135,7 +153,9 @@ def main() -> int:
         "sources_active": sources_active,
         "lead_total": len(kept),
         "epcad_enrichment_resolved": resolved,
-        "epcad_enrichment_unresolved": len(kept) - resolved,
+        "epcad_enrichment_unresolved": len(kept) - resolved - review,
+        "review_required": review,
+        "actionable_leads": actionable,
         "records": kept,
     }
     LEADS.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
@@ -154,6 +174,9 @@ def main() -> int:
     print(f"lead_total:         {len(kept)}  (stacked onto existing: {stacked}, "
           f"new: {added_new}, dropped no-primary: {dropped})")
     print(f"EPCAD resolved:     {resolved}")
+    print(f"REVIEW_REQUIRED:    {review}  (filer-vs-debtor unresolved)")
+    print(f"ACTIONABLE leads:   {actionable} / {len(kept)} "
+          f"({100*actionable//max(len(kept),1)}%)")
     print(f"signal_type dist:   {dict(st.most_common())}")
     print(f"stacking dist:      {dict(sorted(stack.items()))}")
     return 0
