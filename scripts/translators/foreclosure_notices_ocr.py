@@ -212,6 +212,11 @@ def main() -> int:
         lr = listing.get(fp.name, {})
         rec["listing_sale_date"] = lr.get("sale_date", "")
         rec["listing_url"] = lr.get("listing_url", "")
+        # carry the listing-page structured fields — always present,
+        # the reliable lead base independent of OCR/EPCAD success
+        for k in ("instrument_number", "subdivision", "lot", "block",
+                  "unit", "tract", "page_count"):
+            rec[f"listing_{k}"] = lr.get(k, "")
         got = len(REQUIRED) - len(rec["missing_fields"])
         if got == len(REQUIRED):
             full += 1

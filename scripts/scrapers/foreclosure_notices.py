@@ -48,8 +48,13 @@ GETDOCURL = ROOT + "/GetDocumentURL/"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 
-DATE_FROM = "05/18/2026"
-DATE_TO = "09/30/2026"
+# Full currently-relevant set — recent (~6 weeks back) + all upcoming
+# foreclosure sales. Portal counts quantize to 102 (today-forward) /
+# 359 (Apr-onward) / 455 / 500 (hard cap); a "234" count is not
+# reproducible (live portal has grown). 04/01 start captures the recent
+# + upcoming set without padding with months of completed-sale history.
+DATE_FROM = "04/01/2026"
+DATE_TO = "12/31/2030"
 PAGE_CAP = 25
 RECYCLE_EVERY = 8        # fetch this many docs per session, then recycle
 FETCH_DELAY = 1.5
@@ -121,7 +126,13 @@ def collect_ids(pg) -> list[dict]:
             a = tr.locator("a[id]").first
             fid = a.get_attribute("id") if a.count() else None
             if fid:
+                # Capture the full listing row — the structured legal
+                # description (subdivision/lot/block/unit/tract) is a
+                # reliable, always-present join key and lead identifier.
                 rows.append({"foreclosure_id": fid, "page": pageno,
+                             "instrument_number": tds[0],
+                             "subdivision": tds[1], "lot": tds[2],
+                             "block": tds[3], "unit": tds[4], "tract": tds[5],
                              "page_count": tds[6], "sale_date": tds[7]})
     return rows, total
 
@@ -198,13 +209,18 @@ def main() -> int:
                 (PDF_DIR / fn).write_bytes(_captured[-1])
                 listing.append({
                     "row_index": seq, "foreclosure_id": row["foreclosure_id"],
-                    "page": row["page"], "sale_date": row["sale_date"],
+                    "page": row["page"],
+                    "instrument_number": row.get("instrument_number", ""),
+                    "subdivision": row.get("subdivision", ""),
+                    "lot": row.get("lot", ""), "block": row.get("block", ""),
+                    "unit": row.get("unit", ""), "tract": row.get("tract", ""),
+                    "sale_date": row["sale_date"],
                     "page_count": row["page_count"],
                     "listing_url": (RESULTS + (f"?page={row['page']}"
                                                if row["page"] > 1 else "")),
                     "pdf_path": f"data/el_paso_tx/raw/foreclosure_notices/pdfs/{fn}",
                     "pdf_filename": fn,
-                    "fetched_at": datetime.now(timezone.utc).strftime(
+                    "scraped_at": datetime.now(timezone.utc).strftime(
                         "%Y-%m-%dT%H:%M:%SZ"),
                 })
                 if seq % 10 == 0:

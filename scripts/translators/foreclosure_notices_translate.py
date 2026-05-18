@@ -193,6 +193,8 @@ def _parse_mail(addr: str) -> dict:
     return out
 
 
+
+
 def main() -> int:
     if not EXTRACTED.exists():
         print(f"extracted.jsonl not found: {EXTRACTED}", file=sys.stderr)
@@ -202,33 +204,64 @@ def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
 
     leads = []
-    resolved = 0
+    enriched = 0
+    addr_n = debtor_n = doc_n = lender_n = 0
     t0 = time.time()
     with httpx.Client(headers={"User-Agent": "Mozilla/5.0",
                                "Accept": "application/json"},
                       follow_redirects=True) as client:
         for i, n in enumerate(notices):
-            situs = parse_situs(n.get("common_street_address", ""))
-            debtors = n.get("debtor_names") or []
-            e = epcad_by_address(situs, debtors, client)
+            # --- listing-page base: always present, the reliable lead core ---
+            sub = n.get("listing_subdivision", "")
+            lot, blk = n.get("listing_lot", ""), n.get("listing_block", "")
+            unit, tract = n.get("listing_unit", ""), n.get("listing_tract", "")
+            legal_parts = []
+            if sub:
+                legal_parts.append(sub)
+            if lot:
+                legal_parts.append(f"LOT {lot}")
+            if blk:
+                legal_parts.append(f"BLK {blk}")
+            if unit:
+                legal_parts.append(f"UNIT {unit}")
+            if tract:
+                legal_parts.append(f"TRACT {tract}")
+            legal_description = " ".join(legal_parts).strip()
             sale_date = n.get("sale_date") or n.get("listing_sale_date") or ""
-            pdf_url = ("https://apps.epcountytx.gov/publicrecords/Foreclosures"
-                       + "  (" + n.get("pdf_filename", "") + ")")
-            instr = n.get("dot_document_number") or n.get("pdf_filename", "")
+            instrument = (n.get("listing_instrument_number")
+                          or n.get("dot_document_number")
+                          or n.get("pdf_filename", ""))
 
+            # --- PDF-extracted (bonus) ---
+            pdf_address = n.get("common_street_address", "")
+            debtors = n.get("debtor_names") or []
+            doc_num = n.get("dot_document_number", "")
+            lender = n.get("lender_beneficiary", "")
+            if pdf_address:
+                addr_n += 1
+            if debtors:
+                debtor_n += 1
+            if doc_num:
+                doc_n += 1
+            if lender:
+                lender_n += 1
+
+            # --- EPCAD enrichment: OPTIONAL bonus, never gates the lead ---
+            e = None
+            if pdf_address:
+                e = epcad_by_address(parse_situs(pdf_address), debtors, client)
             if e and e.get("geo_id"):
-                resolved += 1
+                enriched += 1
+                epcad_status = "ENRICHED"
                 owner = e["owner_name"] or (debtors[0] if debtors else "")
                 mail = _parse_mail(e["mailing"])
                 lead = {
                     "lead_id": f"PARCEL_{e['geo_id']}",
                     "parcel_resolution_status": "RESOLVED",
+                    "epcad_enrichment_status": "ENRICHED",
                     "parcel_id": e["geo_id"],
                     "owner_name": owner,
-                    "owner_type": classify_owner_type(owner),
-                    "property_full_address": e["situs"],
-                    "property_street": situs["street"], "property_city": situs["city"],
-                    "property_state": "TX", "property_zip": situs["zip"],
+                    "property_full_address": e["situs"] or pdf_address,
                     "mailing_full_address": e["mailing"],
                     "mailing_city": "", "mailing_state": mail["state"],
                     "assessed_value": e.get("assessed_value"),
@@ -239,24 +272,34 @@ def main() -> int:
                                                 and e["mailing"] != e["situs"]),
                     "out_of_state_owner_flag": bool(mail["state"]
                                                     and mail["state"] != "TX"),
-                    "legal_description": n.get("legal_description", ""),
                 }
             else:
-                owner = debtors[0] if debtors else "(unknown debtor)"
+                # No EPCAD match — the lead is STILL complete. The
+                # foreclosure_notice originates it; listing + PDF data
+                # resolve it. parcel_resolution_status is RESOLVED.
+                epcad_status = "UNENRICHED"
+                owner = debtors[0] if debtors else ""
                 lead = {
-                    "lead_id": f"UNRESOLVED_fcl_{instr}_{i}",
-                    "parcel_resolution_status": "UNRESOLVED",
-                    "parcel_id": "", "owner_name": owner,
-                    "owner_type": classify_owner_type(owner),
-                    "property_full_address": situs["full"],
-                    "property_street": situs["street"], "property_city": situs["city"],
-                    "property_state": "TX", "property_zip": situs["zip"],
-                    "mailing_full_address": "", "mailing_city": "", "mailing_state": "",
+                    "lead_id": f"FCL_{instrument}_{i}",
+                    "parcel_resolution_status": "RESOLVED",
+                    "epcad_enrichment_status": "UNENRICHED",
+                    "parcel_id": "",
+                    "owner_name": owner,
+                    "property_full_address": pdf_address,
+                    "mailing_full_address": "",
+                    "mailing_city": "", "mailing_state": "",
                     "assessed_value": None, "appraised_value": None,
                     "homestead": None, "absentee_owner_flag": False,
                     "out_of_state_owner_flag": False,
-                    "legal_description": n.get("legal_description", ""),
                 }
+            su = parse_situs(pdf_address)
+            lead["owner_type"] = classify_owner_type(owner) if owner else "UNKNOWN"
+            lead["property_street"] = su["street"]
+            lead["property_city"] = su["city"]
+            lead["property_state"] = "TX"
+            lead["property_zip"] = su["zip"]
+            lead["legal_description"] = legal_description
+
             sig = {
                 "signal_type": "foreclosure_notice",
                 "signal_label": "Foreclosure Notice",
@@ -265,23 +308,26 @@ def main() -> int:
                 "source_id": "foreclosure_notices",
                 "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
                 "sale_date": sale_date,
-                "dot_document_number": n.get("dot_document_number", ""),
-                "lender": n.get("lender_beneficiary", ""),
+                "dot_document_number": doc_num,
+                "lender_beneficiary": lender,
+                "mortgage_servicer": n.get("mortgage_servicer", ""),
                 "debtor_names": debtors,
+                "subdivision": sub, "lot": lot, "block": blk, "unit": unit,
                 "recorded_date": n.get("listing_sale_date", ""),
-                "instrument_number": n.get("dot_document_number", ""),
-                "evidence_id": f"ev_fcl_{n.get('pdf_filename','')}",
-                "source_urls": [pdf_url],
-                "evidence_ids": [n.get("pdf_filename", "")],
+                "instrument_number": instrument,
+                "evidence_id": f"ev_fcl_{n.get('pdf_filename', '')}",
+                "source_urls": ["https://apps.epcountytx.gov/publicrecords/Foreclosures"],
+                "evidence_ids": [instrument],
                 "count": 1,
             }
             lead["signals"] = [sig]
             lead["signal_types"] = ["foreclosure_notice"]
-            lead["source_urls"] = [sig["source_url"]]
+            lead["source_urls"] = list(sig["source_urls"])
             lead["signal_count"] = 1
             lead["primary_signal"] = "foreclosure_notice"
             lead["latest_event_date"] = sale_date
-            # estate/trust stacked signal from EPCAD owner name
+            # estate/trust stacked signal (detected on the owner — EPCAD
+            # owner name when enriched, else the PDF debtor name)
             ot = lead["owner_type"]
             if ot in ("ESTATE", "TRUST"):
                 lead["signals"].append({
@@ -297,7 +343,7 @@ def main() -> int:
                 lead["signal_types"].append(lead["signals"][-1]["signal_type"])
                 lead["signal_count"] = 2
             leads.append(lead)
-            if (i + 1) % 25 == 0:
+            if (i + 1) % 50 == 0:
                 print(f"  translated {i+1}/{len(notices)} ({time.time()-t0:.0f}s)",
                       file=sys.stderr)
 
@@ -305,13 +351,15 @@ def main() -> int:
         for l in leads:
             fh.write(json.dumps(l, ensure_ascii=False) + "\n")
 
-    fut = sum(1 for l in leads
-              if (l["signals"][0]["sale_date"] or "") >= "2026-05-18")
-    print(f"\n=== foreclosure_notices translator ===")
-    print(f"notices:            {len(notices)}")
-    print(f"matched_leads:      {len(leads)}")
-    print(f"EPCAD-resolved:     {resolved} ({100*resolved//max(len(leads),1)}%)")
-    print(f"UNRESOLVED:         {len(leads)-resolved}")
+    n = len(leads)
+    print(f"\n=== foreclosure_notices translator (v2) ===")
+    print(f"matched_leads:        {n}  (every notice emits a lead — no UNRESOLVED)")
+    print(f"EPCAD enrichment:     ENRICHED {enriched} / UNENRICHED {n-enriched} "
+          f"({100*enriched//max(n,1)}% enriched — bonus context, not required)")
+    print(f"PDF address extracted:{addr_n}/{n}")
+    print(f"debtor names:         {debtor_n}/{n}")
+    print(f"DoT document number:  {doc_n}/{n}")
+    print(f"lender:               {lender_n}/{n}")
     print(f"wrote {OUT.relative_to(REPO)}")
     return 0
 
