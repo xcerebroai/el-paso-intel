@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-18T19:57:10Z",
+  "generated_at": "2026-05-19T13:20:32Z",
   "county": "El Paso",
   "state": "TX",
   "build_label": "SOURCE_LIMITED",
@@ -7,9 +7,9 @@
   "sources_active": [
     "clerk_recordings"
   ],
-  "lead_total": 1289,
-  "epcad_enrichment_resolved": 158,
-  "epcad_enrichment_unresolved": 1131,
+  "lead_total": 1286,
+  "epcad_enrichment_resolved": 159,
+  "epcad_enrichment_unresolved": 1127,
   "records": [
     {
       "lead_id": "UNRESOLVED_SERRANO_ANDREW_20260000971",
@@ -24599,56 +24599,76 @@
       "latest_event_date": "01/08/2026"
     },
     {
-      "lead_id": "UNRESOLVED_EL_PASO_TREE_SERVICES_LLC_20260002450",
-      "parcel_resolution_status": "UNRESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
+      "lead_id": "PARCEL_C702000000C0100",
+      "parcel_resolution_status": "RESOLVED",
+      "epcad_enrichment_status": "ENRICHED",
       "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "EL PASO TREE SERVICES LLC",
-      "owner_type": "ENTITY",
-      "property_full_address": "",
-      "property_street": "",
+      "parcel_id": "C702000000C0100",
+      "owner_name": "CATHOLIC DIOCESE OF EL PASO",
+      "owner_type": "INDIVIDUAL",
+      "property_full_address": "13099 ROBERT ALVAREZ DR CLINT, TX 79836",
+      "property_street": "13099 ROBERT ALVAREZ DR CLINT",
       "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
+      "property_state": "TX",
+      "property_zip": "79836",
+      "mailing_full_address": "499 SAINT MATTHEWS ST EL PASO TX 79907-4214",
       "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
+      "mailing_state": "TX",
+      "assessed_value": 18438.0,
+      "appraised_value": 18438.0,
+      "homestead": "HOMESTEAD",
+      "absentee_owner_flag": true,
       "out_of_state_owner_flag": false,
-      "legal_description": "",
+      "legal_description": "C COBOS CLINT                     1 TO 3 (7200 SQ FT)",
       "signals": [
         {
           "signal_type": "state_tax_lien",
           "signal_label": "State Tax Lien",
           "signal_confidence": "HIGH",
           "source_id": "clerk_recordings",
-          "count": 1,
+          "count": 6,
           "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260002450"
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260002450",
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260011316",
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260015655",
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260029377",
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260033811",
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260039281"
           ],
           "evidence_ids": [
-            "ev_clk_20260002450"
+            "ev_clk_20260002450",
+            "ev_clk_20260011316",
+            "ev_clk_20260015655",
+            "ev_clk_20260029377",
+            "ev_clk_20260033811",
+            "ev_clk_20260039281"
           ],
           "instrument_numbers": [
-            "20260002450"
+            "20260002450",
+            "20260011316",
+            "20260015655",
+            "20260029377",
+            "20260033811",
+            "20260039281"
           ],
           "doc_type_raw": "STL - STATE TAX LIEN",
-          "recorded_date": "01/08/2026"
+          "recorded_date": "05/11/2026"
         }
       ],
       "signal_types": [
         "state_tax_lien"
       ],
       "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260002450"
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260002450",
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260011316",
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260015655",
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260029377",
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260033811",
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260039281"
       ],
       "signal_count": 1,
       "primary_signal": "state_tax_lien",
-      "latest_event_date": "01/08/2026"
+      "latest_event_date": "05/11/2026"
     },
     {
       "lead_id": "UNRESOLVED_VENEGAS_GERARDO_20260002451",
@@ -28447,58 +28467,6 @@
       "latest_event_date": "02/11/2026"
     },
     {
-      "lead_id": "UNRESOLVED_EL_PASO_METTA_LLC_20260011316",
-      "parcel_resolution_status": "UNRESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "EL PASO METTA LLC",
-      "owner_type": "ENTITY",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "state_tax_lien",
-          "signal_label": "State Tax Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260011316"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260011316"
-          ],
-          "instrument_numbers": [
-            "20260011316"
-          ],
-          "doc_type_raw": "STL - STATE TAX LIEN",
-          "recorded_date": "02/11/2026"
-        }
-      ],
-      "signal_types": [
-        "state_tax_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260011316"
-      ],
-      "signal_count": 1,
-      "primary_signal": "state_tax_lien",
-      "latest_event_date": "02/11/2026"
-    },
-    {
       "lead_id": "UNRESOLVED_SRG_GONZO_INC_20260011317",
       "parcel_resolution_status": "UNRESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
@@ -30057,58 +30025,6 @@
       "signal_count": 1,
       "primary_signal": "state_tax_lien",
       "latest_event_date": "02/24/2026"
-    },
-    {
-      "lead_id": "UNRESOLVED_EL_PASO_MSO_LLC_20260015655",
-      "parcel_resolution_status": "UNRESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "EL PASO MSO LLC",
-      "owner_type": "ENTITY",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "state_tax_lien",
-          "signal_label": "State Tax Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260015655"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260015655"
-          ],
-          "instrument_numbers": [
-            "20260015655"
-          ],
-          "doc_type_raw": "STL - STATE TAX LIEN",
-          "recorded_date": "02/25/2026"
-        }
-      ],
-      "signal_types": [
-        "state_tax_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260015655"
-      ],
-      "signal_count": 1,
-      "primary_signal": "state_tax_lien",
-      "latest_event_date": "02/25/2026"
     },
     {
       "lead_id": "UNRESOLVED_L.E.M._ASSOCIATES_CO_20260015657",
@@ -34947,58 +34863,6 @@
       "latest_event_date": "04/13/2026"
     },
     {
-      "lead_id": "UNRESOLVED_EL_PASO_METTA_LLC_20260029377",
-      "parcel_resolution_status": "UNRESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "EL PASO METTA LLC",
-      "owner_type": "ENTITY",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "state_tax_lien",
-          "signal_label": "State Tax Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260029377"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260029377"
-          ],
-          "instrument_numbers": [
-            "20260029377"
-          ],
-          "doc_type_raw": "STL - STATE TAX LIEN",
-          "recorded_date": "04/13/2026"
-        }
-      ],
-      "signal_types": [
-        "state_tax_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260029377"
-      ],
-      "signal_count": 1,
-      "primary_signal": "state_tax_lien",
-      "latest_event_date": "04/13/2026"
-    },
-    {
       "lead_id": "UNRESOLVED_SRG_GONZO_INC_20260029378",
       "parcel_resolution_status": "UNRESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
@@ -36397,58 +36261,6 @@
       ],
       "source_urls": [
         "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260033803"
-      ],
-      "signal_count": 1,
-      "primary_signal": "state_tax_lien",
-      "latest_event_date": "04/23/2026"
-    },
-    {
-      "lead_id": "UNRESOLVED_EL_PASO_VISTA_HY_LLC_20260033811",
-      "parcel_resolution_status": "UNRESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "EL PASO VISTA HY LLC",
-      "owner_type": "ENTITY",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "state_tax_lien",
-          "signal_label": "State Tax Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260033811"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260033811"
-          ],
-          "instrument_numbers": [
-            "20260033811"
-          ],
-          "doc_type_raw": "STL - STATE TAX LIEN",
-          "recorded_date": "04/23/2026"
-        }
-      ],
-      "signal_types": [
-        "state_tax_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260033811"
       ],
       "signal_count": 1,
       "primary_signal": "state_tax_lien",
@@ -38847,58 +38659,6 @@
       "latest_event_date": "05/11/2026"
     },
     {
-      "lead_id": "UNRESOLVED_EL_PASO_XCS_LLC_20260039281",
-      "parcel_resolution_status": "UNRESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "EL PASO XCS LLC",
-      "owner_type": "ENTITY",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "state_tax_lien",
-          "signal_label": "State Tax Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260039281"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260039281"
-          ],
-          "instrument_numbers": [
-            "20260039281"
-          ],
-          "doc_type_raw": "STL - STATE TAX LIEN",
-          "recorded_date": "05/11/2026"
-        }
-      ],
-      "signal_types": [
-        "state_tax_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260039281"
-      ],
-      "signal_count": 1,
-      "primary_signal": "state_tax_lien",
-      "latest_event_date": "05/11/2026"
-    },
-    {
       "lead_id": "UNRESOLVED_OLD_SHEEPDOG_BREWERY_LLC_20260039282",
       "parcel_resolution_status": "UNRESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
@@ -39417,6 +39177,162 @@
       "signal_count": 1,
       "primary_signal": "state_tax_lien",
       "latest_event_date": "05/11/2026"
+    },
+    {
+      "lead_id": "UNRESOLVED_LAS_BANDERAS_STOP_&_SHOP_LLC_20260040027",
+      "parcel_resolution_status": "UNRESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "filer_entity": "",
+      "parcel_id": "",
+      "owner_name": "LAS BANDERAS STOP & SHOP LLC",
+      "owner_type": "ENTITY",
+      "property_full_address": "",
+      "property_street": "",
+      "property_city": "",
+      "property_state": "",
+      "property_zip": "",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "legal_description": "",
+      "signals": [
+        {
+          "signal_type": "state_tax_lien",
+          "signal_label": "State Tax Lien",
+          "signal_confidence": "HIGH",
+          "source_id": "clerk_recordings",
+          "count": 1,
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040027"
+          ],
+          "evidence_ids": [
+            "ev_clk_20260040027"
+          ],
+          "instrument_numbers": [
+            "20260040027"
+          ],
+          "doc_type_raw": "STL - STATE TAX LIEN",
+          "recorded_date": "05/12/2026"
+        }
+      ],
+      "signal_types": [
+        "state_tax_lien"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040027"
+      ],
+      "signal_count": 1,
+      "primary_signal": "state_tax_lien",
+      "latest_event_date": "05/12/2026"
+    },
+    {
+      "lead_id": "UNRESOLVED_THE_SPOT_SMOKE_SHOP_LLC_20260040030",
+      "parcel_resolution_status": "UNRESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "filer_entity": "",
+      "parcel_id": "",
+      "owner_name": "THE SPOT SMOKE SHOP LLC",
+      "owner_type": "ENTITY",
+      "property_full_address": "",
+      "property_street": "",
+      "property_city": "",
+      "property_state": "",
+      "property_zip": "",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "legal_description": "",
+      "signals": [
+        {
+          "signal_type": "state_tax_lien",
+          "signal_label": "State Tax Lien",
+          "signal_confidence": "HIGH",
+          "source_id": "clerk_recordings",
+          "count": 1,
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040030"
+          ],
+          "evidence_ids": [
+            "ev_clk_20260040030"
+          ],
+          "instrument_numbers": [
+            "20260040030"
+          ],
+          "doc_type_raw": "STL - STATE TAX LIEN",
+          "recorded_date": "05/12/2026"
+        }
+      ],
+      "signal_types": [
+        "state_tax_lien"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040030"
+      ],
+      "signal_count": 1,
+      "primary_signal": "state_tax_lien",
+      "latest_event_date": "05/12/2026"
+    },
+    {
+      "lead_id": "UNRESOLVED_MY_LITTLE_ANGEL_TRUCKING_LLC_20260040229",
+      "parcel_resolution_status": "UNRESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "filer_entity": "",
+      "parcel_id": "",
+      "owner_name": "MY LITTLE ANGEL TRUCKING LLC",
+      "owner_type": "ENTITY",
+      "property_full_address": "",
+      "property_street": "",
+      "property_city": "",
+      "property_state": "",
+      "property_zip": "",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "legal_description": "",
+      "signals": [
+        {
+          "signal_type": "state_tax_lien",
+          "signal_label": "State Tax Lien",
+          "signal_confidence": "HIGH",
+          "source_id": "clerk_recordings",
+          "count": 1,
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040229"
+          ],
+          "evidence_ids": [
+            "ev_clk_20260040229"
+          ],
+          "instrument_numbers": [
+            "20260040229"
+          ],
+          "doc_type_raw": "STL - STATE TAX LIEN",
+          "recorded_date": "05/13/2026"
+        }
+      ],
+      "signal_types": [
+        "state_tax_lien"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040229"
+      ],
+      "signal_count": 1,
+      "primary_signal": "state_tax_lien",
+      "latest_event_date": "05/13/2026"
     },
     {
       "lead_id": "UNRESOLVED_TORRES_ISIDRO_20260000342",
@@ -40849,58 +40765,6 @@
       "signal_count": 1,
       "primary_signal": "mechanics_lien",
       "latest_event_date": "04/16/2026"
-    },
-    {
-      "lead_id": "REVIEW_mechanics_lien_20260040592",
-      "parcel_resolution_status": "REVIEW_REQUIRED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "Mechanics Lien against unidentified party",
-      "owner_type": "UNKNOWN",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "mechanics_lien",
-          "signal_label": "Mechanics Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040592"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260040592"
-          ],
-          "instrument_numbers": [
-            "20260040592"
-          ],
-          "doc_type_raw": "MEL - MECHANICS LIEN",
-          "recorded_date": "05/14/2026"
-        }
-      ],
-      "signal_types": [
-        "mechanics_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040592"
-      ],
-      "signal_count": 1,
-      "primary_signal": "mechanics_lien",
-      "latest_event_date": "05/14/2026"
     },
     {
       "lead_id": "REVIEW_mechanics_lien_20260040889",
@@ -64360,7 +64224,7 @@
           "signal_label": "Executor's Deed",
           "signal_confidence": "HIGH",
           "source_id": "clerk_recordings",
-          "count": 10,
+          "count": 11,
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016600",
             "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016601",
@@ -64371,7 +64235,8 @@
             "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016606",
             "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016607",
             "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016608",
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016609"
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016609",
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040330"
           ],
           "evidence_ids": [
             "ev_clk_20260016600",
@@ -64383,7 +64248,8 @@
             "ev_clk_20260016606",
             "ev_clk_20260016607",
             "ev_clk_20260016608",
-            "ev_clk_20260016609"
+            "ev_clk_20260016609",
+            "ev_clk_20260040330"
           ],
           "instrument_numbers": [
             "20260016600",
@@ -64395,10 +64261,11 @@
             "20260016606",
             "20260016607",
             "20260016608",
-            "20260016609"
+            "20260016609",
+            "20260040330"
           ],
           "doc_type_raw": "EXR - EXECUTORS DEED / EXECUTRIX DEED",
-          "recorded_date": "02/27/2026"
+          "recorded_date": "05/13/2026"
         }
       ],
       "signal_types": [
@@ -64414,11 +64281,12 @@
         "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016606",
         "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016607",
         "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016608",
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016609"
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260016609",
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040330"
       ],
       "signal_count": 1,
       "primary_signal": "executor_deed",
-      "latest_event_date": "02/27/2026"
+      "latest_event_date": "05/13/2026"
     },
     {
       "lead_id": "UNRESOLVED_BRUMLEY_LEWIS_VERNON_EST_OF_20260016747",
