@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T13:20:32Z",
+  "generated_at": "2026-05-20T13:05:40Z",
   "county": "El Paso",
   "state": "TX",
   "build_label": "SOURCE_LIMITED",
@@ -7,9 +7,9 @@
   "sources_active": [
     "clerk_recordings"
   ],
-  "lead_total": 1286,
+  "lead_total": 1284,
   "epcad_enrichment_resolved": 159,
-  "epcad_enrichment_unresolved": 1127,
+  "epcad_enrichment_unresolved": 1125,
   "records": [
     {
       "lead_id": "UNRESOLVED_SERRANO_ANDREW_20260000971",
@@ -40767,162 +40767,6 @@
       "latest_event_date": "04/16/2026"
     },
     {
-      "lead_id": "REVIEW_mechanics_lien_20260040889",
-      "parcel_resolution_status": "REVIEW_REQUIRED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "Mechanics Lien against unidentified party",
-      "owner_type": "UNKNOWN",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "mechanics_lien",
-          "signal_label": "Mechanics Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040889"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260040889"
-          ],
-          "instrument_numbers": [
-            "20260040889"
-          ],
-          "doc_type_raw": "MEL - MECHANICS LIEN",
-          "recorded_date": "05/15/2026"
-        }
-      ],
-      "signal_types": [
-        "mechanics_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040889"
-      ],
-      "signal_count": 1,
-      "primary_signal": "mechanics_lien",
-      "latest_event_date": "05/15/2026"
-    },
-    {
-      "lead_id": "REVIEW_mechanics_lien_20260040942",
-      "parcel_resolution_status": "REVIEW_REQUIRED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "Mechanics Lien against unidentified party",
-      "owner_type": "UNKNOWN",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "mechanics_lien",
-          "signal_label": "Mechanics Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040942"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260040942"
-          ],
-          "instrument_numbers": [
-            "20260040942"
-          ],
-          "doc_type_raw": "MEL - MECHANICS LIEN",
-          "recorded_date": "05/15/2026"
-        }
-      ],
-      "signal_types": [
-        "mechanics_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260040942"
-      ],
-      "signal_count": 1,
-      "primary_signal": "mechanics_lien",
-      "latest_event_date": "05/15/2026"
-    },
-    {
-      "lead_id": "REVIEW_mechanics_lien_20260041026",
-      "parcel_resolution_status": "REVIEW_REQUIRED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "Mechanics Lien against unidentified party",
-      "owner_type": "UNKNOWN",
-      "property_full_address": "",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "mechanics_lien",
-          "signal_label": "Mechanics Lien",
-          "signal_confidence": "HIGH",
-          "source_id": "clerk_recordings",
-          "count": 1,
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260041026"
-          ],
-          "evidence_ids": [
-            "ev_clk_20260041026"
-          ],
-          "instrument_numbers": [
-            "20260041026"
-          ],
-          "doc_type_raw": "MEL - MECHANICS LIEN",
-          "recorded_date": "05/15/2026"
-        }
-      ],
-      "signal_types": [
-        "mechanics_lien"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260041026"
-      ],
-      "signal_count": 1,
-      "primary_signal": "mechanics_lien",
-      "latest_event_date": "05/15/2026"
-    },
-    {
       "lead_id": "UNRESOLVED_BOETA_MARIA_D_20260000741",
       "parcel_resolution_status": "UNRESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
@@ -45555,27 +45399,27 @@
       "latest_event_date": "02/02/2026"
     },
     {
-      "lead_id": "PARCEL_E01499901704600",
+      "lead_id": "PARCEL_C74199902408300",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "ENRICHED",
       "filer_entity": "",
-      "parcel_id": "E01499901704600",
+      "parcel_id": "C74199902408300",
       "owner_name": "DOMINGUEZ ALFREDO",
       "owner_type": "INDIVIDUAL",
-      "property_full_address": "2920 FRUTAS AVE EL PASO, TX 79905",
-      "property_street": "2920 FRUTAS AVE EL PASO",
+      "property_full_address": "5132 ANCHORAGE AVE EL PASO, TX 79924",
+      "property_street": "5132 ANCHORAGE AVE EL PASO",
       "property_city": "",
       "property_state": "TX",
-      "property_zip": "79905",
-      "mailing_full_address": "2920 FRUTAS AVE EL PASO TX 79905-1008",
+      "property_zip": "79924",
+      "mailing_full_address": "5132 ANCHORAGE AVE EL PASO TX 79924-3343",
       "mailing_city": "",
       "mailing_state": "TX",
-      "assessed_value": 119563.0,
-      "appraised_value": 119563.0,
+      "assessed_value": 152676.0,
+      "appraised_value": 185474.0,
       "homestead": "HOMESTEAD",
       "absentee_owner_flag": true,
       "out_of_state_owner_flag": false,
-      "legal_description": "17 EAST EL PASO N 84 FT OF 19 & N 84 FT OF W 4 FT OF 18 & N 84 FT OF E 7 FT OF   20 (3024 SQ FT)",
+      "legal_description": "24 COLONIA VERDE                  LOT 42 (6000 SQ FT)",
       "signals": [
         {
           "signal_type": "hospital_lien",
@@ -67842,6 +67686,58 @@
       "signal_count": 2,
       "primary_signal": "administrator_deed",
       "latest_event_date": "05/05/2026"
+    },
+    {
+      "lead_id": "UNRESOLVED_CRAFT_WINFRED_O_JR_20260041160",
+      "parcel_resolution_status": "UNRESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "filer_entity": "",
+      "parcel_id": "",
+      "owner_name": "CRAFT WINFRED O JR",
+      "owner_type": "INDIVIDUAL",
+      "property_full_address": "",
+      "property_street": "",
+      "property_city": "",
+      "property_state": "",
+      "property_zip": "",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "legal_description": "",
+      "signals": [
+        {
+          "signal_type": "administrator_deed",
+          "signal_label": "Administrator's Deed",
+          "signal_confidence": "HIGH",
+          "source_id": "clerk_recordings",
+          "count": 1,
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260041160"
+          ],
+          "evidence_ids": [
+            "ev_clk_20260041160"
+          ],
+          "instrument_numbers": [
+            "20260041160"
+          ],
+          "doc_type_raw": "ADD - ADMINISTRATORS DEED",
+          "recorded_date": "05/15/2026"
+        }
+      ],
+      "signal_types": [
+        "administrator_deed"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/OfficialPublicRecords?doc=20260041160"
+      ],
+      "signal_count": 1,
+      "primary_signal": "administrator_deed",
+      "latest_event_date": "05/15/2026"
     }
   ]
 }
