@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T13:44:14Z",
+  "generated_at": "2026-05-21T14:04:33Z",
   "county": "El Paso",
   "state": "TX",
   "build_label": "SOURCE_LIMITED",
@@ -9,8 +9,8 @@
     "foreclosure_notices"
   ],
   "lead_total": 1641,
-  "epcad_enrichment_resolved": 515,
-  "epcad_enrichment_unresolved": 1117,
+  "epcad_enrichment_resolved": 516,
+  "epcad_enrichment_unresolved": 1116,
   "review_required": 9,
   "actionable_leads": 1617,
   "records": [
@@ -22953,8 +22953,8 @@
       "mailing_full_address": "651 LAS GRANJAS DR EL PASO TX 79932-2300",
       "mailing_city": "",
       "mailing_state": "TX",
-      "assessed_value": 794519.0,
-      "appraised_value": 794519.0,
+      "assessed_value": 762353.0,
+      "appraised_value": 762353.0,
       "homestead": "HOMESTEAD",
       "absentee_owner_flag": true,
       "out_of_state_owner_flag": false,
@@ -46598,27 +46598,27 @@
       "latest_event_date": "02/06/2026"
     },
     {
-      "lead_id": "PARCEL_C72999900403700",
+      "lead_id": "PARCEL_S83804503800050",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "ENRICHED",
       "filer_entity": "",
-      "parcel_id": "C72999900403700",
-      "owner_name": "REYES MARIA D L A",
+      "parcel_id": "S83804503800050",
+      "owner_name": "REYES MARIA",
       "owner_type": "INDIVIDUAL",
-      "property_full_address": "246 CARIBE CIR EL PASO, TX 79927",
-      "property_street": "246 CARIBE CIR EL PASO",
-      "property_city": "",
-      "property_state": "TX",
-      "property_zip": "79927",
-      "mailing_full_address": "246 CARIBE CIR EL PASO TX 79927-2828",
+      "property_full_address": " , 79928",
+      "property_street": "",
+      "property_city": "79928",
+      "property_state": "",
+      "property_zip": "",
+      "mailing_full_address": "7746 PORCHE ST EL PASO TX 79915-3942",
       "mailing_city": "",
       "mailing_state": "TX",
-      "assessed_value": 155676.0,
-      "appraised_value": 187459.0,
+      "assessed_value": 1.0,
+      "appraised_value": 1.0,
       "homestead": "HOMESTEAD",
       "absentee_owner_flag": true,
       "out_of_state_owner_flag": false,
-      "legal_description": "4 COLONIA DEL PRADO               LOT 19 (6000 SQ FT)",
+      "legal_description": "38 SUNLAND ESTATES #45            LOT 5 (    6000.00 SQ FT)",
       "signals": [
         {
           "signal_type": "hospital_lien",
@@ -55146,27 +55146,27 @@
       "latest_event_date": "01/05/2026"
     },
     {
-      "lead_id": "UNRESOLVED_SALINAS_JUAN_LUIS_20260000574",
-      "parcel_resolution_status": "UNRESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
+      "lead_id": "PARCEL_S77900001702200",
+      "parcel_resolution_status": "RESOLVED",
+      "epcad_enrichment_status": "ENRICHED",
       "filer_entity": "",
-      "parcel_id": "",
-      "owner_name": "SALINAS JUAN LUIS",
+      "parcel_id": "S77900001702200",
+      "owner_name": "BECERRIL JUAN C S & SALINAS ROSA B",
       "owner_type": "INDIVIDUAL",
-      "property_full_address": "",
-      "property_street": "",
+      "property_full_address": "1085 SUMMER RAIN ST EL PASO, TX 79928",
+      "property_street": "1085 SUMMER RAIN ST EL PASO",
       "property_city": "",
-      "property_state": "",
-      "property_zip": "",
-      "mailing_full_address": "",
+      "property_state": "TX",
+      "property_zip": "79928",
+      "mailing_full_address": "1085 SUMMER RAIN ST EL PASO TX 79928-2395",
       "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
+      "mailing_state": "TX",
+      "assessed_value": 271364.0,
+      "appraised_value": 271364.0,
+      "homestead": "HOMESTEAD",
+      "absentee_owner_flag": true,
       "out_of_state_owner_flag": false,
-      "legal_description": "",
+      "legal_description": "BLK 17 SUMMER SKY PHASE 1 LOT 22",
       "signals": [
         {
           "signal_type": "affidavit_of_heirship",
@@ -80154,7 +80154,7 @@
       "latest_event_date": "05/05/2026"
     },
     {
-      "lead_id": "FCL_00000000066_192",
+      "lead_id": "FCL_00000000065_192",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80174,7 +80174,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79927",
-      "legal_description": "SANDSTONE RANCH ESTATES LOT 87 BLK 1 UNIT 1",
+      "legal_description": "EMERALD HEIGHTS LOT 9 BLK 8 UNIT 2",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80191,22 +80191,22 @@
             "ANTONIO MORALES",
             "YOLANDA MORALES"
           ],
-          "subdivision": "SANDSTONE RANCH ESTATES",
-          "lot": "87",
-          "block": "1",
-          "unit": "1",
+          "subdivision": "EMERALD HEIGHTS",
+          "lot": "9",
+          "block": "8",
+          "unit": "2",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000066",
+          "instrument_number": "00000000065",
           "evidence_id": "ev_fcl_fcl_0193.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000066"
+            "00000000065"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000066"
+            "00000000065"
           ]
         }
       ],
@@ -80221,7 +80221,7 @@
       "latest_event_date": "May 05, 2026"
     },
     {
-      "lead_id": "FCL_00000000067_193",
+      "lead_id": "FCL_00000000066_193",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80241,7 +80241,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79922",
-      "legal_description": "HIGHLAND PARK LOT 3 BLK 22",
+      "legal_description": "SANDSTONE RANCH ESTATES LOT 87 BLK 1 UNIT 1",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80257,22 +80257,22 @@
           "debtor_names": [
             "RACHEL BENCOMO"
           ],
-          "subdivision": "HIGHLAND PARK",
-          "lot": "3",
-          "block": "22",
-          "unit": "",
+          "subdivision": "SANDSTONE RANCH ESTATES",
+          "lot": "87",
+          "block": "1",
+          "unit": "1",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000067",
+          "instrument_number": "00000000066",
           "evidence_id": "ev_fcl_fcl_0194.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000067"
+            "00000000066"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000067"
+            "00000000066"
           ]
         }
       ],
@@ -80287,7 +80287,7 @@
       "latest_event_date": "May 05, 2026"
     },
     {
-      "lead_id": "FCL_00000000068_194",
+      "lead_id": "FCL_00000000067_194",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80307,7 +80307,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "VISTA DEL SOL LOT 7 BLK 416 UNIT 92",
+      "legal_description": "HIGHLAND PARK LOT 3 BLK 22",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80321,22 +80321,22 @@
           "lender_beneficiary": "Bank of America, N.A",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "VISTA DEL SOL",
-          "lot": "7",
-          "block": "416",
-          "unit": "92",
+          "subdivision": "HIGHLAND PARK",
+          "lot": "3",
+          "block": "22",
+          "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000068",
+          "instrument_number": "00000000067",
           "evidence_id": "ev_fcl_fcl_0195.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000068"
+            "00000000067"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000068"
+            "00000000067"
           ]
         }
       ],
@@ -80351,7 +80351,7 @@
       "latest_event_date": "August 2, 2002"
     },
     {
-      "lead_id": "FCL_00000000069_195",
+      "lead_id": "FCL_00000000068_195",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80371,7 +80371,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "NORTH HILLS LOT 25 BLK 3 UNIT 2",
+      "legal_description": "VISTA DEL SOL LOT 7 BLK 416 UNIT 92",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80387,22 +80387,22 @@
           "debtor_names": [
             "ADRIANA GUADALUPE HARO"
           ],
-          "subdivision": "NORTH HILLS",
-          "lot": "25",
-          "block": "3",
-          "unit": "2",
+          "subdivision": "VISTA DEL SOL",
+          "lot": "7",
+          "block": "416",
+          "unit": "92",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000069",
+          "instrument_number": "00000000068",
           "evidence_id": "ev_fcl_fcl_0196.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000069"
+            "00000000068"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000069"
+            "00000000068"
           ]
         }
       ],
@@ -80417,7 +80417,7 @@
       "latest_event_date": "6/2/2026"
     },
     {
-      "lead_id": "FCL_00000000070_196",
+      "lead_id": "FCL_00000000069_196",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80437,7 +80437,7 @@
       "property_city": "HORIZON CITY",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "EASTWOOD HEIGHTS LOT 10 BLK 181",
+      "legal_description": "NORTH HILLS LOT 25 BLK 3 UNIT 2",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80453,22 +80453,22 @@
           "debtor_names": [
             "RAYNARD EDWARD JOSEY"
           ],
-          "subdivision": "EASTWOOD HEIGHTS",
-          "lot": "10",
-          "block": "181",
-          "unit": "",
+          "subdivision": "NORTH HILLS",
+          "lot": "25",
+          "block": "3",
+          "unit": "2",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000070",
+          "instrument_number": "00000000069",
           "evidence_id": "ev_fcl_fcl_0197.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000070"
+            "00000000069"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000070"
+            "00000000069"
           ]
         }
       ],
@@ -80483,7 +80483,7 @@
       "latest_event_date": "July 25, 2017"
     },
     {
-      "lead_id": "FCL_00000000071_197",
+      "lead_id": "FCL_00000000070_197",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80503,7 +80503,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "SUMMER SKY LOT 14 BLK 25",
+      "legal_description": "EASTWOOD HEIGHTS LOT 10 BLK 181",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80519,22 +80519,22 @@
           "debtor_names": [
             "VICKY ARENIVAR"
           ],
-          "subdivision": "SUMMER SKY",
-          "lot": "14",
-          "block": "25",
+          "subdivision": "EASTWOOD HEIGHTS",
+          "lot": "10",
+          "block": "181",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000071",
+          "instrument_number": "00000000070",
           "evidence_id": "ev_fcl_fcl_0198.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000071"
+            "00000000070"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000071"
+            "00000000070"
           ]
         }
       ],
@@ -80549,7 +80549,7 @@
       "latest_event_date": "6/2/2026"
     },
     {
-      "lead_id": "FCL_00000000072_198",
+      "lead_id": "FCL_00000000071_198",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80569,7 +80569,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "",
+      "legal_description": "SUMMER SKY LOT 14 BLK 25",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80585,22 +80585,22 @@
           "debtor_names": [
             "Marcus Desoto and Grace Desoto"
           ],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "SUMMER SKY",
+          "lot": "14",
+          "block": "25",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000072",
+          "instrument_number": "00000000071",
           "evidence_id": "ev_fcl_fcl_0199.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000072"
+            "00000000071"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000072"
+            "00000000071"
           ]
         }
       ],
@@ -80615,7 +80615,7 @@
       "latest_event_date": "4/7/2026"
     },
     {
-      "lead_id": "FCL_00000000073_199",
+      "lead_id": "FCL_00000000072_199",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80656,17 +80656,17 @@
           "block": "",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000073",
+          "instrument_number": "00000000072",
           "evidence_id": "ev_fcl_fcl_0200.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000073"
+            "00000000072"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000073"
+            "00000000072"
           ]
         }
       ],
@@ -80701,7 +80701,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79938",
-      "legal_description": "PIEDMONT HILLS LOT 3 BLK 4 UNIT 1",
+      "legal_description": "",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80717,22 +80717,22 @@
           "debtor_names": [
             "ADAM CRAIG MATTHEWS AND VICKI MARIE MATTHEWS"
           ],
-          "subdivision": "PIEDMONT HILLS",
-          "lot": "3",
-          "block": "4",
-          "unit": "1",
+          "subdivision": "",
+          "lot": "",
+          "block": "",
+          "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000074",
+          "instrument_number": "00000000073",
           "evidence_id": "ev_fcl_fcl_0201.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000074"
+            "00000000073"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000074"
+            "00000000073"
           ]
         }
       ],
@@ -80747,7 +80747,7 @@
       "latest_event_date": "4/7/2026"
     },
     {
-      "lead_id": "FCL_00000000075_201",
+      "lead_id": "FCL_00000000074_201",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80767,7 +80767,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "ASCARATE GRANT BLK 2 TRACT 8E8A",
+      "legal_description": "PIEDMONT HILLS LOT 3 BLK 4 UNIT 1",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80784,22 +80784,22 @@
             "CAMERON WILLIAM CARMOSINO",
             "YVONNE YISELLE CARMOSINO"
           ],
-          "subdivision": "ASCARATE GRANT",
-          "lot": "",
-          "block": "2",
-          "unit": "",
+          "subdivision": "PIEDMONT HILLS",
+          "lot": "3",
+          "block": "4",
+          "unit": "1",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000075",
+          "instrument_number": "00000000074",
           "evidence_id": "ev_fcl_fcl_0202.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000075"
+            "00000000074"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000075"
+            "00000000074"
           ]
         }
       ],
@@ -80814,7 +80814,7 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000076_202",
+      "lead_id": "FCL_00000000075_202",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80834,7 +80834,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "VISTA HILLS LOT 3 BLK 38 UNIT 7",
+      "legal_description": "ASCARATE GRANT BLK 2 TRACT 8E8A",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80848,22 +80848,22 @@
           "lender_beneficiary": "MORTGAGE COMPANY",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "VISTA HILLS",
-          "lot": "3",
-          "block": "38",
-          "unit": "7",
+          "subdivision": "ASCARATE GRANT",
+          "lot": "",
+          "block": "2",
+          "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000076",
+          "instrument_number": "00000000075",
           "evidence_id": "ev_fcl_fcl_0203.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000076"
+            "00000000075"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000076"
+            "00000000075"
           ]
         }
       ],
@@ -80878,7 +80878,7 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000077_203",
+      "lead_id": "FCL_00000000076_203",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80898,7 +80898,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "PARK WEST LOT 1 BLK 4 UNIT 3",
+      "legal_description": "VISTA HILLS LOT 3 BLK 38 UNIT 7",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80914,22 +80914,22 @@
           "debtor_names": [
             "Jason Brown and Jennifer Brown, husband and wife"
           ],
-          "subdivision": "PARK WEST",
-          "lot": "1",
-          "block": "4",
-          "unit": "3",
+          "subdivision": "VISTA HILLS",
+          "lot": "3",
+          "block": "38",
+          "unit": "7",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000077",
+          "instrument_number": "00000000076",
           "evidence_id": "ev_fcl_fcl_0204.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000077"
+            "00000000076"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000077"
+            "00000000076"
           ]
         }
       ],
@@ -80944,7 +80944,7 @@
       "latest_event_date": "05/05/2026"
     },
     {
-      "lead_id": "FCL_00000000078_204",
+      "lead_id": "FCL_00000000077_204",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -80964,7 +80964,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79934",
-      "legal_description": "EMERALD PARK LOT 4 BLK 1 UNIT 1",
+      "legal_description": "PARK WEST LOT 1 BLK 4 UNIT 3",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -80978,22 +80978,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "EMERALD PARK",
-          "lot": "4",
-          "block": "1",
-          "unit": "1",
+          "subdivision": "PARK WEST",
+          "lot": "1",
+          "block": "4",
+          "unit": "3",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000078",
+          "instrument_number": "00000000077",
           "evidence_id": "ev_fcl_fcl_0205.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000078"
+            "00000000077"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000078"
+            "00000000077"
           ]
         }
       ],
@@ -81008,7 +81008,7 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000079_205",
+      "lead_id": "FCL_00000000078_205",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81028,7 +81028,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "",
+      "legal_description": "EMERALD PARK LOT 4 BLK 1 UNIT 1",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81044,22 +81044,22 @@
           "debtor_names": [
             "Gerardo Esparza and Lorena Esparza"
           ],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
+          "subdivision": "EMERALD PARK",
+          "lot": "4",
+          "block": "1",
+          "unit": "1",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000079",
+          "instrument_number": "00000000078",
           "evidence_id": "ev_fcl_fcl_0206.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000079"
+            "00000000078"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000079"
+            "00000000078"
           ]
         }
       ],
@@ -81074,7 +81074,7 @@
       "latest_event_date": "05/05/2026"
     },
     {
-      "lead_id": "FCL_00000000080_206",
+      "lead_id": "FCL_00000000079_206",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81094,7 +81094,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79924",
-      "legal_description": "PECAN VALLEY ESTATES LOT 14 BLK 6",
+      "legal_description": "",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81110,22 +81110,22 @@
           "debtor_names": [
             "RUBY MERCEDES PAZ"
           ],
-          "subdivision": "PECAN VALLEY ESTATES",
-          "lot": "14",
-          "block": "6",
+          "subdivision": "",
+          "lot": "",
+          "block": "",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000080",
+          "instrument_number": "00000000079",
           "evidence_id": "ev_fcl_fcl_0207.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000080"
+            "00000000079"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000080"
+            "00000000079"
           ]
         }
       ],
@@ -81140,7 +81140,7 @@
       "latest_event_date": "03/31/2021"
     },
     {
-      "lead_id": "FCL_00000000081_207",
+      "lead_id": "FCL_00000000080_207",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81160,7 +81160,7 @@
       "property_city": "HORIZON CITY",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "LOMAS DEL ESTE LOT 17 BLK 2",
+      "legal_description": "PECAN VALLEY ESTATES LOT 14 BLK 6",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81174,22 +81174,22 @@
           "lender_beneficiary": "Mortgage Servicer:",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "LOMAS DEL ESTE",
-          "lot": "17",
-          "block": "2",
+          "subdivision": "PECAN VALLEY ESTATES",
+          "lot": "14",
+          "block": "6",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000081",
+          "instrument_number": "00000000080",
           "evidence_id": "ev_fcl_fcl_0208.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000081"
+            "00000000080"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000081"
+            "00000000080"
           ]
         }
       ],
@@ -81204,7 +81204,7 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000082_208",
+      "lead_id": "FCL_00000000081_208",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81224,7 +81224,7 @@
       "property_city": "HORIZON CITY",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "ENCHANTED HILLS LOT 21 BLK 18 UNIT 3",
+      "legal_description": "LOMAS DEL ESTE LOT 17 BLK 2",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81238,22 +81238,22 @@
           "lender_beneficiary": "Mortgage Servicer:",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "ENCHANTED HILLS",
-          "lot": "21",
-          "block": "18",
-          "unit": "3",
+          "subdivision": "LOMAS DEL ESTE",
+          "lot": "17",
+          "block": "2",
+          "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000082",
+          "instrument_number": "00000000081",
           "evidence_id": "ev_fcl_fcl_0209.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000082"
+            "00000000081"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000082"
+            "00000000081"
           ]
         }
       ],
@@ -81268,7 +81268,7 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000083_209",
+      "lead_id": "FCL_00000000082_209",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81288,7 +81288,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79938",
-      "legal_description": "SARAH ANNE PARK LOT 9 BLK 4",
+      "legal_description": "ENCHANTED HILLS LOT 21 BLK 18 UNIT 3",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81302,22 +81302,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "SARAH ANNE PARK",
-          "lot": "9",
-          "block": "4",
-          "unit": "",
+          "subdivision": "ENCHANTED HILLS",
+          "lot": "21",
+          "block": "18",
+          "unit": "3",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000083",
+          "instrument_number": "00000000082",
           "evidence_id": "ev_fcl_fcl_0210.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000083"
+            "00000000082"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000083"
+            "00000000082"
           ]
         }
       ],
@@ -81332,7 +81332,7 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000084_210",
+      "lead_id": "FCL_00000000083_210",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81352,7 +81352,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79905",
-      "legal_description": "TIERRA DEL ESTE LOT 23 BLK 277 UNIT 62",
+      "legal_description": "SARAH ANNE PARK LOT 9 BLK 4",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81368,22 +81368,22 @@
           "debtor_names": [
             "JESUS EDUARDO DELGADO"
           ],
-          "subdivision": "TIERRA DEL ESTE",
-          "lot": "23",
-          "block": "277",
-          "unit": "62",
+          "subdivision": "SARAH ANNE PARK",
+          "lot": "9",
+          "block": "4",
+          "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000084",
+          "instrument_number": "00000000083",
           "evidence_id": "ev_fcl_fcl_0211.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000084"
+            "00000000083"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000084"
+            "00000000083"
           ]
         }
       ],
@@ -81418,7 +81418,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79936",
-      "legal_description": "EAST EL PASO ADDITION LOT 1 BLK 72",
+      "legal_description": "TIERRA DEL ESTE LOT 23 BLK 277 UNIT 62",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81434,22 +81434,22 @@
           "debtor_names": [
             "Enrique B. Valdez and Rita B. Valdez, husband and wife"
           ],
-          "subdivision": "EAST EL PASO ADDITION",
-          "lot": "1",
-          "block": "72",
-          "unit": "",
+          "subdivision": "TIERRA DEL ESTE",
+          "lot": "23",
+          "block": "277",
+          "unit": "62",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000085",
+          "instrument_number": "00000000084",
           "evidence_id": "ev_fcl_fcl_0212.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000085"
+            "00000000084"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000085"
+            "00000000084"
           ]
         }
       ],
@@ -81464,7 +81464,7 @@
       "latest_event_date": "November 18, 2016"
     },
     {
-      "lead_id": "FCL_00000000086_212",
+      "lead_id": "FCL_00000000085_212",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81484,7 +81484,7 @@
       "property_city": "HORIZON CITY",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "COLUMBIA NORTH LOT 15 BLK 2",
+      "legal_description": "EAST EL PASO ADDITION LOT 1 BLK 72",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -81500,13 +81500,77 @@
           "debtor_names": [
             "HEBER VALDIVIEZO"
           ],
+          "subdivision": "EAST EL PASO ADDITION",
+          "lot": "1",
+          "block": "72",
+          "unit": "",
+          "recorded_date": "06/02/2026",
+          "instrument_number": "00000000085",
+          "evidence_id": "ev_fcl_fcl_0213.pdf",
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+          ],
+          "evidence_ids": [
+            "00000000085"
+          ],
+          "count": 1,
+          "instrument_numbers": [
+            "00000000085"
+          ]
+        }
+      ],
+      "signal_types": [
+        "foreclosure_notice"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+      ],
+      "signal_count": 1,
+      "primary_signal": "foreclosure_notice",
+      "latest_event_date": "October 5, 2012"
+    },
+    {
+      "lead_id": "FCL_00000000086_213",
+      "parcel_resolution_status": "RESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "parcel_id": "",
+      "owner_name": "",
+      "property_full_address": "",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "filer_entity": "",
+      "owner_type": "UNKNOWN",
+      "property_street": "",
+      "property_city": "",
+      "property_state": "TX",
+      "property_zip": "",
+      "legal_description": "COLUMBIA NORTH LOT 15 BLK 2",
+      "signals": [
+        {
+          "signal_type": "foreclosure_notice",
+          "signal_label": "Foreclosure Notice",
+          "canonical_doc_type": "foreclosure_notice",
+          "signal_confidence": "HIGH",
+          "source_id": "foreclosure_notices",
+          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
+          "sale_date": "5/5/2026",
+          "dot_document_number": "20200049200",
+          "lender_beneficiary": "",
+          "mortgage_servicer": "",
+          "debtor_names": [],
           "subdivision": "COLUMBIA NORTH",
           "lot": "15",
           "block": "2",
           "unit": "",
           "recorded_date": "06/02/2026",
           "instrument_number": "00000000086",
-          "evidence_id": "ev_fcl_fcl_0213.pdf",
+          "evidence_id": "ev_fcl_fcl_0214.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -81527,15 +81591,15 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": "October 5, 2012"
+      "latest_event_date": "5/5/2026"
     },
     {
-      "lead_id": "FCL_00000000087_213",
+      "lead_id": "FCL_00000000087_214",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
       "owner_name": "",
-      "property_full_address": "",
+      "property_full_address": "4100 EAST PAISANO DRIVE, EL PASO TX 79905",
       "mailing_full_address": "",
       "mailing_city": "",
       "mailing_state": "",
@@ -81546,10 +81610,10 @@
       "out_of_state_owner_flag": false,
       "filer_entity": "",
       "owner_type": "UNKNOWN",
-      "property_street": "",
-      "property_city": "",
+      "property_street": "EAST PAISANO DRIVE",
+      "property_city": "EL PASO",
       "property_state": "TX",
-      "property_zip": "",
+      "property_zip": "79905",
       "legal_description": "TEMPLE HILLS LOT 18 BLK 5",
       "signals": [
         {
@@ -81560,7 +81624,7 @@
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
           "sale_date": "5/5/2026",
-          "dot_document_number": "20200049200",
+          "dot_document_number": "20250042370",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
@@ -81570,7 +81634,7 @@
           "unit": "",
           "recorded_date": "06/02/2026",
           "instrument_number": "00000000087",
-          "evidence_id": "ev_fcl_fcl_0214.pdf",
+          "evidence_id": "ev_fcl_fcl_0215.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -81594,7 +81658,7 @@
       "latest_event_date": "5/5/2026"
     },
     {
-      "lead_id": "FCL_00000000088_214",
+      "lead_id": "FCL_00000000088_215",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81624,7 +81688,7 @@
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
           "sale_date": "5/5/2026",
-          "dot_document_number": "20250042370",
+          "dot_document_number": "20240015689",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
@@ -81634,80 +81698,16 @@
           "unit": "20",
           "recorded_date": "06/02/2026",
           "instrument_number": "00000000088",
-          "evidence_id": "ev_fcl_fcl_0215.pdf",
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-          ],
-          "evidence_ids": [
-            "00000000088"
-          ],
-          "count": 1,
-          "instrument_numbers": [
-            "00000000088"
-          ]
-        }
-      ],
-      "signal_types": [
-        "foreclosure_notice"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-      ],
-      "signal_count": 1,
-      "primary_signal": "foreclosure_notice",
-      "latest_event_date": "5/5/2026"
-    },
-    {
-      "lead_id": "FCL_00000000089_215",
-      "parcel_resolution_status": "RESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "parcel_id": "",
-      "owner_name": "",
-      "property_full_address": "4100 EAST PAISANO DRIVE, EL PASO TX 79905",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "filer_entity": "",
-      "owner_type": "UNKNOWN",
-      "property_street": "EAST PAISANO DRIVE",
-      "property_city": "EL PASO",
-      "property_state": "TX",
-      "property_zip": "79905",
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "foreclosure_notice",
-          "signal_label": "Foreclosure Notice",
-          "canonical_doc_type": "foreclosure_notice",
-          "signal_confidence": "HIGH",
-          "source_id": "foreclosure_notices",
-          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "5/5/2026",
-          "dot_document_number": "20240015689",
-          "lender_beneficiary": "",
-          "mortgage_servicer": "",
-          "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "06/02/2026",
-          "instrument_number": "00000000089",
           "evidence_id": "ev_fcl_fcl_0216.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000089"
+            "00000000088"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000089"
+            "00000000088"
           ]
         }
       ],
@@ -81722,7 +81722,7 @@
       "latest_event_date": "5/5/2026"
     },
     {
-      "lead_id": "FCL_00000000090_216",
+      "lead_id": "FCL_00000000089_216",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81761,17 +81761,17 @@
           "block": "",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000090",
+          "instrument_number": "00000000089",
           "evidence_id": "ev_fcl_fcl_0217.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000090"
+            "00000000089"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000090"
+            "00000000089"
           ]
         }
       ],
@@ -81786,7 +81786,7 @@
       "latest_event_date": "March 26, 2026"
     },
     {
-      "lead_id": "FCL_00000000091_217",
+      "lead_id": "FCL_00000000090_217",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81825,17 +81825,17 @@
           "block": "",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000091",
+          "instrument_number": "00000000090",
           "evidence_id": "ev_fcl_fcl_0218.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000091"
+            "00000000090"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000091"
+            "00000000090"
           ]
         }
       ],
@@ -81889,17 +81889,17 @@
           "block": "",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000092",
+          "instrument_number": "00000000091",
           "evidence_id": "ev_fcl_fcl_0219.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000092"
+            "00000000091"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000092"
+            "00000000091"
           ]
         }
       ],
@@ -81914,7 +81914,7 @@
       "latest_event_date": "May 5, 2026"
     },
     {
-      "lead_id": "FCL_00000000093_219",
+      "lead_id": "FCL_00000000092_219",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81953,17 +81953,17 @@
           "block": "",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000093",
+          "instrument_number": "00000000092",
           "evidence_id": "ev_fcl_fcl_0220.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000093"
+            "00000000092"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000093"
+            "00000000092"
           ]
         }
       ],
@@ -81978,7 +81978,7 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000094_220",
+      "lead_id": "FCL_00000000093_220",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -81998,7 +81998,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79932",
-      "legal_description": "DESERT MEADOWS ESTATES LOT 7 BLK 6",
+      "legal_description": "",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82012,22 +82012,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "DESERT MEADOWS ESTATES",
-          "lot": "7",
-          "block": "6",
+          "subdivision": "",
+          "lot": "",
+          "block": "",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000094",
+          "instrument_number": "00000000093",
           "evidence_id": "ev_fcl_fcl_0221.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000094"
+            "00000000093"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000094"
+            "00000000093"
           ]
         }
       ],
@@ -82062,7 +82062,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79912",
-      "legal_description": "",
+      "legal_description": "DESERT MEADOWS ESTATES LOT 7 BLK 6",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82076,22 +82076,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "DESERT MEADOWS ESTATES",
+          "lot": "7",
+          "block": "6",
           "unit": "",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000095",
+          "instrument_number": "00000000094",
           "evidence_id": "ev_fcl_fcl_0222.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000095"
+            "00000000094"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000095"
+            "00000000094"
           ]
         }
       ],
@@ -82106,7 +82106,7 @@
       "latest_event_date": "May 5, 2026"
     },
     {
-      "lead_id": "FCL_00000000096_222",
+      "lead_id": "FCL_00000000095_222",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82126,7 +82126,7 @@
       "property_city": "SAN ELIZARIO",
       "property_state": "TX",
       "property_zip": "79849",
-      "legal_description": "MOUNTAIN SHADOW ESTATES LOT 46 BLK 552 UNIT 73",
+      "legal_description": "",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82140,22 +82140,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "MOUNTAIN SHADOW ESTATES",
-          "lot": "46",
-          "block": "552",
-          "unit": "73",
-          "recorded_date": "05/12/2026",
-          "instrument_number": "00000000096",
+          "subdivision": "",
+          "lot": "",
+          "block": "",
+          "unit": "",
+          "recorded_date": "06/02/2026",
+          "instrument_number": "00000000095",
           "evidence_id": "ev_fcl_fcl_0223.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000096"
+            "00000000095"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000096"
+            "00000000095"
           ]
         }
       ],
@@ -82170,7 +82170,7 @@
       "latest_event_date": "May 5, 2026"
     },
     {
-      "lead_id": "FCL_00000000097_223",
+      "lead_id": "FCL_00000000096_223",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82190,7 +82190,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "COLONIA DEL RIO LOT 2 BLK 12 UNIT 3",
+      "legal_description": "MOUNTAIN SHADOW ESTATES LOT 46 BLK 552 UNIT 73",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82204,22 +82204,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "COLONIA DEL RIO",
-          "lot": "2",
-          "block": "12",
-          "unit": "3",
-          "recorded_date": "06/02/2026",
-          "instrument_number": "00000000097",
+          "subdivision": "MOUNTAIN SHADOW ESTATES",
+          "lot": "46",
+          "block": "552",
+          "unit": "73",
+          "recorded_date": "05/12/2026",
+          "instrument_number": "00000000096",
           "evidence_id": "ev_fcl_fcl_0224.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000097"
+            "00000000096"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000097"
+            "00000000096"
           ]
         }
       ],
@@ -82254,7 +82254,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79938",
-      "legal_description": "ROSEVILLE LOT 9 BLK 8",
+      "legal_description": "COLONIA DEL RIO LOT 2 BLK 12 UNIT 3",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82270,22 +82270,22 @@
           "debtor_names": [
             "JAIME VERA"
           ],
-          "subdivision": "ROSEVILLE",
-          "lot": "9",
-          "block": "8",
-          "unit": "",
+          "subdivision": "COLONIA DEL RIO",
+          "lot": "2",
+          "block": "12",
+          "unit": "3",
           "recorded_date": "06/02/2026",
-          "instrument_number": "00000000098",
+          "instrument_number": "00000000097",
           "evidence_id": "ev_fcl_fcl_0225.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000098"
+            "00000000097"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000098"
+            "00000000097"
           ]
         }
       ],
@@ -82300,7 +82300,7 @@
       "latest_event_date": "6/2/2026"
     },
     {
-      "lead_id": "FCL_00000000099_225",
+      "lead_id": "FCL_00000000098_225",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82320,7 +82320,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79927",
-      "legal_description": "TOBIN PARK LOT 6 BLK 38 UNIT 2",
+      "legal_description": "ROSEVILLE LOT 9 BLK 8",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82336,22 +82336,22 @@
           "debtor_names": [
             "DAVID DAVI RUBIO"
           ],
-          "subdivision": "TOBIN PARK",
-          "lot": "6",
-          "block": "38",
-          "unit": "2",
-          "recorded_date": "06/01/2026",
-          "instrument_number": "00000000099",
+          "subdivision": "ROSEVILLE",
+          "lot": "9",
+          "block": "8",
+          "unit": "",
+          "recorded_date": "06/02/2026",
+          "instrument_number": "00000000098",
           "evidence_id": "ev_fcl_fcl_0226.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000099"
+            "00000000098"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000099"
+            "00000000098"
           ]
         }
       ],
@@ -82366,7 +82366,7 @@
       "latest_event_date": "6/2/2026"
     },
     {
-      "lead_id": "FCL_00000000100_226",
+      "lead_id": "FCL_00000000099_226",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82386,7 +82386,7 @@
       "property_city": "SAN ELIZARIO",
       "property_state": "TX",
       "property_zip": "79849",
-      "legal_description": "TOWNSHIP 2 T & P RAILWAY BLK 79",
+      "legal_description": "TOBIN PARK LOT 6 BLK 38 UNIT 2",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82395,27 +82395,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "06/02/2026",
+          "sale_date": "06/01/2026",
           "dot_document_number": "20110040217",
           "lender_beneficiary": "Date of Sale: MAY 5, 2026",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "TOWNSHIP 2 T & P RAILWAY",
-          "lot": "",
-          "block": "79",
-          "unit": "",
-          "recorded_date": "06/02/2026",
-          "instrument_number": "00000000100",
+          "subdivision": "TOBIN PARK",
+          "lot": "6",
+          "block": "38",
+          "unit": "2",
+          "recorded_date": "06/01/2026",
+          "instrument_number": "00000000099",
           "evidence_id": "ev_fcl_fcl_0227.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "00000000100"
+            "00000000099"
           ],
           "count": 1,
           "instrument_numbers": [
-            "00000000100"
+            "00000000099"
           ]
         }
       ],
@@ -82427,10 +82427,10 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": "06/02/2026"
+      "latest_event_date": "06/01/2026"
     },
     {
-      "lead_id": "FCL_00000000101_227",
+      "lead_id": "FCL_00000000100_227",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82450,7 +82450,7 @@
       "property_city": "HORIZON CITY",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "FRANKLIN HEIGHTS LOT 1 BLK 42",
+      "legal_description": "TOWNSHIP 2 T & P RAILWAY BLK 79",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82464,13 +82464,77 @@
           "lender_beneficiary": "UNITED STATES OF AMERICA, ACTING THROUGH THE",
           "mortgage_servicer": "",
           "debtor_names": [],
+          "subdivision": "TOWNSHIP 2 T & P RAILWAY",
+          "lot": "",
+          "block": "79",
+          "unit": "",
+          "recorded_date": "06/02/2026",
+          "instrument_number": "00000000100",
+          "evidence_id": "ev_fcl_fcl_0228.pdf",
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+          ],
+          "evidence_ids": [
+            "00000000100"
+          ],
+          "count": 1,
+          "instrument_numbers": [
+            "00000000100"
+          ]
+        }
+      ],
+      "signal_types": [
+        "foreclosure_notice"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+      ],
+      "signal_count": 1,
+      "primary_signal": "foreclosure_notice",
+      "latest_event_date": "06/02/2026"
+    },
+    {
+      "lead_id": "FCL_00000000101_228",
+      "parcel_resolution_status": "RESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "parcel_id": "",
+      "owner_name": "",
+      "property_full_address": "2001 SUNSET HILLS DRIVE, EL PASO TX 79928",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "filer_entity": "",
+      "owner_type": "UNKNOWN",
+      "property_street": "SUNSET HILLS DRIVE",
+      "property_city": "EL PASO",
+      "property_state": "TX",
+      "property_zip": "79928",
+      "legal_description": "FRANKLIN HEIGHTS LOT 1 BLK 42",
+      "signals": [
+        {
+          "signal_type": "foreclosure_notice",
+          "signal_label": "Foreclosure Notice",
+          "canonical_doc_type": "foreclosure_notice",
+          "signal_confidence": "HIGH",
+          "source_id": "foreclosure_notices",
+          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
+          "sale_date": "06/02/2026",
+          "dot_document_number": "20010084757",
+          "lender_beneficiary": "Date of Sale: MAY 5, 2026",
+          "mortgage_servicer": "",
+          "debtor_names": [],
           "subdivision": "FRANKLIN HEIGHTS",
           "lot": "1",
           "block": "42",
           "unit": "",
           "recorded_date": "06/02/2026",
           "instrument_number": "00000000101",
-          "evidence_id": "ev_fcl_fcl_0228.pdf",
+          "evidence_id": "ev_fcl_fcl_0229.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -82494,12 +82558,12 @@
       "latest_event_date": "06/02/2026"
     },
     {
-      "lead_id": "FCL_00000000001_228",
+      "lead_id": "FCL_00000000001_229",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
       "owner_name": "",
-      "property_full_address": "2001 SUNSET HILLS DRIVE, EL PASO TX 79928",
+      "property_full_address": "",
       "mailing_full_address": "",
       "mailing_city": "",
       "mailing_state": "",
@@ -82510,10 +82574,10 @@
       "out_of_state_owner_flag": false,
       "filer_entity": "",
       "owner_type": "UNKNOWN",
-      "property_street": "SUNSET HILLS DRIVE",
-      "property_city": "EL PASO",
+      "property_street": "",
+      "property_city": "",
       "property_state": "TX",
-      "property_zip": "79928",
+      "property_zip": "",
       "legal_description": "tierra del este LOT 8 BLK 386 UNIT 69",
       "signals": [
         {
@@ -82524,8 +82588,8 @@
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
           "sale_date": "07/07/2026",
-          "dot_document_number": "20010084757",
-          "lender_beneficiary": "Date of Sale: MAY 5, 2026",
+          "dot_document_number": "20220104950",
+          "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
           "subdivision": "tierra del este",
@@ -82534,7 +82598,7 @@
           "unit": "69",
           "recorded_date": "07/07/2026",
           "instrument_number": "00000000001",
-          "evidence_id": "ev_fcl_fcl_0229.pdf",
+          "evidence_id": "ev_fcl_fcl_0230.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -82558,7 +82622,7 @@
       "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_00000000002_229",
+      "lead_id": "FCL_00000000002_230",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82587,8 +82651,8 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "05/14/2026",
-          "dot_document_number": "20220104950",
+          "sale_date": "07/07/2026",
+          "dot_document_number": "20230083176",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
@@ -82596,9 +82660,9 @@
           "lot": "6",
           "block": "2",
           "unit": "1",
-          "recorded_date": "05/14/2026",
+          "recorded_date": "07/07/2026",
           "instrument_number": "00000000002",
-          "evidence_id": "ev_fcl_fcl_0230.pdf",
+          "evidence_id": "ev_fcl_fcl_0231.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -82619,10 +82683,10 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": "05/14/2026"
+      "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_00000000003_230",
+      "lead_id": "FCL_00000000003_231",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82651,8 +82715,8 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "05/14/2026",
-          "dot_document_number": "20230083176",
+          "sale_date": "07/07/2026",
+          "dot_document_number": "20110014499",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
@@ -82660,9 +82724,9 @@
           "lot": "70",
           "block": "39",
           "unit": "9",
-          "recorded_date": "05/14/2026",
+          "recorded_date": "07/07/2026",
           "instrument_number": "00000000003",
-          "evidence_id": "ev_fcl_fcl_0231.pdf",
+          "evidence_id": "ev_fcl_fcl_0232.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -82683,10 +82747,10 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": "05/14/2026"
+      "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_00000000004_231",
+      "lead_id": "FCL_00000000004_232",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82716,7 +82780,7 @@
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
           "sale_date": "07/07/2026",
-          "dot_document_number": "20110014499",
+          "dot_document_number": "20230084286",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
@@ -82726,7 +82790,7 @@
           "unit": "",
           "recorded_date": "07/07/2026",
           "instrument_number": "00000000004",
-          "evidence_id": "ev_fcl_fcl_0232.pdf",
+          "evidence_id": "ev_fcl_fcl_0233.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -82750,71 +82814,7 @@
       "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_00000000005_232",
-      "parcel_resolution_status": "RESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "parcel_id": "",
-      "owner_name": "",
-      "property_full_address": "",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "filer_entity": "",
-      "owner_type": "UNKNOWN",
-      "property_street": "",
-      "property_city": "",
-      "property_state": "TX",
-      "property_zip": "",
-      "legal_description": "CAMPBELL LOT 9 BLK 261",
-      "signals": [
-        {
-          "signal_type": "foreclosure_notice",
-          "signal_label": "Foreclosure Notice",
-          "canonical_doc_type": "foreclosure_notice",
-          "signal_confidence": "HIGH",
-          "source_id": "foreclosure_notices",
-          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "05/15/2026",
-          "dot_document_number": "20230084286",
-          "lender_beneficiary": "",
-          "mortgage_servicer": "",
-          "debtor_names": [],
-          "subdivision": "CAMPBELL",
-          "lot": "9",
-          "block": "261",
-          "unit": "",
-          "recorded_date": "05/15/2026",
-          "instrument_number": "00000000005",
-          "evidence_id": "ev_fcl_fcl_0233.pdf",
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-          ],
-          "evidence_ids": [
-            "00000000005"
-          ],
-          "count": 1,
-          "instrument_numbers": [
-            "00000000005"
-          ]
-        }
-      ],
-      "signal_types": [
-        "foreclosure_notice"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-      ],
-      "signal_count": 1,
-      "primary_signal": "foreclosure_notice",
-      "latest_event_date": "05/15/2026"
-    },
-    {
-      "lead_id": "FCL_00000000007_233",
+      "lead_id": "FCL_00000000005_233",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82834,7 +82834,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79924",
-      "legal_description": "TIERRA DRL ESTE LOT 34 BLK 19 UNIT 90",
+      "legal_description": "CAMPBELL LOT 9 BLK 261",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82848,13 +82848,141 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
+          "subdivision": "CAMPBELL",
+          "lot": "9",
+          "block": "261",
+          "unit": "",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000005",
+          "evidence_id": "ev_fcl_fcl_0234.pdf",
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+          ],
+          "evidence_ids": [
+            "00000000005"
+          ],
+          "count": 1,
+          "instrument_numbers": [
+            "00000000005"
+          ]
+        }
+      ],
+      "signal_types": [
+        "foreclosure_notice"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+      ],
+      "signal_count": 1,
+      "primary_signal": "foreclosure_notice",
+      "latest_event_date": "07/07/2026"
+    },
+    {
+      "lead_id": "FCL_00000000006_234",
+      "parcel_resolution_status": "RESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "parcel_id": "",
+      "owner_name": "",
+      "property_full_address": "4100 EAST PAISANO DRIVE, EL PASO TX 79905",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "filer_entity": "",
+      "owner_type": "UNKNOWN",
+      "property_street": "EAST PAISANO DRIVE",
+      "property_city": "EL PASO",
+      "property_state": "TX",
+      "property_zip": "79905",
+      "legal_description": "SIERRA HILLS LOT 28 BLK 10 UNIT 3",
+      "signals": [
+        {
+          "signal_type": "foreclosure_notice",
+          "signal_label": "Foreclosure Notice",
+          "canonical_doc_type": "foreclosure_notice",
+          "signal_confidence": "HIGH",
+          "source_id": "foreclosure_notices",
+          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
+          "sale_date": "June 2, 2026",
+          "dot_document_number": "20020036629",
+          "lender_beneficiary": "Mortgage Servicer:",
+          "mortgage_servicer": "",
+          "debtor_names": [],
+          "subdivision": "SIERRA HILLS",
+          "lot": "28",
+          "block": "10",
+          "unit": "3",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000006",
+          "evidence_id": "ev_fcl_fcl_0235.pdf",
+          "source_urls": [
+            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+          ],
+          "evidence_ids": [
+            "00000000006"
+          ],
+          "count": 1,
+          "instrument_numbers": [
+            "00000000006"
+          ]
+        }
+      ],
+      "signal_types": [
+        "foreclosure_notice"
+      ],
+      "source_urls": [
+        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
+      ],
+      "signal_count": 1,
+      "primary_signal": "foreclosure_notice",
+      "latest_event_date": "June 2, 2026"
+    },
+    {
+      "lead_id": "FCL_00000000007_235",
+      "parcel_resolution_status": "RESOLVED",
+      "epcad_enrichment_status": "UNENRICHED",
+      "parcel_id": "",
+      "owner_name": "",
+      "property_full_address": "001166 6044 HIDDEN PASSAGE AVE, EL PASO TX 79924",
+      "mailing_full_address": "",
+      "mailing_city": "",
+      "mailing_state": "",
+      "assessed_value": null,
+      "appraised_value": null,
+      "homestead": null,
+      "absentee_owner_flag": false,
+      "out_of_state_owner_flag": false,
+      "filer_entity": "",
+      "owner_type": "UNKNOWN",
+      "property_street": "6044 HIDDEN PASSAGE AVE",
+      "property_city": "EL PASO",
+      "property_state": "TX",
+      "property_zip": "79924",
+      "legal_description": "TIERRA DRL ESTE LOT 34 BLK 19 UNIT 90",
+      "signals": [
+        {
+          "signal_type": "foreclosure_notice",
+          "signal_label": "Foreclosure Notice",
+          "canonical_doc_type": "foreclosure_notice",
+          "signal_confidence": "HIGH",
+          "source_id": "foreclosure_notices",
+          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
+          "sale_date": "07/07/2026",
+          "dot_document_number": "20200091933",
+          "lender_beneficiary": "Cypress Waters Blvd., Coppell, TX 75019",
+          "mortgage_servicer": "",
+          "debtor_names": [],
           "subdivision": "TIERRA DRL ESTE",
           "lot": "34",
           "block": "19",
           "unit": "90",
           "recorded_date": "07/07/2026",
           "instrument_number": "00000000007",
-          "evidence_id": "ev_fcl_fcl_0234.pdf",
+          "evidence_id": "ev_fcl_fcl_0236.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
@@ -82878,135 +83006,7 @@
       "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_20020036629_234",
-      "parcel_resolution_status": "RESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "parcel_id": "",
-      "owner_name": "",
-      "property_full_address": "4100 EAST PAISANO DRIVE, EL PASO TX 79905",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "filer_entity": "",
-      "owner_type": "UNKNOWN",
-      "property_street": "EAST PAISANO DRIVE",
-      "property_city": "EL PASO",
-      "property_state": "TX",
-      "property_zip": "79905",
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "foreclosure_notice",
-          "signal_label": "Foreclosure Notice",
-          "canonical_doc_type": "foreclosure_notice",
-          "signal_confidence": "HIGH",
-          "source_id": "foreclosure_notices",
-          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "June 2, 2026",
-          "dot_document_number": "20020036629",
-          "lender_beneficiary": "Mortgage Servicer:",
-          "mortgage_servicer": "",
-          "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20020036629",
-          "evidence_id": "ev_fcl_fcl_0235.pdf",
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-          ],
-          "evidence_ids": [
-            "20020036629"
-          ],
-          "count": 1,
-          "instrument_numbers": [
-            "20020036629"
-          ]
-        }
-      ],
-      "signal_types": [
-        "foreclosure_notice"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-      ],
-      "signal_count": 1,
-      "primary_signal": "foreclosure_notice",
-      "latest_event_date": "June 2, 2026"
-    },
-    {
-      "lead_id": "FCL_20200091933_235",
-      "parcel_resolution_status": "RESOLVED",
-      "epcad_enrichment_status": "UNENRICHED",
-      "parcel_id": "",
-      "owner_name": "",
-      "property_full_address": "001166 6044 HIDDEN PASSAGE AVE, EL PASO TX 79924",
-      "mailing_full_address": "",
-      "mailing_city": "",
-      "mailing_state": "",
-      "assessed_value": null,
-      "appraised_value": null,
-      "homestead": null,
-      "absentee_owner_flag": false,
-      "out_of_state_owner_flag": false,
-      "filer_entity": "",
-      "owner_type": "UNKNOWN",
-      "property_street": "6044 HIDDEN PASSAGE AVE",
-      "property_city": "EL PASO",
-      "property_state": "TX",
-      "property_zip": "79924",
-      "legal_description": "",
-      "signals": [
-        {
-          "signal_type": "foreclosure_notice",
-          "signal_label": "Foreclosure Notice",
-          "canonical_doc_type": "foreclosure_notice",
-          "signal_confidence": "HIGH",
-          "source_id": "foreclosure_notices",
-          "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
-          "dot_document_number": "20200091933",
-          "lender_beneficiary": "Cypress Waters Blvd., Coppell, TX 75019",
-          "mortgage_servicer": "",
-          "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20200091933",
-          "evidence_id": "ev_fcl_fcl_0236.pdf",
-          "source_urls": [
-            "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-          ],
-          "evidence_ids": [
-            "20200091933"
-          ],
-          "count": 1,
-          "instrument_numbers": [
-            "20200091933"
-          ]
-        }
-      ],
-      "signal_types": [
-        "foreclosure_notice"
-      ],
-      "source_urls": [
-        "https://apps.epcountytx.gov/publicrecords/Foreclosures"
-      ],
-      "signal_count": 1,
-      "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
-    },
-    {
-      "lead_id": "FCL_20210072450_236",
+      "lead_id": "FCL_00000000008_236",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -83026,7 +83026,7 @@
       "property_city": "HORIZON CITY",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "",
+      "legal_description": "TIERRA DEL ESTE LOT 4 BLK 529 UNIT 81B",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -83035,27 +83035,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
+          "sale_date": "07/07/2026",
           "dot_document_number": "20210072450",
           "lender_beneficiary": "Cypress Waters Blvd., Coppell, TX 75019",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20210072450",
+          "subdivision": "TIERRA DEL ESTE",
+          "lot": "4",
+          "block": "529",
+          "unit": "81B",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000008",
           "evidence_id": "ev_fcl_fcl_0237.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20210072450"
+            "00000000008"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20210072450"
+            "00000000008"
           ]
         }
       ],
@@ -83067,7 +83067,7 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
+      "latest_event_date": "07/07/2026"
     },
     {
       "lead_id": "FCL_20090075438_237",
