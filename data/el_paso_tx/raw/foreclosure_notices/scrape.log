@@ -1,59 +1,59 @@
-[2026-05-23T11:52:38Z] start foreclosure_notices scrape window=04/23/2026..05/22/2028 max_records=100000 recycle_every=8
-[2026-05-23T11:52:46Z] 254 records found -> 13 pages
-[2026-05-23T11:53:05Z] collected 254 document ids
-[2026-05-23T11:53:28Z]   recycling session after 8 docs (8 total)
-[2026-05-23T11:53:39Z]   10 PDFs downloaded
-[2026-05-23T11:54:00Z]   recycling session after 8 docs (16 total)
-[2026-05-23T11:54:19Z]   20 PDFs downloaded
-[2026-05-23T11:54:34Z]   recycling session after 8 docs (24 total)
-[2026-05-23T11:54:57Z]   30 PDFs downloaded
-[2026-05-23T11:55:05Z]   recycling session after 8 docs (32 total)
-[2026-05-23T11:55:35Z]   40 PDFs downloaded
-[2026-05-23T11:55:36Z]   recycling session after 8 docs (40 total)
-[2026-05-23T11:56:15Z]   recycling session after 8 docs (48 total)
-[2026-05-23T11:56:28Z]   50 PDFs downloaded
-[2026-05-23T11:56:47Z]   recycling session after 8 docs (56 total)
-[2026-05-23T11:57:04Z]   60 PDFs downloaded
-[2026-05-23T11:57:16Z]   recycling session after 8 docs (64 total)
-[2026-05-23T11:57:39Z]   70 PDFs downloaded
-[2026-05-23T11:57:47Z]   recycling session after 8 docs (72 total)
-[2026-05-23T11:58:20Z]   80 PDFs downloaded
-[2026-05-23T11:58:22Z]   recycling session after 8 docs (80 total)
-[2026-05-23T11:58:54Z]   recycling session after 8 docs (88 total)
-[2026-05-23T11:59:06Z]   90 PDFs downloaded
-[2026-05-23T11:59:27Z]   recycling session after 8 docs (96 total)
-[2026-05-23T11:59:57Z]   100 PDFs downloaded
-[2026-05-23T12:00:10Z]   recycling session after 8 docs (104 total)
-[2026-05-23T12:00:37Z]   110 PDFs downloaded
-[2026-05-23T12:00:45Z]   recycling session after 8 docs (112 total)
-[2026-05-23T12:01:13Z]   120 PDFs downloaded
-[2026-05-23T12:01:15Z]   recycling session after 8 docs (120 total)
-[2026-05-23T12:01:46Z]   recycling session after 8 docs (128 total)
-[2026-05-23T12:01:58Z]   130 PDFs downloaded
-[2026-05-23T12:02:18Z]   recycling session after 8 docs (136 total)
-[2026-05-23T12:02:35Z]   140 PDFs downloaded
-[2026-05-23T12:02:49Z]   recycling session after 8 docs (144 total)
-[2026-05-23T12:03:13Z]   150 PDFs downloaded
-[2026-05-23T12:03:20Z]   recycling session after 8 docs (152 total)
-[2026-05-23T12:03:49Z]   160 PDFs downloaded
-[2026-05-23T12:03:51Z]   recycling session after 8 docs (160 total)
-[2026-05-23T12:04:21Z]   recycling session after 8 docs (168 total)
-[2026-05-23T12:04:34Z]   170 PDFs downloaded
-[2026-05-23T12:04:54Z]   recycling session after 8 docs (176 total)
-[2026-05-23T12:05:11Z]   180 PDFs downloaded
-[2026-05-23T12:05:26Z]   recycling session after 8 docs (184 total)
-[2026-05-23T12:05:53Z]   190 PDFs downloaded
-[2026-05-23T12:06:00Z]   recycling session after 8 docs (192 total)
-[2026-05-23T12:06:28Z]   200 PDFs downloaded
-[2026-05-23T12:06:30Z]   recycling session after 8 docs (200 total)
-[2026-05-23T12:07:01Z]   recycling session after 8 docs (208 total)
-[2026-05-23T12:07:13Z]   210 PDFs downloaded
-[2026-05-23T12:07:32Z]   recycling session after 8 docs (216 total)
-[2026-05-23T12:07:52Z]   220 PDFs downloaded
-[2026-05-23T12:08:04Z]   recycling session after 8 docs (224 total)
-[2026-05-23T12:08:29Z]   230 PDFs downloaded
-[2026-05-23T12:08:36Z]   recycling session after 8 docs (232 total)
-[2026-05-23T12:09:06Z]   240 PDFs downloaded
-[2026-05-23T12:09:07Z]   recycling session after 8 docs (240 total)
-[2026-05-23T12:09:37Z]   recycling session after 8 docs (248 total)
-[2026-05-23T12:09:49Z]   250 PDFs downloaded
+[2026-05-24T11:58:22Z] start foreclosure_notices scrape window=04/24/2026..05/23/2028 max_records=100000 recycle_every=8
+[2026-05-24T11:58:29Z] 254 records found -> 13 pages
+[2026-05-24T11:58:49Z] collected 254 document ids
+[2026-05-24T11:59:15Z]   recycling session after 8 docs (8 total)
+[2026-05-24T11:59:27Z]   10 PDFs downloaded
+[2026-05-24T11:59:47Z]   recycling session after 8 docs (16 total)
+[2026-05-24T12:00:06Z]   20 PDFs downloaded
+[2026-05-24T12:00:21Z]   recycling session after 8 docs (24 total)
+[2026-05-24T12:00:46Z]   30 PDFs downloaded
+[2026-05-24T12:00:54Z]   recycling session after 8 docs (32 total)
+[2026-05-24T12:01:24Z]   40 PDFs downloaded
+[2026-05-24T12:01:26Z]   recycling session after 8 docs (40 total)
+[2026-05-24T12:01:57Z]   recycling session after 8 docs (48 total)
+[2026-05-24T12:02:10Z]   50 PDFs downloaded
+[2026-05-24T12:02:29Z]   recycling session after 8 docs (56 total)
+[2026-05-24T12:02:47Z]   60 PDFs downloaded
+[2026-05-24T12:03:00Z]   recycling session after 8 docs (64 total)
+[2026-05-24T12:03:24Z]   70 PDFs downloaded
+[2026-05-24T12:03:32Z]   recycling session after 8 docs (72 total)
+[2026-05-24T12:04:05Z]   80 PDFs downloaded
+[2026-05-24T12:04:07Z]   recycling session after 8 docs (80 total)
+[2026-05-24T12:04:38Z]   recycling session after 8 docs (88 total)
+[2026-05-24T12:04:50Z]   90 PDFs downloaded
+[2026-05-24T12:05:12Z]   recycling session after 8 docs (96 total)
+[2026-05-24T12:05:31Z]   100 PDFs downloaded
+[2026-05-24T12:05:44Z]   recycling session after 8 docs (104 total)
+[2026-05-24T12:06:09Z]   110 PDFs downloaded
+[2026-05-24T12:06:16Z]   recycling session after 8 docs (112 total)
+[2026-05-24T12:06:49Z]   120 PDFs downloaded
+[2026-05-24T12:06:50Z]   recycling session after 8 docs (120 total)
+[2026-05-24T12:07:24Z]   recycling session after 8 docs (128 total)
+[2026-05-24T12:07:36Z]   130 PDFs downloaded
+[2026-05-24T12:07:57Z]   recycling session after 8 docs (136 total)
+[2026-05-24T12:08:14Z]   140 PDFs downloaded
+[2026-05-24T12:08:29Z]   recycling session after 8 docs (144 total)
+[2026-05-24T12:08:52Z]   150 PDFs downloaded
+[2026-05-24T12:09:00Z]   recycling session after 8 docs (152 total)
+[2026-05-24T12:09:30Z]   160 PDFs downloaded
+[2026-05-24T12:09:31Z]   recycling session after 8 docs (160 total)
+[2026-05-24T12:10:02Z]   recycling session after 8 docs (168 total)
+[2026-05-24T12:10:16Z]   170 PDFs downloaded
+[2026-05-24T12:10:36Z]   recycling session after 8 docs (176 total)
+[2026-05-24T12:10:53Z]   180 PDFs downloaded
+[2026-05-24T12:11:07Z]   recycling session after 8 docs (184 total)
+[2026-05-24T12:11:30Z]   190 PDFs downloaded
+[2026-05-24T12:11:37Z]   recycling session after 8 docs (192 total)
+[2026-05-24T12:12:09Z]   200 PDFs downloaded
+[2026-05-24T12:12:10Z]   recycling session after 8 docs (200 total)
+[2026-05-24T12:12:41Z]   recycling session after 8 docs (208 total)
+[2026-05-24T12:12:52Z]   210 PDFs downloaded
+[2026-05-24T12:13:10Z]   recycling session after 8 docs (216 total)
+[2026-05-24T12:13:29Z]   220 PDFs downloaded
+[2026-05-24T12:13:45Z]   recycling session after 8 docs (224 total)
+[2026-05-24T12:14:09Z]   230 PDFs downloaded
+[2026-05-24T12:14:16Z]   recycling session after 8 docs (232 total)
+[2026-05-24T12:14:47Z]   240 PDFs downloaded
+[2026-05-24T12:14:49Z]   recycling session after 8 docs (240 total)
+[2026-05-24T12:15:19Z]   recycling session after 8 docs (248 total)
+[2026-05-24T12:15:31Z]   250 PDFs downloaded
