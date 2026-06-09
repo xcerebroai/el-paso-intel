@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T15:26:41Z",
+  "generated_at": "2026-06-09T13:55:43Z",
   "county": "El Paso",
   "state": "TX",
   "build_label": "SOURCE_LIMITED",
@@ -78802,7 +78802,7 @@
       "latest_event_date": "May 5, 2026"
     },
     {
-      "lead_id": "FCL_20200072275_171",
+      "lead_id": "FCL_00000000071_171",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -78822,7 +78822,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "",
+      "legal_description": "VISTA LARGA LOT 3 BLK 8",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -78838,22 +78838,22 @@
           "debtor_names": [
             "ERIC FEELY and SOFIA VERONICA FEELY"
           ],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "VISTA LARGA",
+          "lot": "3",
+          "block": "8",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20200072275",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000071",
           "evidence_id": "ev_fcl_fcl_0172.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20200072275"
+            "00000000071"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20200072275"
+            "00000000071"
           ]
         }
       ],
