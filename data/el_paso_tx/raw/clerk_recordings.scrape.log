@@ -1,24 +1,24 @@
-[2026-06-17T13:41:37Z] start clerk_recordings scrape window=01/01/2026..05/17/2026 doc_types=10
-[2026-06-17T13:41:46Z]   LIP/lis_pendens: 118 records found -> 6 pages
-[2026-06-17T13:41:55Z]   LIP: 118 rows -> 36 unique documents
-[2026-06-17T13:42:16Z]   AOJ/judgment_lien: 500 records found -> 25 pages
-[2026-06-17T13:42:56Z]   AOJ: 500 rows -> 233 unique documents
-[2026-06-17T13:43:17Z]   FTL/federal_tax_lien: 228 records found -> 12 pages
-[2026-06-17T13:43:35Z]   FTL: 228 rows -> 184 unique documents
-[2026-06-17T13:43:57Z]   STL/state_tax_lien: 315 records found -> 16 pages
-[2026-06-17T13:44:22Z]   STL: 315 rows -> 309 unique documents
-[2026-06-17T13:44:43Z]   MEL/mechanics_lien: 87 records found -> 5 pages
-[2026-06-17T13:44:50Z]   MEL: 87 rows -> 34 unique documents
-[2026-06-17T13:45:11Z]   HOS/hospital_lien: 500 records found -> 25 pages
-[2026-06-17T13:45:50Z]   HOS: 500 rows -> 250 unique documents
-[2026-06-17T13:46:12Z]   ATL/code_lien: 31 records found -> 2 pages
-[2026-06-17T13:46:13Z]   ATL: 31 rows -> 14 unique documents
-[2026-06-17T13:46:35Z]   AFH/affidavit_of_heirship: 500 records found -> 25 pages
-[2026-06-17T13:47:13Z]   AFH: 500 rows -> 142 unique documents
-[2026-06-17T13:47:35Z]   EXR/executor_deed: 362 records found -> 19 pages
-[2026-06-17T13:48:03Z]   EXR: 362 rows -> 93 unique documents
-[2026-06-17T13:48:25Z]   ADD/administrator_deed: 77 records found -> 4 pages
-[2026-06-17T13:48:30Z]   ADD: 77 rows -> 22 unique documents
-[2026-06-17T13:48:30Z] wrote 1317 records -> data/el_paso_tx/raw/clerk_recordings.jsonl
-[2026-06-17T13:48:30Z] signal_type tally: {'lis_pendens': 36, 'judgment_lien': 233, 'federal_tax_lien': 184, 'state_tax_lien': 309, 'mechanics_lien': 34, 'hospital_lien': 250, 'code_lien': 14, 'affidavit_of_heirship': 142, 'executor_deed': 93, 'administrator_deed': 22}
-[2026-06-17T13:48:30Z] done
+[2026-06-18T12:51:09Z] start clerk_recordings scrape window=01/01/2026..05/17/2026 doc_types=10
+[2026-06-18T12:51:19Z]   LIP/lis_pendens: 118 records found -> 6 pages
+[2026-06-18T12:51:27Z]   LIP: 118 rows -> 36 unique documents
+[2026-06-18T12:51:49Z]   AOJ/judgment_lien: 500 records found -> 25 pages
+[2026-06-18T12:52:27Z]   AOJ: 500 rows -> 233 unique documents
+[2026-06-18T12:52:49Z]   FTL/federal_tax_lien: 228 records found -> 12 pages
+[2026-06-18T12:53:07Z]   FTL: 228 rows -> 184 unique documents
+[2026-06-18T12:53:28Z]   STL/state_tax_lien: 315 records found -> 16 pages
+[2026-06-18T12:53:52Z]   STL: 315 rows -> 309 unique documents
+[2026-06-18T12:54:14Z]   MEL/mechanics_lien: 87 records found -> 5 pages
+[2026-06-18T12:54:20Z]   MEL: 87 rows -> 34 unique documents
+[2026-06-18T12:54:42Z]   HOS/hospital_lien: 500 records found -> 25 pages
+[2026-06-18T12:55:20Z]   HOS: 500 rows -> 250 unique documents
+[2026-06-18T12:55:42Z]   ATL/code_lien: 31 records found -> 2 pages
+[2026-06-18T12:55:43Z]   ATL: 31 rows -> 14 unique documents
+[2026-06-18T12:56:05Z]   AFH/affidavit_of_heirship: 500 records found -> 25 pages
+[2026-06-18T12:56:43Z]   AFH: 500 rows -> 142 unique documents
+[2026-06-18T12:57:05Z]   EXR/executor_deed: 362 records found -> 19 pages
+[2026-06-18T12:57:33Z]   EXR: 362 rows -> 93 unique documents
+[2026-06-18T12:57:55Z]   ADD/administrator_deed: 77 records found -> 4 pages
+[2026-06-18T12:58:00Z]   ADD: 77 rows -> 22 unique documents
+[2026-06-18T12:58:00Z] wrote 1317 records -> data/el_paso_tx/raw/clerk_recordings.jsonl
+[2026-06-18T12:58:00Z] signal_type tally: {'lis_pendens': 36, 'judgment_lien': 233, 'federal_tax_lien': 184, 'state_tax_lien': 309, 'mechanics_lien': 34, 'hospital_lien': 250, 'code_lien': 14, 'affidavit_of_heirship': 142, 'executor_deed': 93, 'administrator_deed': 22}
+[2026-06-18T12:58:00Z] done
