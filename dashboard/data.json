@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T14:10:18Z",
+  "generated_at": "2026-06-19T14:54:10Z",
   "county": "El Paso",
   "state": "TX",
   "build_label": "SOURCE_LIMITED",
@@ -82062,7 +82062,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79912",
-      "legal_description": "",
+      "legal_description": "SAN CARLOS LOT 5 BLK 6",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82076,22 +82076,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "SAN CARLOS",
+          "lot": "5",
+          "block": "6",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20230055735",
+          "recorded_date": "08/04/2026",
+          "instrument_number": "00000000001",
           "evidence_id": "ev_fcl_fcl_0222.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20230055735"
+            "00000000001"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20230055735"
+            "00000000001"
           ]
         }
       ],
@@ -82106,7 +82106,7 @@
       "latest_event_date": "May 5, 2026"
     },
     {
-      "lead_id": "FCL_20200065919_222",
+      "lead_id": "FCL_00000000002_222",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82126,7 +82126,7 @@
       "property_city": "SAN ELIZARIO",
       "property_state": "TX",
       "property_zip": "79849",
-      "legal_description": "",
+      "legal_description": "RANCHO DESIERTO BELLO LOT 17 BLK 40 UNIT 8",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82140,22 +82140,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20200065919",
+          "subdivision": "RANCHO DESIERTO BELLO",
+          "lot": "17",
+          "block": "40",
+          "unit": "8",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000002",
           "evidence_id": "ev_fcl_fcl_0223.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20200065919"
+            "00000000002"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20200065919"
+            "00000000002"
           ]
         }
       ],
@@ -82170,7 +82170,7 @@
       "latest_event_date": "May 5, 2026"
     },
     {
-      "lead_id": "FCL_20070038230_223",
+      "lead_id": "FCL_00000000003_223",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82190,7 +82190,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "",
+      "legal_description": "MONTOYA VISTA LOT 9 BLK 3",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82204,22 +82204,22 @@
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "MONTOYA VISTA",
+          "lot": "9",
+          "block": "3",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20070038230",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000003",
           "evidence_id": "ev_fcl_fcl_0224.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20070038230"
+            "00000000003"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20070038230"
+            "00000000003"
           ]
         }
       ],
@@ -82254,7 +82254,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79938",
-      "legal_description": "",
+      "legal_description": "YSLETA GRANT BLK 40 TRACT 301",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82270,22 +82270,22 @@
           "debtor_names": [
             "JAIME VERA"
           ],
-          "subdivision": "",
+          "subdivision": "YSLETA GRANT",
           "lot": "",
-          "block": "",
+          "block": "40",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20130092950",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000004",
           "evidence_id": "ev_fcl_fcl_0225.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20130092950"
+            "00000000004"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20130092950"
+            "00000000004"
           ]
         }
       ],
@@ -82300,7 +82300,7 @@
       "latest_event_date": "6/2/2026"
     },
     {
-      "lead_id": "FCL_20240039070_225",
+      "lead_id": "FCL_00000000005_225",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82340,18 +82340,18 @@
           "lot": "",
           "block": "",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20240039070",
+          "recorded_date": "06/18/2026",
+          "instrument_number": "00000000005",
           "evidence_id": "ev_fcl_fcl_0226.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20240039070"
+            "00000000005"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20240039070"
+            "00000000005"
           ]
         }
       ],
@@ -82366,7 +82366,7 @@
       "latest_event_date": "6/2/2026"
     },
     {
-      "lead_id": "FCL_20110040217_226",
+      "lead_id": "FCL_00000000006_226",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82386,7 +82386,7 @@
       "property_city": "SAN ELIZARIO",
       "property_state": "TX",
       "property_zip": "79849",
-      "legal_description": "",
+      "legal_description": "HESA HEIGHTS LOT 3 BLK 21",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82395,27 +82395,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
+          "sale_date": "07/07/2026",
           "dot_document_number": "20110040217",
           "lender_beneficiary": "Date of Sale: MAY 5, 2026",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "HESA HEIGHTS",
+          "lot": "3",
+          "block": "21",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20110040217",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000006",
           "evidence_id": "ev_fcl_fcl_0227.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20110040217"
+            "00000000006"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20110040217"
+            "00000000006"
           ]
         }
       ],
@@ -82427,10 +82427,10 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
+      "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_20070069772_227",
+      "lead_id": "FCL_00000000007_227",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82450,7 +82450,7 @@
       "property_city": "HORIZON CITY",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "",
+      "legal_description": "TIERRA DEL ESTE LOT 29 BLK 504 UNIT 78",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82459,27 +82459,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
+          "sale_date": "07/07/2026",
           "dot_document_number": "20070069772",
           "lender_beneficiary": "UNITED STATES OF AMERICA, ACTING THROUGH THE",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20070069772",
+          "subdivision": "TIERRA DEL ESTE",
+          "lot": "29",
+          "block": "504",
+          "unit": "78",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000007",
           "evidence_id": "ev_fcl_fcl_0228.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20070069772"
+            "00000000007"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20070069772"
+            "00000000007"
           ]
         }
       ],
@@ -82491,10 +82491,10 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
+      "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_20010084757_228",
+      "lead_id": "FCL_00000000008_228",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82514,7 +82514,7 @@
       "property_city": "EL PASO",
       "property_state": "TX",
       "property_zip": "79928",
-      "legal_description": "",
+      "legal_description": "CLARDY FOX LOT 23 BLK 5",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82523,27 +82523,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
+          "sale_date": "07/07/2026",
           "dot_document_number": "20010084757",
           "lender_beneficiary": "Date of Sale: MAY 5, 2026",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "CLARDY FOX",
+          "lot": "23",
+          "block": "5",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20010084757",
+          "recorded_date": "07/07/2026",
+          "instrument_number": "00000000008",
           "evidence_id": "ev_fcl_fcl_0229.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20010084757"
+            "00000000008"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20010084757"
+            "00000000008"
           ]
         }
       ],
@@ -82555,7 +82555,7 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
+      "latest_event_date": "07/07/2026"
     },
     {
       "lead_id": "FCL_20220104950_229",
