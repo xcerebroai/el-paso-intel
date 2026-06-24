@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T16:44:41Z",
+  "generated_at": "2026-06-24T13:38:04Z",
   "county": "El Paso",
   "state": "TX",
   "build_label": "SOURCE_LIMITED",
@@ -12,7 +12,7 @@
   "epcad_enrichment_resolved": 516,
   "epcad_enrichment_unresolved": 1116,
   "review_required": 9,
-  "actionable_leads": 1613,
+  "actionable_leads": 1616,
   "records": [
     {
       "lead_id": "UNRESOLVED_SERRANO_ANDREW_20260000971",
@@ -15914,27 +15914,27 @@
       "latest_event_date": "01/21/2026"
     },
     {
-      "lead_id": "PARCEL_N42599903102200",
+      "lead_id": "PARCEL_M08399900301700",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "ENRICHED",
       "filer_entity": "",
-      "parcel_id": "N42599903102200",
-      "owner_name": "ORTEGA LUIS F",
+      "parcel_id": "M08399900301700",
+      "owner_name": "ORTEGA LUIS A",
       "owner_type": "INDIVIDUAL",
-      "property_full_address": "4236 LOMA ROSADA DR EL PASO, TX 79934",
-      "property_street": "4236 LOMA ROSADA DR EL PASO",
+      "property_full_address": "352 LOMALAND DR EL PASO, TX 79907",
+      "property_street": "352 LOMALAND DR EL PASO",
       "property_city": "",
       "property_state": "TX",
-      "property_zip": "79934",
-      "mailing_full_address": "4236 LOMA ROSADA DR EL PASO TX 79934-3772",
+      "property_zip": "79907",
+      "mailing_full_address": "352 LOMALAND DR EL PASO TX 79907-4132",
       "mailing_city": "",
       "mailing_state": "TX",
-      "assessed_value": 320864.0,
-      "appraised_value": 320864.0,
+      "assessed_value": 137434.0,
+      "appraised_value": 173928.0,
       "homestead": "HOMESTEAD",
       "absentee_owner_flag": true,
       "out_of_state_owner_flag": false,
-      "legal_description": "31 NORTH HILLS #3                 LOT 22 (8634.45 SQ FT)",
+      "legal_description": "3 MARFIL                          LOT 9 (5710.31 SQ FT)",
       "signals": [
         {
           "signal_type": "federal_tax_lien",
@@ -82558,7 +82558,7 @@
       "latest_event_date": "07/07/2026"
     },
     {
-      "lead_id": "FCL_20220104950_229",
+      "lead_id": "FCL_00000000009_229",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82578,7 +82578,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "",
+      "legal_description": "ESTANCIAS DEL PARRAL LOT 8 BLK 5",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82587,27 +82587,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
+          "sale_date": "08/04/2026",
           "dot_document_number": "20220104950",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
+          "subdivision": "ESTANCIAS DEL PARRAL",
+          "lot": "8",
+          "block": "5",
           "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20220104950",
+          "recorded_date": "08/04/2026",
+          "instrument_number": "00000000009",
           "evidence_id": "ev_fcl_fcl_0230.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20220104950"
+            "00000000009"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20220104950"
+            "00000000009"
           ]
         }
       ],
@@ -82619,10 +82619,10 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
+      "latest_event_date": "08/04/2026"
     },
     {
-      "lead_id": "FCL_20230083176_230",
+      "lead_id": "FCL_00000000010_230",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82642,7 +82642,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "",
+      "legal_description": "EAST GATE LOT 9 BLK 8 UNIT 1",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82651,27 +82651,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
+          "sale_date": "08/04/2026",
           "dot_document_number": "20230083176",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20230083176",
+          "subdivision": "EAST GATE",
+          "lot": "9",
+          "block": "8",
+          "unit": "1",
+          "recorded_date": "08/04/2026",
+          "instrument_number": "00000000010",
           "evidence_id": "ev_fcl_fcl_0231.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20230083176"
+            "00000000010"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20230083176"
+            "00000000010"
           ]
         }
       ],
@@ -82683,10 +82683,10 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
+      "latest_event_date": "08/04/2026"
     },
     {
-      "lead_id": "FCL_20110014499_231",
+      "lead_id": "FCL_00000000011_231",
       "parcel_resolution_status": "RESOLVED",
       "epcad_enrichment_status": "UNENRICHED",
       "parcel_id": "",
@@ -82706,7 +82706,7 @@
       "property_city": "",
       "property_state": "TX",
       "property_zip": "",
-      "legal_description": "",
+      "legal_description": "TIERRA DEL ESTE LOT 2 BLK 99 UNIT 18",
       "signals": [
         {
           "signal_type": "foreclosure_notice",
@@ -82715,27 +82715,27 @@
           "signal_confidence": "HIGH",
           "source_id": "foreclosure_notices",
           "source_url": "https://apps.epcountytx.gov/publicrecords/Foreclosures",
-          "sale_date": "",
+          "sale_date": "08/04/2026",
           "dot_document_number": "20110014499",
           "lender_beneficiary": "",
           "mortgage_servicer": "",
           "debtor_names": [],
-          "subdivision": "",
-          "lot": "",
-          "block": "",
-          "unit": "",
-          "recorded_date": "",
-          "instrument_number": "20110014499",
+          "subdivision": "TIERRA DEL ESTE",
+          "lot": "2",
+          "block": "99",
+          "unit": "18",
+          "recorded_date": "08/04/2026",
+          "instrument_number": "00000000011",
           "evidence_id": "ev_fcl_fcl_0232.pdf",
           "source_urls": [
             "https://apps.epcountytx.gov/publicrecords/Foreclosures"
           ],
           "evidence_ids": [
-            "20110014499"
+            "00000000011"
           ],
           "count": 1,
           "instrument_numbers": [
-            "20110014499"
+            "00000000011"
           ]
         }
       ],
@@ -82747,7 +82747,7 @@
       ],
       "signal_count": 1,
       "primary_signal": "foreclosure_notice",
-      "latest_event_date": ""
+      "latest_event_date": "08/04/2026"
     },
     {
       "lead_id": "FCL_20230084286_232",
